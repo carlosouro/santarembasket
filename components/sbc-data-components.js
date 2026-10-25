@@ -37,9 +37,9 @@ class SbcDestaques extends HTMLElement {
         <h3 class="sbc-destaque-title">${this.escapeHtml(item.titulo)}</h3>
         <p class="sbc-destaque-desc">${this.escapeHtml(item.descricao)}</p>
         <div class="sbc-destaque-action">
-          <a href="${this.escapeHtml(item.link)}" class="sbc-btn-card" ${item.externo ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+          <a href="${this.escapeHtml(item.link)}" class="sbc-destaque-btn" ${item.externo ? 'target="_blank" rel="noopener noreferrer"' : ''}>
             <span>${this.escapeHtml(item.textoBotao || 'Saber Mais')}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>

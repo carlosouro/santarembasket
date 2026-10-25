@@ -1341,6 +1341,260 @@ body {
   border: 0;
 }
 
+/* Destaques Action Button */
+.sbc-destaque-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--sbc-red);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 13px 22px;
+  border-radius: var(--sbc-radius-md);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(234, 49, 18, 0.28);
+  transition: all var(--sbc-transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: auto;
+}
+
+.sbc-destaque-btn:hover {
+  background: var(--sbc-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234, 49, 18, 0.48);
+  color: #ffffff !important;
+}
+
+.sbc-destaque-btn svg {
+  transition: transform var(--sbc-transition-fast);
+}
+
+.sbc-destaque-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Hero Athlete Banner Image */
+.sbc-hero-banner-wrap {
+  margin-top: 48px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--sbc-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--sbc-navy-dark);
+}
+
+.sbc-hero-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--sbc-transition-smooth);
+}
+
+.sbc-hero-banner-wrap:hover .sbc-hero-banner-img {
+  transform: scale(1.015);
+}
+
+/* Órgãos Sociais / Team Members Grid */
+.sbc-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.sbc-member-card {
+  background: #ffffff;
+  border-radius: var(--sbc-radius-lg);
+  border: 1px solid var(--sbc-gray-200);
+  box-shadow: var(--sbc-shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform var(--sbc-transition-normal), box-shadow var(--sbc-transition-normal), border-color var(--sbc-transition-normal);
+}
+
+.sbc-member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sbc-shadow-md);
+  border-color: rgba(234, 49, 18, 0.3);
+}
+
+.sbc-member-photo-wrap {
+  width: 100%;
+  height: 250px;
+  background: var(--sbc-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.sbc-member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform var(--sbc-transition-normal);
+}
+
+.sbc-member-card:hover .sbc-member-photo {
+  transform: scale(1.04);
+}
+
+.sbc-member-placeholder {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(13, 27, 42, 0.08);
+  border: 2px solid var(--sbc-gray-200);
+  color: var(--sbc-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 800;
+  font-family: var(--sbc-font-display);
+  letter-spacing: 0.05em;
+}
+
+.sbc-member-info {
+  padding: 18px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sbc-member-name {
+  font-family: var(--sbc-font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sbc-navy);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.sbc-member-role {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sbc-red);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Official Document Styles (Estatutos, Regulamento Interno) */
+.sbc-doc-card {
+  background: #ffffff;
+  border-radius: var(--sbc-radius-lg);
+  border: 1px solid var(--sbc-gray-200);
+  box-shadow: var(--sbc-shadow-sm);
+  padding: 48px 40px;
+  line-height: 1.8;
+  color: var(--sbc-gray-700);
+  font-size: 15px;
+}
+
+.sbc-doc-download-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(13, 27, 42, 0.04) 0%, rgba(234, 49, 18, 0.06) 100%);
+  border: 1px solid var(--sbc-gray-200);
+  border-left: 4px solid var(--sbc-red);
+  padding: 20px 24px;
+  border-radius: var(--sbc-radius-md);
+  margin-bottom: 36px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sbc-doc-download-bar-info {
+  flex: 1;
+  min-width: 240px;
+}
+
+.sbc-doc-download-bar-title {
+  font-family: var(--sbc-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sbc-navy);
+  margin: 0 0 4px;
+}
+
+.sbc-doc-download-bar-desc {
+  font-size: 13px;
+  color: var(--sbc-gray-600);
+  margin: 0;
+}
+
+.sbc-doc-chapter {
+  margin: 40px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--sbc-gray-100);
+  text-align: center;
+}
+
+.sbc-doc-chapter:first-of-type {
+  margin-top: 10px;
+}
+
+.sbc-doc-chapter-num {
+  display: block;
+  font-family: var(--sbc-font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--sbc-red);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.sbc-doc-chapter-title {
+  font-family: var(--sbc-font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--sbc-navy);
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.sbc-doc-article-title {
+  font-family: var(--sbc-font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sbc-navy);
+  margin: 28px 0 12px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.sbc-doc-card p {
+  text-align: justify;
+  margin-bottom: 16px;
+  line-height: 1.75;
+}
+
+.sbc-doc-card ul {
+  margin: 12px 0 20px 24px;
+  padding: 0;
+}
+
+.sbc-doc-card li {
+  margin-bottom: 8px;
+  line-height: 1.65;
+}
+
 /* Responsive adjustments for components */
 @media (max-width: 980px) {
   .sbc-hero-title {
@@ -1364,10 +1618,28 @@ body {
     align-items: flex-start;
     gap: 6px;
   }
+
+  .sbc-doc-card {
+    padding: 28px 20px;
+  }
+
+  .sbc-doc-download-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sbc-doc-download-bar .sbc-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
   .sbc-palmares-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .sbc-team-grid {
     grid-template-columns: 1fr;
   }
 }

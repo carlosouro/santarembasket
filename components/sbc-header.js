@@ -27,46 +27,46 @@ class SbcHeader extends HTMLElement {
             <svg class="sbc-chevron" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <ul class="sbc-dropdown">
-            <li class="sbc-dropdown-item"><a href="/main/historia/" class="sbc-dropdown-link">HISTÓRIA</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/orgaos-sociais/" class="sbc-dropdown-link">ÓRGÃOS SOCIAIS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/estatutos/" class="sbc-dropdown-link">ESTATUTOS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/regulamento-interno/" class="sbc-dropdown-link">REGULAMENTO INTERNO</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/palmares/" class="sbc-dropdown-link">PALMARÉS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/parceiros/" class="sbc-dropdown-link">PARCEIROS & PROTOCOLOS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/contacto/" class="sbc-dropdown-link">CONTACTO</a></li>
+            <li class="sbc-dropdown-item"><a href="/historia/" class="sbc-dropdown-link">HISTÓRIA</a></li>
+            <li class="sbc-dropdown-item"><a href="/orgaos-sociais/" class="sbc-dropdown-link">ÓRGÃOS SOCIAIS</a></li>
+            <li class="sbc-dropdown-item"><a href="/estatutos/" class="sbc-dropdown-link">ESTATUTOS</a></li>
+            <li class="sbc-dropdown-item"><a href="/regulamento-interno/" class="sbc-dropdown-link">REGULAMENTO INTERNO</a></li>
+            <li class="sbc-dropdown-item"><a href="/palmares/" class="sbc-dropdown-link">PALMARÉS</a></li>
+            <li class="sbc-dropdown-item"><a href="/parceiros/" class="sbc-dropdown-link">PARCEIROS & PROTOCOLOS</a></li>
+            <li class="sbc-dropdown-item"><a href="/contacto/" class="sbc-dropdown-link">CONTACTO</a></li>
           </ul>
         </li>
 
         <!-- Equipas Dropdown -->
         <li class="sbc-nav-item sbc-has-dropdown" data-nav="equipas">
-          <a href="/main/equipas/" class="sbc-nav-link" aria-expanded="false">
+          <a href="/equipas/" class="sbc-nav-link" aria-expanded="false">
             EQUIPAS
             <svg class="sbc-chevron" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <ul class="sbc-dropdown">
-            <li class="sbc-dropdown-item"><a href="/main/equipas/" class="sbc-dropdown-link">TODAS AS EQUIPAS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/treinos/" class="sbc-dropdown-link">HORÁRIO DOS TREINOS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/equipas/#minibasquete" class="sbc-dropdown-link">MINIBASQUETE</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/equipas/#masculinas" class="sbc-dropdown-link">MASCULINAS</a></li>
-            <li class="sbc-dropdown-item"><a href="/main/equipas/#femininas" class="sbc-dropdown-link">FEMININAS</a></li>
+            <li class="sbc-dropdown-item"><a href="/equipas/" class="sbc-dropdown-link">TODAS AS EQUIPAS</a></li>
+            <li class="sbc-dropdown-item"><a href="/treinos/" class="sbc-dropdown-link">HORÁRIO DOS TREINOS</a></li>
+            <li class="sbc-dropdown-item"><a href="/equipas/#minibasquete" class="sbc-dropdown-link">MINIBASQUETE</a></li>
+            <li class="sbc-dropdown-item"><a href="/equipas/#masculinas" class="sbc-dropdown-link">MASCULINAS</a></li>
+            <li class="sbc-dropdown-item"><a href="/equipas/#femininas" class="sbc-dropdown-link">FEMININAS</a></li>
           </ul>
         </li>
       </ul>
     </nav>
 
     <!-- Center Logo -->
-    <a href="/main/" class="sbc-logo-anchor" title="Santarém Basket Clube - Página Inicial">
-      <img src="/main/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2.png" alt="Santarém Basket Clube" class="sbc-logo-img" />
+    <a href="/" class="sbc-logo-anchor" title="Santarém Basket Clube - Página Inicial">
+      <img src="/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2.png" alt="Santarém Basket Clube" class="sbc-logo-img" />
     </a>
 
     <!-- Right Navigation Wing -->
     <nav class="sbc-nav-wing sbc-nav-wing-right" aria-label="Navegação Direita">
       <ul class="sbc-nav-list">
         <li class="sbc-nav-item" data-nav="merchandising">
-          <a href="/main/merchandising/" class="sbc-nav-link">MERCHANDISING</a>
+          <a href="/merchandising/" class="sbc-nav-link">MERCHANDISING</a>
         </li>
         <li class="sbc-nav-item" data-nav="socios">
-          <a href="/main/socios/" class="sbc-btn-socio">SER SÓCIO</a>
+          <a href="/socios/" class="sbc-btn-socio">SER SÓCIO</a>
         </li>
       </ul>
     </nav>
@@ -84,7 +84,7 @@ class SbcHeader extends HTMLElement {
 <!-- Mobile Off-Canvas Drawer -->
 <div class="sbc-mobile-drawer" id="sbc-mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu Principal">
   <div class="sbc-mobile-drawer-header">
-    <img src="/main/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2.png" alt="Santarém Basket Clube" class="sbc-mobile-drawer-logo" />
+    <img src="/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2.png" alt="Santarém Basket Clube" class="sbc-mobile-drawer-logo" />
     <span class="sbc-mobile-drawer-title">Santarém Basket Clube</span>
   </div>
 
@@ -92,50 +92,50 @@ class SbcHeader extends HTMLElement {
     <!-- Clube Accordion -->
     <li class="sbc-mobile-item" data-nav="clube">
       <div class="sbc-mobile-link-row">
-        <a href="/main/historia/" class="sbc-mobile-link">CLUBE</a>
+        <a href="/historia/" class="sbc-mobile-link">CLUBE</a>
         <button class="sbc-accordion-toggle" aria-label="Expandir submenu Clube">
           <svg width="12" height="8" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
         </button>
       </div>
       <ul class="sbc-mobile-submenu">
-        <li><a href="/main/historia/" class="sbc-mobile-sublink">História</a></li>
-        <li><a href="/main/orgaos-sociais/" class="sbc-mobile-sublink">Órgãos Sociais</a></li>
-        <li><a href="/main/estatutos/" class="sbc-mobile-sublink">Estatutos</a></li>
-        <li><a href="/main/regulamento-interno/" class="sbc-mobile-sublink">Regulamento Interno</a></li>
-        <li><a href="/main/palmares/" class="sbc-mobile-sublink">Palmarés</a></li>
-        <li><a href="/main/parceiros/" class="sbc-mobile-sublink">Parceiros & Protocolos</a></li>
-        <li><a href="/main/contacto/" class="sbc-mobile-sublink">Contacto</a></li>
+        <li><a href="/historia/" class="sbc-mobile-sublink">História</a></li>
+        <li><a href="/orgaos-sociais/" class="sbc-mobile-sublink">Órgãos Sociais</a></li>
+        <li><a href="/estatutos/" class="sbc-mobile-sublink">Estatutos</a></li>
+        <li><a href="/regulamento-interno/" class="sbc-mobile-sublink">Regulamento Interno</a></li>
+        <li><a href="/palmares/" class="sbc-mobile-sublink">Palmarés</a></li>
+        <li><a href="/parceiros/" class="sbc-mobile-sublink">Parceiros & Protocolos</a></li>
+        <li><a href="/contacto/" class="sbc-mobile-sublink">Contacto</a></li>
       </ul>
     </li>
 
     <!-- Equipas Accordion -->
     <li class="sbc-mobile-item" data-nav="equipas">
       <div class="sbc-mobile-link-row">
-        <a href="/main/equipas/" class="sbc-mobile-link">EQUIPAS</a>
+        <a href="/equipas/" class="sbc-mobile-link">EQUIPAS</a>
         <button class="sbc-accordion-toggle" aria-label="Expandir submenu Equipas">
           <svg width="12" height="8" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
         </button>
       </div>
       <ul class="sbc-mobile-submenu">
-        <li><a href="/main/equipas/" class="sbc-mobile-sublink">Todas as Equipas</a></li>
-        <li><a href="/main/treinos/" class="sbc-mobile-sublink">Horário dos Treinos</a></li>
-        <li><a href="/main/equipas/#minibasquete" class="sbc-mobile-sublink">Minibasquete</a></li>
-        <li><a href="/main/equipas/#masculinas" class="sbc-mobile-sublink">Masculinas</a></li>
-        <li><a href="/main/equipas/#femininas" class="sbc-mobile-sublink">Femininas</a></li>
+        <li><a href="/equipas/" class="sbc-mobile-sublink">Todas as Equipas</a></li>
+        <li><a href="/treinos/" class="sbc-mobile-sublink">Horário dos Treinos</a></li>
+        <li><a href="/equipas/#minibasquete" class="sbc-mobile-sublink">Minibasquete</a></li>
+        <li><a href="/equipas/#masculinas" class="sbc-mobile-sublink">Masculinas</a></li>
+        <li><a href="/equipas/#femininas" class="sbc-mobile-sublink">Femininas</a></li>
       </ul>
     </li>
 
     <li class="sbc-mobile-item" data-nav="merchandising">
-      <a href="/main/merchandising/" class="sbc-mobile-link">MERCHANDISING</a>
+      <a href="/merchandising/" class="sbc-mobile-link">MERCHANDISING</a>
     </li>
 
     <li class="sbc-mobile-item" data-nav="contacto">
-      <a href="/main/contacto/" class="sbc-mobile-link">CONTACTO</a>
+      <a href="/contacto/" class="sbc-mobile-link">CONTACTO</a>
     </li>
   </ul>
 
   <div class="sbc-mobile-drawer-cta">
-    <a href="/main/socios/" class="sbc-btn-socio" style="display: block; width: 100%;">SER SÓCIO</a>
+    <a href="/socios/" class="sbc-btn-socio" style="display: block; width: 100%;">SER SÓCIO</a>
   </div>
 </div>
     `;
@@ -173,22 +173,22 @@ class SbcHeader extends HTMLElement {
     });
 
     // Parent group detection
-    if (['/main/historia', '/main/orgaos-sociais', '/main/estatutos', '/main/regulamento-interno', '/main/palmares', '/main/titulos-nacionais', '/main/parceiros', '/main/contacto'].some(p => currentPath.startsWith(p))) {
+    if (['/historia', '/orgaos-sociais', '/estatutos', '/regulamento-interno', '/palmares', '/titulos-nacionais', '/parceiros', '/contacto'].some(p => currentPath.startsWith(p))) {
       const clubeItems = this.querySelectorAll('[data-nav="clube"]');
       clubeItems.forEach(el => el.classList.add('active'));
     }
 
-    if (['/main/equipas', '/main/treinos', '/main/team', '/main/player'].some(p => currentPath.startsWith(p))) {
+    if (['/equipas', '/treinos', '/team', '/player'].some(p => currentPath.startsWith(p))) {
       const equipasItems = this.querySelectorAll('[data-nav="equipas"]');
       equipasItems.forEach(el => el.classList.add('active'));
     }
 
-    if (currentPath.startsWith('/main/socios') || currentPath.startsWith('/main/novo-socio')) {
+    if (currentPath.startsWith('/socios') || currentPath.startsWith('/novo-socio')) {
       const sociosItems = this.querySelectorAll('[data-nav="socios"]');
       sociosItems.forEach(el => el.classList.add('active'));
     }
 
-    if (currentPath.startsWith('/main/merchandising')) {
+    if (currentPath.startsWith('/merchandising')) {
       const merchItems = this.querySelectorAll('[data-nav="merchandising"]');
       merchItems.forEach(el => el.classList.add('active'));
     }

@@ -40,12 +40,12 @@ class SbcFooter extends HTMLElement {
     <div class="sbc-footer-col">
       <h4>Acesso Rápido</h4>
       <ul class="sbc-footer-links">
-        <li><a href="/main/historia/">História do Clube</a></li>
-        <li><a href="/main/equipas/">Equipas & Treinos</a></li>
-        <li><a href="/main/socios/">Quero Ser Sócio</a></li>
-        <li><a href="/main/merchandising/">Merchandising & Equipamentos</a></li>
-        <li><a href="/main/parceiros/">Parceiros & Protocolos</a></li>
-        <li><a href="/main/contacto/">Contactos & Localização</a></li>
+        <li><a href="/historia/">História do Clube</a></li>
+        <li><a href="/equipas/">Equipas & Treinos</a></li>
+        <li><a href="/socios/">Quero Ser Sócio</a></li>
+        <li><a href="/merchandising/">Merchandising & Equipamentos</a></li>
+        <li><a href="/parceiros/">Parceiros & Protocolos</a></li>
+        <li><a href="/contacto/">Contactos & Localização</a></li>
       </ul>
     </div>
 
