@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="bgF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b48"/>
+      <stop offset="100%" stop-color="#163e65"/>
+    </linearGradient>
+    <linearGradient id="jerseyF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea3112"/>
+      <stop offset="100%" stop-color="#c62408"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="24" fill="url(#bgF)"/>
+  <!-- Hair Silhouette -->
+  <path d="M102 120 C100 70, 200 70, 198 120 C202 155, 185 175, 180 180 C175 160, 170 150, 165 140 C135 140, 130 160, 120 180 C115 175, 98 155, 102 120 Z" fill="#cbd5e1"/>
+  <!-- Face -->
+  <circle cx="150" cy="115" r="42" fill="#f1f5f9"/>
+  <!-- Ponytail / Hair flow -->
+  <path d="M182 125 C205 130, 215 150, 210 180 C200 170, 195 150, 182 140 Z" fill="#cbd5e1"/>
+  <!-- Jersey / Shoulders -->
+  <path d="M80 270 C85 205, 112 188, 132 182 L132 215 C132 225, 168 225, 168 215 L168 182 C188 188, 215 205, 220 270 Z" fill="url(#jerseyF)"/>
+  <!-- SBC Collar -->
+  <path d="M132 182 C140 196, 160 196, 168 182 Z" fill="#ffffff" opacity="0.9"/>
+  <!-- Basketball icon watermark in bottom corner -->
+  <circle cx="250" cy="250" r="32" fill="#ffffff" opacity="0.08"/>
+  <path d="M222 250 H278 M250 222 V278" stroke="#ffffff" stroke-width="2" opacity="0.15"/>
+</svg>

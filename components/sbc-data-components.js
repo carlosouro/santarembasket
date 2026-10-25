@@ -214,6 +214,15 @@ class SbcParceiros extends HTMLElement {
             <div class="sbc-partners-grid">
               ${data.institucionais.map(p => `
                 <div class="sbc-partner-card">
+                  <div class="sbc-partner-logo-box">
+                    ${p.logo ? `
+                      <img src="${this.escapeHtml(p.logo)}" alt="${this.escapeHtml(p.nome)}" class="sbc-partner-logo-img" loading="lazy">
+                    ` : `
+                      <div class="sbc-partner-logo-placeholder">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                      </div>
+                    `}
+                  </div>
                   <div class="sbc-partner-type">${this.escapeHtml(p.tipo)}</div>
                   <h4 class="sbc-partner-name">${this.escapeHtml(p.nome)}</h4>
                   <p class="sbc-partner-desc">${this.escapeHtml(p.descricao)}</p>
@@ -229,11 +238,20 @@ class SbcParceiros extends HTMLElement {
     if (section === 'all' || section === 'patrocinadores') {
       if (data.patrocinadores && data.patrocinadores.length > 0) {
         html += `
-          <div class="sbc-partners-block" style="margin-top: 32px;">
+          <div class="sbc-partners-block" style="margin-top: 36px;">
             <h3 class="sbc-section-subtitle">Patrocinadores & Apoios</h3>
             <div class="sbc-partners-grid">
               ${data.patrocinadores.map(p => `
                 <div class="sbc-partner-card sbc-card-sponsor">
+                  <div class="sbc-partner-logo-box">
+                    ${p.logo ? `
+                      <img src="${this.escapeHtml(p.logo)}" alt="${this.escapeHtml(p.nome)}" class="sbc-partner-logo-img" loading="lazy">
+                    ` : `
+                      <div class="sbc-partner-logo-placeholder">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                      </div>
+                    `}
+                  </div>
                   <div class="sbc-partner-type">${this.escapeHtml(p.tipo)}</div>
                   <h4 class="sbc-partner-name">${this.escapeHtml(p.nome)}</h4>
                   <p class="sbc-partner-desc">${this.escapeHtml(p.descricao)}</p>
@@ -368,3 +386,174 @@ class SbcPalmares extends HTMLElement {
   }
 }
 customElements.define('sbc-palmares', SbcPalmares);
+
+// 5. Equipas & Plantéis (<sbc-equipas>)
+class SbcEquipas extends HTMLElement {
+  async connectedCallback() {
+    this.innerHTML = '<div class="sbc-loading-placeholder">A carregar equipas e plantéis...</div>';
+    const targetTeam = this.getAttribute('team');
+
+    try {
+      const res = await fetch('/data/equipas.json');
+      if (!res.ok) throw new Error('Não foi possível carregar as equipas');
+      const teams = await res.json();
+      
+      if (targetTeam) {
+        const singleTeam = teams.find(t => t.id === targetTeam || t.id.includes(targetTeam));
+        if (singleTeam) {
+          this.renderSingle(singleTeam);
+        } else {
+          this.renderAll(teams);
+        }
+      } else {
+        this.renderAll(teams);
+      }
+    } catch (err) {
+      console.warn('Erro ao carregar /data/equipas.json:', err);
+      this.innerHTML = '<p style="text-align:center; color: var(--sbc-gray-600); padding: 20px;">Informação de equipas brevemente disponível.</p>';
+    }
+  }
+
+  renderAll(teams) {
+    this.innerHTML = `
+      <div class="sbc-teams-wrapper">
+        <!-- Filter Tabs -->
+        <div class="sbc-teams-filter-bar">
+          <button class="sbc-filter-btn active" data-filter="all">Todas as Equipas (${teams.length})</button>
+          <button class="sbc-filter-btn" data-filter="Masculino">Masculinos</button>
+          <button class="sbc-filter-btn" data-filter="Feminino">Femininos</button>
+          <button class="sbc-filter-btn" data-filter="Misto">Minibasquete</button>
+        </div>
+
+        <div class="sbc-teams-container">
+          ${teams.map(t => this.renderTeamCard(t)).join('')}
+        </div>
+      </div>
+    `;
+
+    // Filter functionality
+    const buttons = this.querySelectorAll('.sbc-filter-btn');
+    const cards = this.querySelectorAll('.sbc-team-showcase-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.gender === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  renderSingle(team) {
+    this.innerHTML = `
+      <div class="sbc-teams-wrapper">
+        ${this.renderTeamCard(team, true)}
+      </div>
+    `;
+  }
+
+  renderTeamCard(team, isOpen = false) {
+    const hasRoster = team.plantel && team.plantel.length > 0;
+
+    return `
+      <article class="sbc-team-showcase-card" data-gender="${this.escapeHtml(team.genero)}" id="equipa-${this.escapeHtml(team.id)}">
+        <header class="sbc-team-card-header">
+          <div class="sbc-team-card-title-group">
+            <span class="sbc-team-category-badge">${this.escapeHtml(team.categoria || team.escalao)}</span>
+            <h3 class="sbc-team-card-title">${this.escapeHtml(team.nome)}</h3>
+            <div class="sbc-team-tags">
+              ${team.competicoes ? team.competicoes.map(c => `<span class="sbc-tag">${this.escapeHtml(c)}</span>`).join('') : ''}
+            </div>
+          </div>
+          
+          ${team.treinador ? `
+            <div class="sbc-team-staff-badge">
+              ${team.treinadorFoto ? `<img src="${this.escapeHtml(team.treinadorFoto)}" alt="${this.escapeHtml(team.treinador)}" class="sbc-staff-thumb" loading="lazy">` : `
+                <div class="sbc-staff-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+              `}
+              <div class="sbc-staff-info">
+                <span class="sbc-staff-role">Treinador(a)</span>
+                <span class="sbc-staff-name">${this.escapeHtml(team.treinador)}</span>
+              </div>
+            </div>
+          ` : ''}
+        </header>
+
+        ${team.fotoEquipa ? `
+          <div class="sbc-team-banner-wrap">
+            <img src="${this.escapeHtml(team.fotoEquipa)}" alt="Fotografia Plantel ${this.escapeHtml(team.nome)}" class="sbc-team-banner-img" loading="lazy">
+            <div class="sbc-team-banner-overlay">Plantel Oficial Santarém Basket Clube • Época 2026 / 2027</div>
+          </div>
+        ` : ''}
+
+        <p class="sbc-team-desc">${this.escapeHtml(team.descricao)}</p>
+
+        <div class="sbc-team-meta-bar">
+          <div class="sbc-meta-item">
+            <span class="sbc-meta-icon">🕒</span>
+            <div><strong>Horários:</strong> ${this.escapeHtml(team.treinos)}</div>
+          </div>
+          <div class="sbc-meta-item">
+            <span class="sbc-meta-icon">📍</span>
+            <div><strong>Local:</strong> ${this.escapeHtml(team.pavilhao)}</div>
+          </div>
+        </div>
+
+        ${hasRoster ? `
+          <div class="sbc-roster-container">
+            <div class="sbc-roster-header">
+              <h4 class="sbc-roster-title">
+                <span>Plantel de Atletas</span>
+                <span class="sbc-badge-count">${team.plantel.length} Jogadores</span>
+              </h4>
+            </div>
+
+            <div class="sbc-roster-grid">
+              ${team.plantel.map(p => `
+                <div class="sbc-player-card">
+                  <div class="sbc-player-avatar-box">
+                    <img src="${this.escapeHtml(p.foto)}" alt="${this.escapeHtml(p.nome)}" class="sbc-player-photo" loading="lazy">
+                    <span class="sbc-player-num-tag">#${p.numero}</span>
+                  </div>
+                  <div class="sbc-player-body">
+                    <h5 class="sbc-player-name">${this.escapeHtml(p.nome)}</h5>
+                    <span class="sbc-player-pos">${this.escapeHtml(p.posicao)}</span>
+                    <div class="sbc-player-specs">
+                      ${p.altura ? `<span>${this.escapeHtml(p.altura)}</span>` : ''}
+                      ${p.ano ? `<span>Nasc. ${this.escapeHtml(p.ano)}</span>` : ''}
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : `
+          <div class="sbc-roster-empty-notice">
+            <span>Inscrições abertas e captações em curso para este escalão no Pavilhão Municipal de Santarém.</span>
+          </div>
+        `}
+      </article>
+    `;
+  }
+
+  escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+}
+customElements.define('sbc-equipas', SbcEquipas);
+

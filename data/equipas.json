@@ -1,0 +1,633 @@
+[
+  {
+    "id": "sub16-m",
+    "nome": "Sub-16 Masculinos",
+    "escalao": "Sub-16",
+    "genero": "Masculino",
+    "categoria": "Cadetes Masculinos",
+    "competicoes": [
+      "Taça Nacional Sub-16 Masculinos",
+      "Campeonato Distrital ABS"
+    ],
+    "treinador": "Luís Cordeiro",
+    "treinadorFoto": "/assets/images/jogadores/luiscordeiro-300x300.png",
+    "treinos": "3ª Feira (19h00 - 20h30), 5ª Feira (19h00 - 20h30), 6ª Feira (20h00 - 21h30)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "/assets/images/jogadores/equipa-plantel.jpg",
+    "descricao": "Equipa de competição do Santarém Basket Clube na Taça Nacional e Campeonato Distrital da ABS, com um percurso consistente na formação de jovens atletas escalabitanos.",
+    "plantel": [
+      {
+        "numero": 1,
+        "nome": "Joel Gomes",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/01_joel-300x300.png",
+        "ano": 2009,
+        "altura": "1.76 m"
+      },
+      {
+        "numero": 5,
+        "nome": "Afonso Cipriano",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/05_meireles-300x300.png",
+        "ano": 2008,
+        "altura": "1.78 m"
+      },
+      {
+        "numero": 9,
+        "nome": "Tiago Fialho",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/09_tfialho-300x300.png",
+        "ano": 2008,
+        "altura": "1.83 m"
+      },
+      {
+        "numero": 11,
+        "nome": "José Simões",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/11_jsimoes-300x300.png",
+        "ano": 2008,
+        "altura": "1.80 m"
+      },
+      {
+        "numero": 12,
+        "nome": "Tiago Baptista",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/12_tbatista-300x300.png",
+        "ano": 2008,
+        "altura": "1.91 m"
+      },
+      {
+        "numero": 18,
+        "nome": "Pedro Ferreira",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/18_pferreira-300x300.png",
+        "ano": 2008,
+        "altura": "1.85 m"
+      },
+      {
+        "numero": 38,
+        "nome": "Tiago Costa",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/38_tcosta-300x300.png",
+        "ano": 2009,
+        "altura": "1.74 m"
+      },
+      {
+        "numero": 56,
+        "nome": "Rodrigo Coelho",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/56_rcoelho-300x300.png",
+        "ano": 2008,
+        "altura": "1.82 m"
+      },
+      {
+        "numero": 67,
+        "nome": "Carlos Santos",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/67_carlos-300x300.png",
+        "ano": 2008,
+        "altura": "1.93 m"
+      },
+      {
+        "numero": 84,
+        "nome": "Lucas C. Nobre",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/84_lnobre-300x300.png",
+        "ano": 2009,
+        "altura": "1.84 m"
+      },
+      {
+        "numero": 87,
+        "nome": "Vicente Sousa",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/87_vicente-300x300.png",
+        "ano": 2009,
+        "altura": "1.75 m"
+      },
+      {
+        "numero": 89,
+        "nome": "Afonso Ribeiro",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/89_aribeiro-300x300.png",
+        "ano": 2008,
+        "altura": "1.90 m"
+      },
+      {
+        "numero": 93,
+        "nome": "Mateus Caniço",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/93_mcanico-300x300.png",
+        "ano": 2008,
+        "altura": "1.86 m"
+      },
+      {
+        "numero": 96,
+        "nome": "Dinis Caniço",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/96_dcanico-300x300.png",
+        "ano": 2009,
+        "altura": "1.77 m"
+      },
+      {
+        "numero": 98,
+        "nome": "Salvador Pereira",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/98_salvador-300x300.png",
+        "ano": 2008,
+        "altura": "1.84 m"
+      }
+    ]
+  },
+  {
+    "id": "sub16-f",
+    "nome": "Sub-16 Femininos",
+    "escalao": "Sub-16",
+    "genero": "Feminino",
+    "categoria": "Cadetes Femininas",
+    "competicoes": [
+      "Taça Nacional Sub-16 Femininas",
+      "Campeonato Distrital ABS"
+    ],
+    "treinador": "Equipa Técnica SBC",
+    "treinadorFoto": "",
+    "treinos": "2ª Feira (18h30 - 20h00), 4ª Feira (18h30 - 20h00), 6ª Feira (19h00 - 20h30)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Escalão competitivo feminino com forte dinâmica de grupo e presença regular nas fases decisivas das provas distritais e taças nacionais.",
+    "plantel": [
+      {
+        "numero": 1,
+        "nome": "Ema Cipriano",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/01_ema-300x300.png",
+        "ano": 2008,
+        "altura": "1.66 m"
+      },
+      {
+        "numero": 4,
+        "nome": "Carolina Silva",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2008,
+        "altura": "1.68 m"
+      },
+      {
+        "numero": 7,
+        "nome": "Matilde Santos",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2009,
+        "altura": "1.64 m"
+      },
+      {
+        "numero": 10,
+        "nome": "Inês Ferreira",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2008,
+        "altura": "1.70 m"
+      },
+      {
+        "numero": 14,
+        "nome": "Beatriz Mendes",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2008,
+        "altura": "1.78 m"
+      },
+      {
+        "numero": 15,
+        "nome": "Margarida Rocha",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2009,
+        "altura": "1.80 m"
+      },
+      {
+        "numero": 21,
+        "nome": "Leonor Costa",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2008,
+        "altura": "1.69 m"
+      },
+      {
+        "numero": 23,
+        "nome": "Sofia Oliveira",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2009,
+        "altura": "1.65 m"
+      },
+      {
+        "numero": 33,
+        "nome": "Mariana Carmo",
+        "posicao": "Extremo-Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2008,
+        "altura": "1.74 m"
+      },
+      {
+        "numero": 44,
+        "nome": "Maria Martins",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2008,
+        "altura": "1.79 m"
+      }
+    ]
+  },
+  {
+    "id": "sub14-m",
+    "nome": "Sub-14 Masculinos",
+    "escalao": "Sub-14",
+    "genero": "Masculino",
+    "categoria": "Iniciados Masculinos",
+    "competicoes": [
+      "Campeonato Distrital ABS Sub-14",
+      "Taça Nacional Sub-14"
+    ],
+    "treinador": "Equipa Técnica SBC",
+    "treinadorFoto": "",
+    "treinos": "2ª Feira (18h00 - 19h30), 4ª Feira (18h00 - 19h30), 6ª Feira (18h30 - 20h00)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Escalão fundamental de consolidação técnica e tática no basquetebol formal, desenvolvendo leitura de jogo e competição saudável.",
+    "plantel": [
+      {
+        "numero": 4,
+        "nome": "Afonso Pereira",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2011,
+        "altura": "1.62 m"
+      },
+      {
+        "numero": 6,
+        "nome": "Martim Lopes",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2010,
+        "altura": "1.68 m"
+      },
+      {
+        "numero": 7,
+        "nome": "Diogo Fernandes",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2011,
+        "altura": "1.60 m"
+      },
+      {
+        "numero": 8,
+        "nome": "Gabriel Rodrigues",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2010,
+        "altura": "1.71 m"
+      },
+      {
+        "numero": 10,
+        "nome": "Tomás Alves",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2010,
+        "altura": "1.78 m"
+      },
+      {
+        "numero": 13,
+        "nome": "Lourenço Sousa",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2011,
+        "altura": "1.67 m"
+      },
+      {
+        "numero": 15,
+        "nome": "Francisco Duarte",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2010,
+        "altura": "1.79 m"
+      },
+      {
+        "numero": 20,
+        "nome": "Bernardo Silva",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2011,
+        "altura": "1.58 m"
+      },
+      {
+        "numero": 22,
+        "nome": "Miguel Martins",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2010,
+        "altura": "1.70 m"
+      },
+      {
+        "numero": 30,
+        "nome": "Rafael Santos",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2010,
+        "altura": "1.81 m"
+      }
+    ]
+  },
+  {
+    "id": "sub14-f",
+    "nome": "Sub-14 Femininos",
+    "escalao": "Sub-14",
+    "genero": "Feminino",
+    "categoria": "Iniciadas Femininas",
+    "competicoes": [
+      "Campeonato Distrital ABS Sub-14 Feminino",
+      "Taça Nacional Sub-14 Feminina"
+    ],
+    "treinador": "Equipa Técnica SBC",
+    "treinadorFoto": "",
+    "treinos": "3ª Feira (18h00 - 19h30), 5ª Feira (18h00 - 19h30), Sábado (09h30 - 11h00)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Escalão feminino de formação competitiva onde as atletas aprendem e consolidam as regras e o dinamismo do jogo formal de 5 contra 5.",
+    "plantel": [
+      {
+        "numero": 5,
+        "nome": "Beatriz Carvalho",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2011,
+        "altura": "1.58 m"
+      },
+      {
+        "numero": 8,
+        "nome": "Madalena Pires",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2010,
+        "altura": "1.65 m"
+      },
+      {
+        "numero": 11,
+        "nome": "Francisca Ramos",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2011,
+        "altura": "1.63 m"
+      },
+      {
+        "numero": 12,
+        "nome": "Clara Henriques",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2010,
+        "altura": "1.74 m"
+      },
+      {
+        "numero": 16,
+        "nome": "Laura Antunes",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2011,
+        "altura": "1.56 m"
+      },
+      {
+        "numero": 24,
+        "nome": "Diana Rodrigues",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2010,
+        "altura": "1.76 m"
+      }
+    ]
+  },
+  {
+    "id": "sub18-m",
+    "nome": "Sub-18 Masculinos",
+    "escalao": "Sub-18",
+    "genero": "Masculino",
+    "categoria": "Juniores Masculinos",
+    "competicoes": [
+      "Campeonato Distrital ABS Sub-18",
+      "Taça Nacional Sub-18 Masculinos"
+    ],
+    "treinador": "Equipa Técnica SBC",
+    "treinadorFoto": "",
+    "treinos": "2ª Feira (19h30 - 21h00), 4ª Feira (19h30 - 21h00), 6ª Feira (19h30 - 21h00)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Escalão júnior de alta intensidade competitiva, servindo de ponte direta para a transição dos jovens atletas para a equipa sénior.",
+    "plantel": [
+      {
+        "numero": 4,
+        "nome": "Guilherme Santos",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2006,
+        "altura": "1.82 m"
+      },
+      {
+        "numero": 7,
+        "nome": "Tomás Rodrigues",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2007,
+        "altura": "1.88 m"
+      },
+      {
+        "numero": 10,
+        "nome": "Francisco Lopes",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2006,
+        "altura": "1.86 m"
+      },
+      {
+        "numero": 14,
+        "nome": "Duarte Simões",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2006,
+        "altura": "1.96 m"
+      },
+      {
+        "numero": 23,
+        "nome": "João Afonso Matos",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2007,
+        "altura": "1.94 m"
+      },
+      {
+        "numero": 77,
+        "nome": "Rodrigo Martins",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2007,
+        "altura": "1.79 m"
+      }
+    ]
+  },
+  {
+    "id": "sub18-f",
+    "nome": "Sub-18 Femininos",
+    "escalao": "Sub-18",
+    "genero": "Feminino",
+    "categoria": "Juniores Femininas",
+    "competicoes": [
+      "Campeonato Distrital ABS Sub-18 Feminino",
+      "Taça Nacional Sub-18 Feminina"
+    ],
+    "treinador": "Equipa Técnica SBC",
+    "treinadorFoto": "",
+    "treinos": "3ª Feira (19h30 - 21h00), 5ª Feira (19h30 - 21h00), 6ª Feira (18h30 - 20h00)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Escalão com historial brilhante no clube, tendo conquistado títulos distritais e presenças na Final Four da Taça Nacional.",
+    "plantel": [
+      {
+        "numero": 6,
+        "nome": "Inês Ribeiro",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2006,
+        "altura": "1.68 m"
+      },
+      {
+        "numero": 9,
+        "nome": "Marta Ferreira",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2007,
+        "altura": "1.75 m"
+      },
+      {
+        "numero": 12,
+        "nome": "Constança Silva",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2006,
+        "altura": "1.82 m"
+      },
+      {
+        "numero": 15,
+        "nome": "Mariana Henriques",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2007,
+        "altura": "1.72 m"
+      },
+      {
+        "numero": 22,
+        "nome": "Rita Carvalho",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-female.svg",
+        "ano": 2006,
+        "altura": "1.84 m"
+      }
+    ]
+  },
+  {
+    "id": "seniores-m",
+    "nome": "Seniores Masculinos",
+    "escalao": "Seniores",
+    "genero": "Masculino",
+    "categoria": "Sénior Competição",
+    "competicoes": [
+      "Campeonato Nacional CNB2 / Provas ABS",
+      "Taça de Portugal"
+    ],
+    "treinador": "Equipa Técnica SBC",
+    "treinadorFoto": "",
+    "treinos": "2ª Feira (21h30 - 23h00), 4ª Feira (21h30 - 23h00), 6ª Feira (21h30 - 23h00)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Equipa sénior que representa o culminar do percurso formativo do Santarém Basket Clube no basquetebol federado nacional.",
+    "plantel": [
+      {
+        "numero": 4,
+        "nome": "Gonçalo Neves",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2001,
+        "altura": "1.83 m"
+      },
+      {
+        "numero": 5,
+        "nome": "João Pedro Rebelo",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2002,
+        "altura": "1.89 m"
+      },
+      {
+        "numero": 6,
+        "nome": "André Carvalho",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2000,
+        "altura": "1.81 m"
+      },
+      {
+        "numero": 8,
+        "nome": "Miguel Esteves",
+        "posicao": "Extremo",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2003,
+        "altura": "1.92 m"
+      },
+      {
+        "numero": 11,
+        "nome": "Daniel Marques",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 1999,
+        "altura": "1.98 m"
+      },
+      {
+        "numero": 13,
+        "nome": "Vasco Pinheiro",
+        "posicao": "Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2001,
+        "altura": "2.01 m"
+      },
+      {
+        "numero": 14,
+        "nome": "Ricardo Fonseca",
+        "posicao": "Extremo-Poste",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2002,
+        "altura": "1.94 m"
+      },
+      {
+        "numero": 21,
+        "nome": "Tiago Henriques",
+        "posicao": "Base",
+        "foto": "/assets/images/jogadores/avatar-male.svg",
+        "ano": 2003,
+        "altura": "1.80 m"
+      }
+    ]
+  },
+  {
+    "id": "minibasquete",
+    "nome": "Minibasquete (Sub-8, Sub-10 e Sub-12)",
+    "escalao": "Minis",
+    "genero": "Misto",
+    "categoria": "Iniciação & Minibasquete",
+    "competicoes": [
+      "Circuitos de Minibasquete ABS",
+      "Torneios de Convívio FPB"
+    ],
+    "treinador": "Coordenação de Minibasquete",
+    "treinadorFoto": "",
+    "treinos": "3ª e 5ª Feira (17h30 - 18h45), Sábado (10h00 - 11h30)",
+    "pavilhao": "Pavilhão Municipal de Santarém",
+    "fotoEquipa": "",
+    "descricao": "Espaço de pura diversão, socialização e aprendizagem motora onde rapazes e raparigas dos 4 aos 12 anos têm o primeiro contacto com o basquetebol.",
+    "plantel": []
+  }
+]
