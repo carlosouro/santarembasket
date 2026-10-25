@@ -15,6 +15,20 @@
   <script src="/components/sbc-header.js" defer></script>
   <script src="/components/sbc-footer.js" defer></script>
   <script src="/components/sbc-data-components.js" defer></script>
+
+  <!-- Legacy Cache Recovery & URL Normalization -->
+  <script>
+    (function() {
+      if (window.location.search.indexOf('ref=main') !== -1) {
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+        if (typeof window.fetch === 'function') {
+          fetch('/', { cache: 'reload' }).catch(function() {});
+        }
+      }
+    })();
+  </script>
 </head>
 <body class="sbc-body">
   <div id="page-container">

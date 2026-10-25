@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Não Encontrada (404) | Santarém Basket Clube</title>
+  
+  <!-- Immediate Redirect for legacy /main/ URLs -->
+  <script>
+    (function() {
+      var path = window.location.pathname;
+      if (path.indexOf('/main') === 0) {
+        var cleanPath = path.substring(5); // remove '/main'
+        if (!cleanPath || cleanPath === '/') {
+          cleanPath = '/?ref=main';
+        }
+        window.location.replace(cleanPath + (cleanPath.indexOf('?') === -1 && window.location.search ? window.location.search : ''));
+      }
+    })();
+  </script>
+
+  <link rel="icon" href="/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-150x150.png" sizes="32x32" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/components/sbc-header.js" defer></script>
+  <script src="/components/sbc-footer.js" defer></script>
+</head>
+<body class="sbc-body">
+  <div id="page-container">
+    <sbc-header></sbc-header>
+
+    <main id="main-content" style="min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 20px;">
+      <div style="max-width: 520px; background: #ffffff; border: 1px solid var(--sbc-gray-200); border-radius: var(--sbc-radius-lg); padding: 48px 32px; box-shadow: var(--sbc-shadow-md);">
+        <div style="font-size: 56px; margin-bottom: 16px;">🏀</div>
+        <h1 style="color: var(--sbc-navy); font-size: 28px; font-weight: 800; margin: 0 0 12px;">Página Não Encontrada (404)</h1>
+        <p style="color: var(--sbc-gray-600); font-size: 15px; line-height: 1.6; margin: 0 0 28px;">
+          O conteúdo que procuras foi movido para uma nova localização ou o endereço não existe.
+        </p>
+        <a href="/" class="sbc-btn-primary" style="display: inline-flex; justify-content: center;">
+          Voltar à Página Inicial
+        </a>
+      </div>
+    </main>
+
+    <sbc-footer></sbc-footer>
+  </div>
+</body>
+</html>
