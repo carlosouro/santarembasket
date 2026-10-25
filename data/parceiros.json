@@ -1,0 +1,65 @@
+{
+  "institucionais": [
+    {
+      "nome": "Município de Santarém",
+      "tipo": "Apoio Institucional",
+      "descricao": "Apoio ao desenvolvimento desportivo e cedência de instalações desportivas municipais.",
+      "link": "https://www.cm-santarem.pt/"
+    },
+    {
+      "nome": "União de Freguesias da Cidade de Santarém",
+      "tipo": "Apoio Institucional",
+      "descricao": "Apoio comunitário às atividades desportivas e sociais do clube.",
+      "link": "https://ufcsantarem.pt/"
+    },
+    {
+      "nome": "Associação de Basquetebol de Santarém",
+      "tipo": "Associação Distrital",
+      "descricao": "Entidade coordenadora das competições distritais e formação de arbitragem e treinadores.",
+      "link": "https://www.absantarem.pt/"
+    },
+    {
+      "nome": "Federação Portuguesa de Basquetebol",
+      "tipo": "Federação Nacional",
+      "descricao": "Órgão máximo da modalidade em Portugal, enquadrando as provas nacionais.",
+      "link": "https://www.fpb.pt/"
+    },
+    {
+      "nome": "Instituto Português do Desporto e Juventude (IPDJ)",
+      "tipo": "Entidade Pública",
+      "descricao": "Promoção do desporto para todos e enquadramento das federações desportivas.",
+      "link": "https://ipdj.gov.pt/"
+    }
+  ],
+  "patrocinadores": [
+    {
+      "nome": "Sumol+Compal",
+      "tipo": "Apoio & Patrocínio",
+      "descricao": "Parceiro oficial no apoio à formação desportiva jovem e hidratação dos atletas.",
+      "link": "https://sumolcompal.pt/"
+    },
+    {
+      "nome": "Empresas & Comércio Local de Santarém",
+      "tipo": "Apoios Locais",
+      "descricao": "Rede de parceiros do tecido empresarial escalabitano empenhados no basquetebol jovem.",
+      "link": "#"
+    }
+  ],
+  "protocolos": [
+    {
+      "entidade": "Medicina Desportiva & Exames Médicos",
+      "vantagem": "Condições especiais para atletas SBC na realização de exames médico-desportivos anuais obrigatórios.",
+      "categoria": "Saúde Desportiva"
+    },
+    {
+      "entidade": "Clínica de Fisioterapia & Reabilitação",
+      "vantagem": "Descontos em tratamentos de fisioterapia e recuperação de lesões para sócios e atletas.",
+      "categoria": "Recuperação & Bem-Estar"
+    },
+    {
+      "entidade": "Comércio Local & Fornecedores Oficiais",
+      "vantagem": "Descontos na aquisição de calçado, vestuário desportivo e materiais com benefício direto para o clube.",
+      "categoria": "Merchandising & Equipamento"
+    }
+  ]
+}

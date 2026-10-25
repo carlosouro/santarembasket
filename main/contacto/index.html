@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactos & Sugestões | Santarém Basket Clube</title>
+  <meta name="description" content="Entra em contacto com o Santarém Basket Clube. Localização do Pavilhão Municipal, contactos diretos, caixa de sugestões e formulário de mensagem.">
+  <link rel="icon" href="/main/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-150x150.png" sizes="32x32" />
+  <link rel="icon" href="/main/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-300x300.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/main/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-300x300.png" />
+  
+  <!-- Modern Stylesheets & Web Components -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/components/sbc-header.js" defer></script>
+  <script src="/components/sbc-footer.js" defer></script>
+  <script src="/components/sbc-data-components.js" defer></script>
+</head>
+<body class="sbc-body">
+  <div id="page-container">
+    <sbc-header></sbc-header>
+
+    <main id="main-content">
+      <!-- 1. Page Header Banner -->
+      <section class="sbc-hero-section" style="padding: 48px 0 36px;">
+        <div class="sbc-container">
+          <div class="sbc-hero-badge">📍 Fala Connosco</div>
+          <h1 class="sbc-hero-title">Contactos & Sugestões</h1>
+          <p class="sbc-hero-subtitle">
+            Estamos sempre disponíveis para esclarecer dúvidas, receber novos atletas e acolher ideias da nossa comunidade.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Contact Grid (Info + Form) -->
+      <section class="sbc-section">
+        <div class="sbc-container">
+          <div class="sbc-contact-grid">
+            <!-- Left Info Card -->
+            <div class="sbc-contact-info-card">
+              <h3>Informações Úteis</h3>
+              
+              <div class="sbc-contact-item">
+                <strong>Localização Principal</strong>
+                <p>Pavilhão Municipal de Santarém<br>Largo Comendador Paulino Cunha Silva<br>2005-134 Santarém</p>
+              </div>
+
+              <div class="sbc-contact-item">
+                <strong>Instalação Adicional</strong>
+                <p>Nave Desportiva Municipal de Santarém<br>Santarém</p>
+              </div>
+
+              <div class="sbc-contact-item">
+                <strong>Telemóvel / WhatsApp</strong>
+                <p><a href="tel:911700488" style="color: var(--sbc-navy); text-decoration: none; font-weight: 600;">911 700 488</a></p>
+              </div>
+
+              <div class="sbc-contact-item">
+                <strong>Email Oficial</strong>
+                <p><a href="mailto:santarembasket@gmail.com" style="color: var(--sbc-navy); text-decoration: none; font-weight: 600;">santarembasket@gmail.com</a></p>
+              </div>
+
+              <div class="sbc-contact-item">
+                <strong>Redes Sociais</strong>
+                <p style="display: flex; gap: 12px; margin-top: 6px;">
+                  <a href="https://www.facebook.com/santarembasketclube" target="_blank" rel="noopener" style="color: var(--sbc-red); font-weight: 600; text-decoration: none;">Facebook</a>
+                  <span style="color: var(--sbc-gray-400);">•</span>
+                  <a href="https://www.instagram.com/santarembasket/" target="_blank" rel="noopener" style="color: var(--sbc-red); font-weight: 600; text-decoration: none;">Instagram</a>
+                  <span style="color: var(--sbc-gray-400);">•</span>
+                  <a href="https://www.youtube.com/@santarembasketclube" target="_blank" rel="noopener" style="color: var(--sbc-red); font-weight: 600; text-decoration: none;">SBCTV (YouTube)</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Web3Forms Contact / Suggestion Form -->
+            <div class="sbc-form-card">
+              <h3 style="font-family: var(--sbc-font-display); font-size: 22px; font-weight: 700; color: var(--sbc-navy); margin: 0 0 8px; text-transform: uppercase;">
+                Envia-nos uma Mensagem
+              </h3>
+              <p style="font-size: 14px; color: var(--sbc-gray-600); margin: 0 0 24px;">
+                Utiliza o formulário abaixo para pedidos de informação, contactos institucionais ou para submeter a tua sugestão à direção do clube.
+              </p>
+
+              <form id="sbc-contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Access Key: replace with official club key in settings -->
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="from_name" value="Santarém Basket Website">
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+                <div class="sbc-form-group">
+                  <label for="contact-name" class="sbc-form-label">Nome Completo *</label>
+                  <input type="text" id="contact-name" name="name" class="sbc-form-input" placeholder="O teu nome" required>
+                </div>
+
+                <div class="sbc-form-group">
+                  <label for="contact-email" class="sbc-form-label">Email de Contacto *</label>
+                  <input type="email" id="contact-email" name="email" class="sbc-form-input" placeholder="exemplo@email.com" required>
+                </div>
+
+                <div class="sbc-form-group">
+                  <label for="contact-subject" class="sbc-form-label">Assunto / Motivo *</label>
+                  <select id="contact-subject" name="subject" class="sbc-form-select" required>
+                    <option value="Informações Gerais">Informações Gerais</option>
+                    <option value="Inscrições de Atletas">Inscrições de Atletas</option>
+                    <option value="Caixa de Sugestões & Ideias">💡 Caixa de Sugestões & Ideias</option>
+                    <option value="Apoios, Patrocínios & Protocolos">Apoios, Patrocínios & Protocolos</option>
+                    <option value="Outro Assunto">Outro Assunto</option>
+                  </select>
+                </div>
+
+                <div class="sbc-form-group">
+                  <label for="contact-message" class="sbc-form-label">Mensagem ou Sugestão *</label>
+                  <textarea id="contact-message" name="message" rows="5" class="sbc-form-textarea" placeholder="Escreve aqui a tua mensagem..." required></textarea>
+                </div>
+
+                <button type="submit" class="sbc-form-submit" id="sbc-form-button">
+                  Enviar Mensagem
+                </button>
+
+                <div id="form-result" class="sbc-form-result"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Google Maps Embed -->
+          <div class="sbc-map-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.294625298539!2d-8.688849723555512!3d39.23616652697334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd18eb98947b1981%3A0xc3c5fdfbcf279b32!2sPavilh%C3%A3o%20Municipal%20de%20Santar%C3%A9m!5e0!3m2!1spt-PT!2spt!4v1700000000000!5m2!1spt-PT!2spt"
+              width="100%" 
+              height="380" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização do Pavilhão Municipal de Santarém">
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Bottom Highlights (Formulários & Avisos da Época) -->
+      <section class="sbc-section sbc-section-alt" id="destaques">
+        <div class="sbc-container">
+          <div class="sbc-section-header">
+            <span class="sbc-section-badge">Formulários & Avisos</span>
+            <h2 class="sbc-section-title">Inscrições & Destaques Ativos</h2>
+            <p class="sbc-section-lead">
+              Procuras inscrever um atleta ou consultar as ações de formação em curso? Acede aos formulários oficiais abaixo.
+            </p>
+          </div>
+
+          <sbc-destaques></sbc-destaques>
+        </div>
+      </section>
+    </main>
+
+    <sbc-footer></sbc-footer>
+  </div>
+
+  <script>
+    // Asynchronous Web3Forms Submission handler
+    const form = document.getElementById('sbc-contact-form');
+    const result = document.getElementById('form-result');
+    const submitBtn = document.getElementById('sbc-form-button');
+
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'A enviar...';
+        result.style.display = 'block';
+        result.className = 'sbc-form-result';
+        result.textContent = 'Por favor aguarde...';
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        })
+        .then(async (response) => {
+          let res = await response.json();
+          if (response.status === 200) {
+            result.className = 'sbc-form-result success';
+            result.textContent = 'Mensagem enviada com sucesso! Responderemos logo que possível.';
+            form.reset();
+          } else {
+            result.className = 'sbc-form-result error';
+            result.textContent = res.message || 'Erro ao enviar a mensagem. Por favor tente novamente ou contacte por telemóvel.';
+          }
+        })
+        .catch(error => {
+          result.className = 'sbc-form-result error';
+          result.textContent = 'Ocorreu um erro de ligação. Por favor tente novamente ou contacte por email/telemóvel.';
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar Mensagem';
+        });
+      });
+    }
+  </script>
+</body>
+</html>

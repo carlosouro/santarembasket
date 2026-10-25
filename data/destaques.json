@@ -1,0 +1,46 @@
+[
+  {
+    "id": "curso-treinadores-grau-1",
+    "titulo": "Curso de Treinadores de Basquetebol Grau 1",
+    "categoria": "Formação",
+    "badge": "Candidaturas Abertas",
+    "descricao": "Abertura de inscrições para o Curso de Treinadores de Basquetebol de Grau 1 promovido pela Associação de Basquetebol de Santarém. As candidaturas mantêm-se em aberto.",
+    "link": "https://www.absantarem.pt/eventos/abertura-de-inscricoes-curso-de-treinadores-de-basquetebol-grau-1",
+    "textoBotao": "Mais Informações & Inscrição",
+    "externo": true,
+    "destaque": true
+  },
+  {
+    "id": "renovacao-inscricao-atletas",
+    "titulo": "Renovação de Inscrição de Atletas",
+    "categoria": "Inscrições Época 2026/2027",
+    "badge": "Atletas Atuais",
+    "descricao": "Renovação oficial da inscrição para os atletas do Santarém Basket Clube para a época desportiva 2026/2027.",
+    "link": "https://forms.gle/3UJWZH3obFhgzw9K8",
+    "textoBotao": "Renovar Inscrição",
+    "externo": true,
+    "destaque": true
+  },
+  {
+    "id": "inscricao-novos-atletas",
+    "titulo": "Inscrição de Novos Atletas",
+    "categoria": "Inscrições Época 2026/2027",
+    "badge": "Vem Jogar Connosco",
+    "descricao": "Gostas de basquetebol? Vem treinar connosco! Inscrições abertas para novos atletas em todos os escalões (desde o Minibasquete aos Sub-18).",
+    "link": "https://forms.gle/9Wc6ZioUHuHZUebf6",
+    "textoBotao": "Inscrever Novo Atleta",
+    "externo": true,
+    "destaque": true
+  },
+  {
+    "id": "inscricao-seniores",
+    "titulo": "Inscrição de Seniores",
+    "categoria": "Inscrições Época 2026/2027",
+    "badge": "Escalão Sénior",
+    "descricao": "Formulário de inscrição e registo oficial para a equipa Sénior do Santarém Basket Clube para a época 2026/2027.",
+    "link": "https://forms.gle/8vfUNX82Tx1NZfdb8",
+    "textoBotao": "Inscrição Seniores",
+    "externo": true,
+    "destaque": true
+  }
+]

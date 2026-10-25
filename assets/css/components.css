@@ -1,0 +1,8 @@
+/**
+ * Santarém Basket Clube - Web Components Base Styles
+ */
+
+sbc-header,
+sbc-footer {
+  display: block;
+}

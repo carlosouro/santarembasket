@@ -1,0 +1,53 @@
+/**
+ * Santarém Basket Clube - Design Tokens & Variables
+ */
+
+:root {
+  /* Brand Colors */
+  --sbc-red: #ea3112;
+  --sbc-red-hover: #cf280d;
+  --sbc-red-dark: #b8230a;
+  --sbc-red-light: #fff0ee;
+  
+  --sbc-navy: #1b263b;
+  --sbc-navy-dark: #0d1b2a;
+  --sbc-navy-light: #283853;
+  
+  --sbc-black: #111827;
+  --sbc-white: #ffffff;
+  
+  /* Neutral Palette */
+  --sbc-gray-50: #f8fafc;
+  --sbc-gray-100: #f1f5f9;
+  --sbc-gray-200: #e2e8f0;
+  --sbc-gray-300: #cbd5e1;
+  --sbc-gray-600: #64748b;
+  --sbc-gray-700: #334155;
+  --sbc-gray-800: #1e293b;
+  
+  /* Text */
+  --sbc-text-main: #1e293b;
+  --sbc-text-muted: #64748b;
+  --sbc-text-inverse: #ffffff;
+  
+  /* Typography */
+  --sbc-font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sbc-font-heading: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Radii */
+  --sbc-radius-sm: 6px;
+  --sbc-radius-md: 10px;
+  --sbc-radius-lg: 16px;
+  --sbc-radius-full: 9999px;
+  
+  /* Shadows */
+  --sbc-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sbc-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --sbc-shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --sbc-shadow-header: 0 2px 15px rgba(0, 0, 0, 0.06);
+  
+  /* Transitions */
+  --sbc-transition-fast: 0.15s ease;
+  --sbc-transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --sbc-transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}

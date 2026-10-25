@@ -1,0 +1,75 @@
+{
+  "estatisticas": {
+    "anosHistoria": 28,
+    "titulosNacionais": 6,
+    "tacasPortugal": 3,
+    "supertacas": 2,
+    "titulosDistritais": 40
+  },
+  "nacionais": [
+    {
+      "escalao": "Séniores Femininos",
+      "competicao": "Campeonato Nacional da Liga Feminina",
+      "conquistas": [
+        { "epoca": "2001/2002", "classificacao": "1º Classificado — Campeão Nacional" },
+        { "epoca": "2002/2003", "classificacao": "2º Classificado — Vice-Campeão Nacional" },
+        { "epoca": "2003/2004", "classificacao": "1º Classificado — Campeão Nacional" },
+        { "epoca": "2004/2005", "classificacao": "2º Classificado — Vice-Campeão Nacional" }
+      ]
+    },
+    {
+      "escalao": "Séniores Femininos",
+      "competicao": "Taça de Portugal",
+      "conquistas": [
+        { "epoca": "2000/2001", "classificacao": "Vencedor da Taça de Portugal" },
+        { "epoca": "2001/2002", "classificacao": "Vencedor da Taça de Portugal" },
+        { "epoca": "2002/2003", "classificacao": "Vencedor da Taça de Portugal" }
+      ]
+    },
+    {
+      "escalao": "Séniores Femininos",
+      "competicao": "Supertaça de Portugal",
+      "conquistas": [
+        { "epoca": "2001/2002", "classificacao": "Vencedor da Supertaça" },
+        { "epoca": "2002/2003", "classificacao": "Vencedor da Supertaça" },
+        { "epoca": "2003/2004", "classificacao": "Finalista da Supertaça" },
+        { "epoca": "2004/2005", "classificacao": "Finalista da Supertaça" }
+      ]
+    },
+    {
+      "escalao": "Sub-19 Femininos",
+      "competicao": "Campeonato Nacional",
+      "conquistas": [
+        { "epoca": "2000/2001", "classificacao": "1º Classificado — Campeão Nacional" },
+        { "epoca": "2004/2005", "classificacao": "2º Classificado — Vice-Campeão Nacional" },
+        { "epoca": "2005/2006", "classificacao": "3º Classificado — Zona Sul" }
+      ]
+    },
+    {
+      "escalao": "Sub-16 Masculinos",
+      "competicao": "Taça Nacional",
+      "conquistas": [
+        { "epoca": "2024/2025", "classificacao": "Apuramento e Liderança de Série da Taça Nacional" },
+        { "epoca": "2009/2010", "classificacao": "Presença na Fase Final Nacional" }
+      ]
+    }
+  ],
+  "regionaisDistritais": [
+    {
+      "escalao": "Sub-18 Masculinos & Femininos",
+      "titulos": "Múltiplos títulos de Campeão Distrital de Santarém com apuramento para fases nacionais."
+    },
+    {
+      "escalao": "Sub-16 Masculinos & Femininos",
+      "titulos": "Campeões Distritais sucessivos e presenças destacadas nos Campeonatos Regionais Santarém/Leiria."
+    },
+    {
+      "escalao": "Sub-14 Masculinos & Femininos",
+      "titulos": "Formação de base de referência distrital e campeões nas fases finais da Associação de Basquetebol de Santarém."
+    },
+    {
+      "escalao": "Minibasquete (Sub-8, Sub-10, Sub-12)",
+      "titulos": "Organização e participação de topo nos convívios distritais e torneios regionais da modalidade."
+    }
+  ]
+}
