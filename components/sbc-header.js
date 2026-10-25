@@ -22,7 +22,7 @@ class SbcHeader extends HTMLElement {
       <ul class="sbc-nav-list">
         <!-- Clube Dropdown -->
         <li class="sbc-nav-item sbc-has-dropdown" data-nav="clube">
-          <a href="#" class="sbc-nav-link" aria-expanded="false">
+          <a href="/" class="sbc-nav-link" aria-expanded="false">
             CLUBE
             <svg class="sbc-chevron" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -92,7 +92,7 @@ class SbcHeader extends HTMLElement {
     <!-- Clube Accordion -->
     <li class="sbc-mobile-item" data-nav="clube">
       <div class="sbc-mobile-link-row">
-        <a href="/historia/" class="sbc-mobile-link">CLUBE</a>
+        <a href="/" class="sbc-mobile-link">CLUBE</a>
         <button class="sbc-accordion-toggle" aria-label="Expandir submenu Clube">
           <svg width="12" height="8" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
         </button>
