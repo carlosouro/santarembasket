@@ -45,20 +45,20 @@ class SbcDestaques extends HTMLElement {
     }
 
     const cardsHtml = items.map(item => `
-      <div class="sbc-destaque-card">
+      <article class="sbc-destaque-card">
         <div class="sbc-destaque-badge">${this.escapeHtml(item.badge || item.categoria || 'Destaque')}</div>
         <h3 class="sbc-destaque-title">${this.escapeHtml(item.titulo)}</h3>
         <p class="sbc-destaque-desc">${this.escapeHtml(item.descricao)}</p>
         <div class="sbc-destaque-action">
           <a href="${this.escapeHtml(sbcDataResolveUrl(item.link))}" class="sbc-destaque-btn" ${item.externo ? 'target="_blank" rel="noopener noreferrer"' : ''}>
             <span>${this.escapeHtml(item.textoBotao || 'Saber Mais')}</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
         </div>
-      </div>
+      </article>
     `).join('');
 
     this.innerHTML = `<div class="sbc-destaques-grid">${cardsHtml}</div>`;

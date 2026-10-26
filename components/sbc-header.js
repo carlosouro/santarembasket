@@ -96,7 +96,7 @@ class SbcHeader extends HTMLElement {
           <a href="${r('merchandising/')}" class="sbc-nav-link">MERCHANDISING</a>
         </li>
         <li class="sbc-nav-item" data-nav="socios">
-          <a href="${r('socios/')}" class="sbc-btn-socio">SER SÓCIO</a>
+          <a href="${r('socios/')}" class="sbc-btn-socio">JUNTA-TE A NÓS</a>
         </li>
       </ul>
     </nav>
@@ -165,7 +165,7 @@ class SbcHeader extends HTMLElement {
   </ul>
 
   <div class="sbc-mobile-drawer-cta">
-    <a href="${r('socios/')}" class="sbc-btn-socio" style="display: block; width: 100%;">SER SÓCIO</a>
+    <a href="${r('socios/')}" class="sbc-btn-socio" style="display: block; width: 100%;">JUNTA-TE A NÓS</a>
   </div>
 </div>
     `;

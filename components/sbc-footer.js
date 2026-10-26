@@ -55,7 +55,7 @@ class SbcFooter extends HTMLElement {
       <ul class="sbc-footer-links">
         <li><a href="${r('historia/')}">História do Clube</a></li>
         <li><a href="${r('equipas/')}">Equipas & Treinos</a></li>
-        <li><a href="${r('socios/')}">Quero Ser Sócio</a></li>
+        <li><a href="${r('socios/')}">Junta-te a Nós</a></li>
         <li><a href="${r('merchandising/')}">Merchandising & Equipamentos</a></li>
         <li><a href="${r('parceiros/')}">Parceiros & Protocolos</a></li>
         <li><a href="${r('contacto/')}">Contactos & Localização</a></li>

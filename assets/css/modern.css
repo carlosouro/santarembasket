@@ -780,6 +780,12 @@ body {
   gap: 24px;
 }
 
+@media (min-width: 768px) {
+  .sbc-destaques-grid:has(> :nth-child(4):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .sbc-destaque-card {
   background: #ffffff;
   border-radius: var(--sbc-radius-lg);

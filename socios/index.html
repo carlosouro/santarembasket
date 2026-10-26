@@ -2,11 +2,165 @@
 <html lang="pt-PT" data-root="../">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=/novo-socio/">
-  <link rel="canonical" href="../novo-socio/">
-  <title>Sócios | Santarém Basket Clube</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junta-te a Nós | Santarém Basket Clube</title>
+  <meta name="description" content="Junta-te à família do Santarém Basket Clube. Formulários de inscrição de atletas, destaques da época, atividades do clube e proposta de adesão de novo sócio.">
+  <link rel="icon" href="../wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-150x150.png" sizes="32x32" />
+  <link rel="icon" href="../wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-300x300.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="../wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-300x300.png" />
+  
+  <!-- Modern Stylesheets & Web Components -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="../components/sbc-header.js" defer></script>
+  <script src="../components/sbc-footer.js" defer></script>
+  <script src="../components/sbc-data-components.js" defer></script>
 </head>
-<body>
-  <p>A redirecionar para a página de sócios... <a href="../novo-socio/">Clica aqui se não fores redirecionado</a>.</p>
+<body class="sbc-body">
+  <div id="page-container">
+    <sbc-header></sbc-header>
+
+    <main id="main-content">
+      <!-- 1. Hero & Boas-Vindas -->
+      <section class="sbc-hero-section" style="padding: 48px 0 40px;">
+        <div class="sbc-container">
+          <div class="sbc-hero-badge">🏀 Faz Parte Desta Família</div>
+          <h1 class="sbc-hero-title">Junta-te a Nós</h1>
+          <p class="sbc-hero-subtitle">
+            Seja dentro das quatro linhas como atleta ou nas bancadas como sócio, há um lugar para ti no Santarém Basket Clube.
+          </p>
+          <div class="sbc-hero-ctas" style="margin-bottom: 0;">
+            <a href="#inscricoes" class="sbc-btn-primary">Inscrições &amp; Destaques</a>
+            <a href="#ser-socio" class="sbc-btn-outline">Quero Ser Sócio</a>
+          </div>
+
+          <div class="sbc-club-highlight-card" style="text-align: left; margin-top: 40px;">
+            <div class="sbc-club-highlight-media">
+              <img 
+                src="../assets/images/clube/clube-junta-te.jpg" 
+                alt="Atletas do Santarém Basket Clube unidos em espírito de equipa" 
+                class="sbc-club-highlight-img" 
+                fetchpriority="high"
+                width="853" 
+                height="700"
+              >
+              <div class="sbc-club-highlight-badge">Época 2026 / 2027</div>
+            </div>
+            <div class="sbc-club-highlight-content">
+              <h2 class="sbc-club-highlight-title">Vem Viver o Basquetebol em Santarém</h2>
+              <p class="sbc-club-highlight-desc">
+                No Santarém Basket Clube acolhemos atletas em todos os escalões etários — do Minibasquete aos Seniores — e contamos com a força dos nossos sócios e famílias para continuar a formar jovens dentro e fora do campo.
+              </p>
+              <div class="sbc-club-highlight-stats">
+                <div class="sbc-club-stat-pill">
+                  <strong>Atletas</strong> Minis aos Seniores
+                </div>
+                <div class="sbc-club-stat-pill">
+                  <strong>Sócios</strong> 15,00€ / Época
+                </div>
+                <div class="sbc-club-stat-pill">
+                  <strong>2</strong> Pavilhões de Treino
+                </div>
+              </div>
+              <div style="margin-top: 24px;">
+                <a href="../treinos/" class="sbc-btn-card">
+                  <span>Consultar Horários dos Treinos</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Destaques & Inscrições de Atletas / Atividades -->
+      <section class="sbc-section sbc-section-alt" id="inscricoes">
+        <div class="sbc-container">
+          <div class="sbc-section-header">
+            <span class="sbc-section-badge">Atletas &amp; Atividades</span>
+            <h2 class="sbc-section-title">Destaques &amp; Inscrições da Época</h2>
+            <p class="sbc-section-lead">
+              Acede aos formulários oficiais para inscrição de novos atletas, renovação de inscrições para a época 2026/2027 e atividades específicas em curso no clube.
+            </p>
+          </div>
+
+          <sbc-destaques></sbc-destaques>
+        </div>
+      </section>
+
+      <!-- 3. Ser Sócio: Condições & Proposta de Adesão -->
+      <section class="sbc-section" id="ser-socio">
+        <div class="sbc-container">
+          <div class="sbc-section-header">
+            <span class="sbc-section-badge">Apoia o Clube</span>
+            <h2 class="sbc-section-title">Torna-te Sócio do Santarém Basket</h2>
+            <p class="sbc-section-lead">
+              Ser sócio do Santarém Basket Clube é apoiar ativamente a formação desportiva e humana de dezenas de jovens da nossa cidade.
+            </p>
+          </div>
+
+          <div class="sbc-contact-grid">
+            <!-- Left: Informações e Quota -->
+            <div class="sbc-contact-info-card">
+              <h3>Condições de Sócio</h3>
+
+              <div class="sbc-contact-item">
+                <strong>Quota Anual de Sócio Efetivo</strong>
+                <p><span style="font-size: 24px; font-weight: 800; color: var(--sbc-red);">15,00€</span> <span style="font-size: 14px; color: var(--sbc-gray-600);">/ época desportiva</span></p>
+                <p style="font-size: 13px; color: var(--sbc-gray-600); margin-top: 4px;">
+                  O valor da quota anual de sócio-efetivo deverá ser liquidado no início da época ou no momento da inscrição do atleta.
+                </p>
+              </div>
+
+              <div class="sbc-contact-item">
+                <strong>Métodos de Pagamento Seguros</strong>
+                <p>Todos os pagamentos são efetuados comodamente através de <strong>Referência Multibanco</strong> ou <strong>MBWay</strong> após a emissão da nota de cobrança oficial enviada pelo clube.</p>
+                <p style="font-size: 13px; color: var(--sbc-gray-600); margin-top: 4px;">
+                  A inscrição torna-se definitiva após a boa cobrança do respetivo valor.
+                </p>
+              </div>
+
+              <div class="sbc-contact-item">
+                <strong>Porquê ser Sócio?</strong>
+                <ul style="margin: 8px 0 0; padding-left: 18px; font-size: 14px; color: var(--sbc-navy); line-height: 1.6;">
+                  <li>Apoio financeiro direto às equipas de formação</li>
+                  <li>Participação ativa nas Assembleias Gerais do Clube</li>
+                  <li>Acesso a condições preferenciais em merchandising e parceiros oficiais</li>
+                  <li>Cartão digital de sócio do Santarém Basket Clube</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right: Card de Acesso ao Formulário Google Forms -->
+            <div class="sbc-form-card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 48px 36px;">
+              <div style="font-size: 48px; margin-bottom: 16px;" aria-hidden="true">📝</div>
+              <h3 style="font-family: var(--sbc-font-display); font-size: 24px; font-weight: 700; color: var(--sbc-navy); margin: 0 0 12px; text-transform: uppercase;">
+                Formulário Oficial de Sócio
+              </h3>
+              <p style="font-size: 15px; color: var(--sbc-gray-700); line-height: 1.6; margin: 0 auto 28px; max-width: 480px;">
+                Preenche a proposta de adesão de forma simples e rápida a partir de qualquer dispositivo. Todos os dados são geridos com total privacidade pelo clube.
+              </p>
+
+              <div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScP_placeholder_socio/viewform" target="_blank" rel="noopener noreferrer" class="sbc-btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; padding: 14px 32px;">
+                  <span>Preencher Proposta de Novo Sócio</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+
+              <p style="font-size: 13px; color: var(--sbc-gray-500); margin-top: 20px;">
+                Dúvidas no preenchimento? Fala connosco através de <a href="mailto:santarembasket@gmail.com" style="color: var(--sbc-red); text-decoration: underline;">santarembasket@gmail.com</a> ou pelo telemóvel <strong>911 700 488</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <sbc-footer></sbc-footer>
+  </div>
 </body>
 </html>
