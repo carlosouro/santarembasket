@@ -1839,16 +1839,19 @@ body {
 .sbc-team-banner-wrap {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 520px;
   border-radius: var(--sbc-radius-lg);
   overflow: hidden;
-  margin-bottom: 20px;
-  max-height: 380px;
+  margin-bottom: 24px;
+  background-color: var(--sbc-navy-dark);
 }
 
 .sbc-team-banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 25%;
   display: block;
 }
 
@@ -2044,4 +2047,115 @@ body {
     font-size: 22px;
   }
 }
+
+/* ==========================================================================
+   Club Highlight Feature (Sobre o Clube)
+   ========================================================================== */
+.sbc-club-highlight-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--sbc-white);
+  border-radius: var(--sbc-radius-xl);
+  box-shadow: var(--sbc-shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--sbc-gray-200);
+  margin-top: 32px;
+  transition: transform var(--sbc-transition-fast), box-shadow var(--sbc-transition-fast);
+}
+
+.sbc-club-highlight-card:hover {
+  box-shadow: var(--sbc-shadow-lg);
+}
+
+.sbc-club-highlight-media {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background: var(--sbc-navy-dark);
+}
+
+.sbc-club-highlight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.sbc-club-highlight-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(15, 43, 72, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--sbc-radius-full);
+}
+
+.sbc-club-highlight-content {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sbc-club-highlight-title {
+  font-family: var(--sbc-font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--sbc-navy);
+  margin: 0 0 14px;
+  line-height: 1.25;
+}
+
+.sbc-club-highlight-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sbc-gray-600);
+  margin: 0 0 20px;
+}
+
+.sbc-club-highlight-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sbc-club-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--sbc-gray-100);
+  border: 1px solid var(--sbc-gray-200);
+  border-radius: var(--sbc-radius-full);
+  font-size: 13px;
+  color: var(--sbc-gray-700);
+}
+
+.sbc-club-stat-pill strong {
+  color: var(--sbc-red);
+  font-weight: 800;
+}
+
+@media (max-width: 860px) {
+  .sbc-club-highlight-card {
+    grid-template-columns: 1fr;
+  }
+  .sbc-club-highlight-media {
+    min-height: 260px;
+    max-height: 300px;
+  }
+  .sbc-club-highlight-content {
+    padding: 24px 20px;
+  }
+}
+
 
