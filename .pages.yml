@@ -1,220 +1,264 @@
 # Configuração do Pages CMS (https://pagescms.org) para o Santarém Basket Clube
 media:
   input: assets/images
-  output: /assets/images
+  output: assets/images
 
 content:
   - name: destaques
-    label: 📢 Destaques & Formulários
+    label: "📢 Destaques & Formulários"
     type: file
     path: data/destaques.json
     list: true
     fields:
       - name: id
-        label: Identificador Único (slug)
+        label: "Identificador Único (slug)"
         type: string
         required: true
       - name: titulo
-        label: Título do Destaque
+        label: "Título do Destaque"
         type: string
         required: true
       - name: categoria
-        label: Categoria (ex: Inscrições, Formação, Notícia)
+        label: "Categoria (ex: Inscrições, Formação, Notícia)"
         type: string
       - name: badge
-        label: Etiqueta Visual (ex: Candidaturas Abertas)
+        label: "Etiqueta Visual (ex: Candidaturas Abertas)"
         type: string
       - name: descricao
-        label: Texto Explicativo
-        type: rich-text
+        label: "Texto Explicativo"
+        type: text
       - name: link
-        label: Link do Formulário (ex: Google Forms) ou Notícia Externa
+        label: "Link do Formulário (ex: Google Forms) ou Notícia Externa"
         type: string
         required: true
       - name: textoBotao
-        label: Texto do Botão (ex: Preencher Formulário)
+        label: "Texto do Botão (ex: Preencher Formulário)"
         type: string
       - name: externo
-        label: Abrir Link em Nova Aba?
+        label: "Abrir Link em Nova Aba?"
         type: boolean
         default: true
       - name: destaque
-        label: Mostrar na Página Principal?
+        label: "Mostrar na Página Principal?"
         type: boolean
         default: true
 
   - name: equipas
-    label: 🏀 Equipas, Horários & Plantéis
+    label: "🏀 Equipas, Horários & Plantéis"
     type: file
     path: data/equipas.json
     list: true
     fields:
       - name: id
-        label: Identificador Único (slug, ex: sub16-m, seniores-m)
+        label: "Identificador Único (slug, ex: sub16-m, seniores-m)"
         type: string
         required: true
       - name: nome
-        label: Nome da Equipa (ex: Sub-16 Masculinos)
+        label: "Nome da Equipa (ex: Sub-16 Masculinos)"
         type: string
         required: true
       - name: escalao
-        label: Escalão (ex: Sub-16, Seniores, Minis)
+        label: "Escalão (ex: Sub-16, Seniores, Minis)"
         type: string
         required: true
       - name: genero
-        label: Género / Vertente
+        label: "Género / Vertente"
         type: select
         options:
-          - Masculino
-          - Feminino
-          - Misto
+          values:
+            - Masculino
+            - Feminino
+            - Misto
       - name: categoria
-        label: Categoria Oficial (ex: Cadetes Masculinos)
+        label: "Categoria Oficial (ex: Cadetes Masculinos)"
         type: string
       - name: competicoes
-        label: Competições em Disputa
-        type: list
-        fields:
-          - name: competicao
-            label: Nome da Competição
-            type: string
+        label: "Competições em Disputa"
+        type: string
+        list: true
       - name: treinador
-        label: Treinador / Equipa Técnica
+        label: "Treinador / Equipa Técnica"
         type: string
       - name: treinadorFoto
-        label: Fotografia do Treinador
+        label: "Fotografia do Treinador"
         type: image
       - name: fotoEquipa
-        label: Fotografia Oficial de Equipa
+        label: "Fotografia Oficial de Equipa"
         type: image
       - name: descricao
-        label: Descrição do Escalão
+        label: "Descrição do Escalão"
         type: text
       - name: horarios
-        label: Horários dos Treinos
-        type: list
+        label: "Horários dos Treinos"
+        type: object
+        list: true
         fields:
           - name: dia
-            label: Dia da Semana
+            label: "Dia da Semana"
             type: select
             options:
-              - Segunda-feira
-              - Terça-feira
-              - Quarta-feira
-              - Quinta-feira
-              - Sexta-feira
-              - Sábado
-              - Domingo
+              values:
+                - Segunda-feira
+                - Terça-feira
+                - Quarta-feira
+                - Quinta-feira
+                - Sexta-feira
+                - Sábado
+                - Domingo
           - name: inicio
-            label: Hora de Início (intervalos de 15m, ex: 18:30)
+            label: "Hora de Início (intervalos de 15m, ex: 18:30)"
             type: string
           - name: fim
-            label: Hora de Término (intervalos de 15m, ex: 20:00)
+            label: "Hora de Término (intervalos de 15m, ex: 20:00)"
             type: string
           - name: local
-            label: Pavilhão / Instalação
+            label: "Pavilhão / Instalação"
             type: select
             options:
-              - Pavilhão Municipal de Santarém
-              - Nave Desportiva de Santarém
+              values:
+                - Pavilhão Municipal de Santarém
+                - Nave Desportiva de Santarém
           - name: nota
-            label: Subgrupo / Nota Opcional (ex: Sub-12 Masculinos)
+            label: "Subgrupo / Nota Opcional (ex: Sub-12 Masculinos)"
             type: string
       - name: plantel
-        label: Plantel de Atletas
-        type: list
+        label: "Plantel de Atletas"
+        type: object
+        list: true
         fields:
           - name: numero
-            label: Número / Camisola
+            label: "Número / Camisola"
             type: number
           - name: nome
-            label: Nome do Atleta
+            label: "Nome do Atleta"
             type: string
           - name: posicao
-            label: Posição
+            label: "Posição"
             type: string
           - name: foto
-            label: Fotografia do Atleta
+            label: "Fotografia do Atleta"
             type: image
           - name: ano
-            label: Ano de Nascimento
+            label: "Ano de Nascimento"
             type: number
           - name: altura
-            label: Altura (ex: 1.82 m)
+            label: "Altura (ex: 1.82 m)"
             type: string
 
   - name: parceiros
-    label: 🤝 Parceiros, Apoios & Protocolos
+    label: "🤝 Parceiros, Apoios & Protocolos"
     type: file
     path: data/parceiros.json
     fields:
       - name: institucionais
-        label: Parceiros Institucionais
-        type: list
+        label: "Parceiros Institucionais"
+        type: object
+        list: true
         fields:
           - name: nome
-            label: Nome da Instituição
+            label: "Nome da Instituição"
             type: string
           - name: tipo
-            label: Tipo de Instituição
+            label: "Tipo de Instituição"
             type: string
           - name: descricao
-            label: Descrição do Apoio
+            label: "Descrição do Apoio"
             type: text
           - name: link
-            label: Website Oficial
+            label: "Website Oficial"
             type: string
+          - name: logo
+            label: "Logótipo"
+            type: image
       - name: patrocinadores
-        label: Patrocinadores & Empresas
-        type: list
+        label: "Patrocinadores & Empresas"
+        type: object
+        list: true
         fields:
           - name: nome
-            label: Nome da Empresa
+            label: "Nome da Empresa"
             type: string
           - name: tipo
-            label: Tipo de Parceria
+            label: "Tipo de Parceria"
             type: string
           - name: descricao
-            label: Descrição
+            label: "Descrição"
             type: text
           - name: link
-            label: Website
+            label: "Website"
             type: string
+          - name: logo
+            label: "Logótipo"
+            type: image
       - name: protocolos
-        label: Protocolos & Vantagens para Sócios
-        type: list
+        label: "Protocolos & Vantagens para Sócios"
+        type: object
+        list: true
         fields:
           - name: entidade
-            label: Entidade Parceira (Clínica, Loja, etc.)
+            label: "Entidade Parceira (Clínica, Loja, etc.)"
             type: string
           - name: categoria
-            label: Área de Atuação (ex: Saúde & Recuperação)
+            label: "Área de Atuação (ex: Saúde & Recuperação)"
             type: string
           - name: vantagem
-            label: Benefício / Desconto Concedido
+            label: "Benefício / Desconto Concedido"
             type: text
 
   - name: palmares
-    label: 🏆 Palmarés & Estatísticas
+    label: "🏆 Palmarés & Estatísticas"
     type: file
     path: data/palmares.json
     fields:
       - name: estatisticas
-        label: Resumo Numérico
+        label: "Resumo Numérico"
         type: object
         fields:
           - name: anosHistoria
-            label: Anos de História
+            label: "Anos de História"
             type: number
           - name: titulosNacionais
-            label: Títulos Nacionais Conquistados
+            label: "Títulos Nacionais Conquistados"
             type: number
           - name: tacasPortugal
-            label: Taças de Portugal Conquistadas
+            label: "Taças de Portugal Conquistadas"
             type: number
           - name: supertacas
-            label: Supertaças Nacionais Conquistadas
+            label: "Supertaças Nacionais Conquistadas"
             type: number
           - name: titulosDistritais
-            label: Títulos Distritais Conquistados
+            label: "Títulos Distritais Conquistados"
             type: number
+      - name: nacionais
+        label: "Títulos & Destaques Nacionais"
+        type: object
+        list: true
+        fields:
+          - name: escalao
+            label: "Escalão"
+            type: string
+          - name: competicao
+            label: "Competição"
+            type: string
+          - name: conquistas
+            label: "Conquistas por Época"
+            type: object
+            list: true
+            fields:
+              - name: epoca
+                label: "Época (ex: 2001/2002)"
+                type: string
+              - name: classificacao
+                label: "Classificação / Título"
+                type: string
+      - name: regionaisDistritais
+        label: "Domínio Regional & Distrital"
+        type: object
+        list: true
+        fields:
+          - name: escalao
+            label: "Escalão"
+            type: string
+          - name: titulos
+            label: "Resumo de Títulos"
+            type: text
