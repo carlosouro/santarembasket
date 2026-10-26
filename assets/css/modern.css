@@ -1698,12 +1698,20 @@ body {
   gap: 32px;
 }
 
+.sbc-teams-nav-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
 .sbc-teams-filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 .sbc-filter-btn {
@@ -1711,10 +1719,10 @@ body {
   color: var(--sbc-navy);
   border: 1px solid var(--sbc-gray-300);
   border-radius: var(--sbc-radius-full);
-  padding: 8px 18px;
+  padding: 9px 20px;
   font-family: var(--sbc-font-sans);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 700;
   cursor: pointer;
   transition: all var(--sbc-transition-fast);
 }
@@ -1729,6 +1737,74 @@ body {
   color: #ffffff;
   border-color: var(--sbc-red);
   box-shadow: 0 2px 8px rgba(234, 49, 18, 0.25);
+}
+
+.sbc-filter-btn.is-parent-category {
+  background: #fff5f3;
+  color: var(--sbc-red);
+  border-color: rgba(234, 49, 18, 0.45);
+}
+
+.sbc-teams-direct-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 980px;
+  background: #f8fafc;
+  border: 1px solid var(--sbc-gray-200);
+  border-radius: var(--sbc-radius-lg);
+  padding: 14px 20px;
+}
+
+.sbc-teams-direct-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sbc-gray-600);
+}
+
+.sbc-teams-direct-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sbc-team-direct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  color: var(--sbc-navy);
+  border: 1px solid var(--sbc-gray-300);
+  border-radius: var(--sbc-radius-md);
+  padding: 7px 14px;
+  font-family: var(--sbc-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--sbc-transition-fast);
+  box-shadow: 0 1px 2px rgba(15, 43, 72, 0.04);
+}
+
+.sbc-team-direct-btn:hover {
+  border-color: var(--sbc-navy);
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.sbc-team-direct-btn.active {
+  background: var(--sbc-navy);
+  color: #ffffff;
+  border-color: var(--sbc-navy);
+  box-shadow: 0 3px 10px rgba(15, 43, 72, 0.22);
+}
+
+.sbc-team-direct-btn.active .sbc-cal-dot {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
 }
 
 .sbc-teams-container {

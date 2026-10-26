@@ -803,14 +803,44 @@ class SbcEquipas extends HTMLElement {
   }
 
   renderAll(teams) {
+    this.teams = teams;
+    this.activeCategory = 'all';
+    this.activeTeamId = null;
+
+    const countByGender = (g) => teams.filter(t => t.genero === g).length;
+
     this.innerHTML = `
       <div class="sbc-teams-wrapper">
-        <!-- Filter Tabs -->
-        <div class="sbc-teams-filter-bar">
-          <button class="sbc-filter-btn active" data-filter="all">Todas as Equipas (${teams.length})</button>
-          <button class="sbc-filter-btn" data-filter="Masculino">Masculinos</button>
-          <button class="sbc-filter-btn" data-filter="Feminino">Femininos</button>
-          <button class="sbc-filter-btn" data-filter="Misto">Minibasquete</button>
+        <div class="sbc-teams-nav-panel" role="navigation" aria-label="Filtros de Equipas e Escalões">
+          <!-- Primary Filter: Category / Gender -->
+          <div class="sbc-teams-filter-bar" role="group" aria-label="Filtrar por Secção">
+            <button type="button" class="sbc-filter-btn active" data-filter="all">Todas as Equipas (${teams.length})</button>
+            <button type="button" class="sbc-filter-btn" data-filter="Masculino">Masculinos (${countByGender('Masculino')})</button>
+            <button type="button" class="sbc-filter-btn" data-filter="Feminino">Femininos (${countByGender('Feminino')})</button>
+            <button type="button" class="sbc-filter-btn" data-filter="Misto">Minibasquete (${countByGender('Misto')})</button>
+          </div>
+
+          <!-- Secondary Filter: Direct Single-Team Selection -->
+          <div class="sbc-teams-direct-bar" role="group" aria-label="Selecionar Equipa Específica">
+            <span class="sbc-teams-direct-label">Equipa específica:</span>
+            <div class="sbc-teams-direct-list">
+              ${teams.map(t => {
+                const dotClass = t.genero === 'Feminino' ? 'is-feminino' : (t.genero === 'Masculino' ? 'is-masculino' : 'is-misto');
+                return `
+                  <button
+                    type="button"
+                    class="sbc-team-direct-btn"
+                    data-team-select="${this.escapeHtml(t.id)}"
+                    data-gender="${this.escapeHtml(t.genero)}"
+                    aria-pressed="false"
+                  >
+                    <i class="sbc-cal-dot ${dotClass}" aria-hidden="true"></i>
+                    <span>${this.escapeHtml(t.nome)}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
         </div>
 
         <div class="sbc-teams-container">
@@ -819,25 +849,96 @@ class SbcEquipas extends HTMLElement {
       </div>
     `;
 
-    // Filter functionality
-    const buttons = this.querySelectorAll('.sbc-filter-btn');
+    const categoryBtns = this.querySelectorAll('.sbc-teams-filter-bar .sbc-filter-btn');
+    const directBtns = this.querySelectorAll('.sbc-team-direct-btn');
     const cards = this.querySelectorAll('.sbc-team-showcase-card');
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
+    const applyFilterState = () => {
+      // 1. Update Category Buttons
+      categoryBtns.forEach(btn => {
+        const isCatMatch = btn.dataset.filter === this.activeCategory;
+        btn.classList.toggle('active', isCatMatch && !this.activeTeamId);
+        btn.classList.toggle('is-parent-category', isCatMatch && Boolean(this.activeTeamId));
+        btn.setAttribute('aria-pressed', (isCatMatch && !this.activeTeamId) ? 'true' : 'false');
+      });
 
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.gender === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+      // 2. Update Direct Team Buttons (filter visible pills by activeCategory & highlight activeTeamId)
+      directBtns.forEach(btn => {
+        const matchesCat = this.activeCategory === 'all' || btn.dataset.gender === this.activeCategory;
+        btn.style.display = matchesCat ? '' : 'none';
+        const isSelected = this.activeTeamId === btn.dataset.teamSelect;
+        btn.classList.toggle('active', isSelected);
+        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      });
+
+      // 3. Show/Hide Team Cards
+      cards.forEach(card => {
+        if (this.activeTeamId) {
+          card.style.display = (card.dataset.teamId === this.activeTeamId) ? '' : 'none';
+        } else if (this.activeCategory === 'all' || card.dataset.gender === this.activeCategory) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    // Category Button Click -> shows all teams in that category
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.activeCategory = btn.dataset.filter;
+        this.activeTeamId = null;
+        applyFilterState();
       });
     });
+
+    // Direct Team Button Click -> shows ONLY that specific team (clicking again restores category list)
+    directBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const clickedTeamId = btn.dataset.teamSelect;
+        if (this.activeTeamId === clickedTeamId) {
+          this.activeTeamId = null;
+        } else {
+          this.activeTeamId = clickedTeamId;
+        }
+        applyFilterState();
+      });
+    });
+
+    // Handle URL hashes (#masculinas, #femininas, #minibasquete, #equipa-<id>)
+    const syncFromHash = (shouldScroll = false) => {
+      const rawHash = (window.location.hash || '').replace(/^#/, '').trim().toLowerCase();
+      if (!rawHash) return;
+
+      if (rawHash === 'masculinas' || rawHash === 'masculinos') {
+        this.activeCategory = 'Masculino';
+        this.activeTeamId = null;
+        applyFilterState();
+      } else if (rawHash === 'femininas' || rawHash === 'femininos') {
+        this.activeCategory = 'Feminino';
+        this.activeTeamId = null;
+        applyFilterState();
+      } else if (rawHash === 'minibasquete') {
+        this.activeCategory = 'Misto';
+        this.activeTeamId = null;
+        applyFilterState();
+      } else if (rawHash.startsWith('equipa-')) {
+        const tId = rawHash.replace(/^equipa-/, '');
+        const matchedTeam = teams.find(t => t.id.toLowerCase() === tId);
+        if (matchedTeam) {
+          this.activeCategory = 'all';
+          this.activeTeamId = matchedTeam.id;
+          applyFilterState();
+          if (shouldScroll) {
+            const targetEl = this.querySelector(`#equipa-${matchedTeam.id}`);
+            if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
+    };
+
+    syncFromHash(false);
+    window.addEventListener('hashchange', () => syncFromHash(true));
   }
 
   renderSingle(team) {
@@ -852,7 +953,7 @@ class SbcEquipas extends HTMLElement {
     const hasRoster = team.plantel && team.plantel.length > 0;
 
     return `
-      <article class="sbc-team-showcase-card" data-gender="${this.escapeHtml(team.genero)}" id="equipa-${this.escapeHtml(team.id)}">
+      <article class="sbc-team-showcase-card" data-team-id="${this.escapeHtml(team.id)}" data-gender="${this.escapeHtml(team.genero)}" id="equipa-${this.escapeHtml(team.id)}">
         <header class="sbc-team-card-header">
           <div class="sbc-team-card-title-group">
             <span class="sbc-team-category-badge">${this.escapeHtml(team.categoria || team.escalao)}</span>
