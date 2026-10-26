@@ -101,16 +101,16 @@ body {
 }
 
 .sbc-logo-img {
-  height: 54px;
+  height: 74px;
   width: auto;
-  max-width: 130px;
+  max-width: 150px;
   object-fit: contain;
   transition: height var(--sbc-transition-normal);
   display: block;
 }
 
 #main-header.sbc-modern-header.scrolled .sbc-logo-img {
-  height: 44px;
+  height: 60px;
 }
 
 /* Nav Links */
