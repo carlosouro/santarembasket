@@ -1,11 +1,24 @@
 /**
  * Santarém Basket Clube - Shared Data Web Components
- * Reusable Custom Elements reading directly from /data/*.json:
+ * Reusable Custom Elements reading from data/*.json via relative path resolution:
  * - <sbc-destaques>
  * - <sbc-treinos>
  * - <sbc-parceiros>
  * - <sbc-palmares>
+ * - <sbc-equipas>
  */
+
+function sbcDataResolveUrl(path) {
+  if (typeof window.sbcResolveUrl === 'function') {
+    return window.sbcResolveUrl(path);
+  }
+  const root = (document.documentElement && document.documentElement.dataset.root !== undefined)
+    ? document.documentElement.dataset.root
+    : './';
+  if (!path || path === '/') return root || './';
+  if (/^(https?:|\/\/|mailto:|tel:|#)/i.test(path)) return path;
+  return root + path.replace(/^(\.\/|\/)+/, '');
+}
 
 // 1. Destaques & Avisos (<sbc-destaques>)
 class SbcDestaques extends HTMLElement {
@@ -14,13 +27,13 @@ class SbcDestaques extends HTMLElement {
     const limit = this.getAttribute('limit') ? parseInt(this.getAttribute('limit'), 10) : null;
     
     try {
-      const res = await fetch('/data/destaques.json');
+      const res = await fetch(sbcDataResolveUrl('data/destaques.json'));
       if (!res.ok) throw new Error('Não foi possível carregar os destaques');
       let items = await res.json();
       if (limit) items = items.slice(0, limit);
       this.render(items);
     } catch (err) {
-      console.warn('Erro ao carregar /data/destaques.json:', err);
+      console.warn('Erro ao carregar data/destaques.json:', err);
       this.innerHTML = '';
     }
   }
@@ -37,7 +50,7 @@ class SbcDestaques extends HTMLElement {
         <h3 class="sbc-destaque-title">${this.escapeHtml(item.titulo)}</h3>
         <p class="sbc-destaque-desc">${this.escapeHtml(item.descricao)}</p>
         <div class="sbc-destaque-action">
-          <a href="${this.escapeHtml(item.link)}" class="sbc-destaque-btn" ${item.externo ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+          <a href="${this.escapeHtml(sbcDataResolveUrl(item.link))}" class="sbc-destaque-btn" ${item.externo ? 'target="_blank" rel="noopener noreferrer"' : ''}>
             <span>${this.escapeHtml(item.textoBotao || 'Saber Mais')}</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -69,7 +82,7 @@ class SbcTreinos extends HTMLElement {
     const teamSlug = this.getAttribute('team');
 
     try {
-      const res = await fetch('/data/treinos.json');
+      const res = await fetch(sbcDataResolveUrl('data/treinos.json'));
       if (!res.ok) throw new Error('Não foi possível carregar os treinos');
       const data = await res.json();
       
@@ -79,7 +92,7 @@ class SbcTreinos extends HTMLElement {
         this.renderConsolidatedTable(data);
       }
     } catch (err) {
-      console.warn('Erro ao carregar /data/treinos.json:', err);
+      console.warn('Erro ao carregar data/treinos.json:', err);
       this.innerHTML = '<p class="sbc-error-msg">Não foi possível carregar a tabela de horários de momento.</p>';
     }
   }
@@ -193,12 +206,12 @@ class SbcParceiros extends HTMLElement {
     const section = this.getAttribute('section') || 'all';
 
     try {
-      const res = await fetch('/data/parceiros.json');
+      const res = await fetch(sbcDataResolveUrl('data/parceiros.json'));
       if (!res.ok) throw new Error('Não foi possível carregar os parceiros');
       const data = await res.json();
       this.render(data, section);
     } catch (err) {
-      console.warn('Erro ao carregar /data/parceiros.json:', err);
+      console.warn('Erro ao carregar data/parceiros.json:', err);
       this.innerHTML = '';
     }
   }
@@ -216,7 +229,7 @@ class SbcParceiros extends HTMLElement {
                 <div class="sbc-partner-card">
                   <div class="sbc-partner-logo-box">
                     ${p.logo ? `
-                      <img src="${this.escapeHtml(p.logo)}" alt="${this.escapeHtml(p.nome)}" class="sbc-partner-logo-img" loading="lazy">
+                      <img src="${this.escapeHtml(sbcDataResolveUrl(p.logo))}" alt="${this.escapeHtml(p.nome)}" class="sbc-partner-logo-img" loading="lazy">
                     ` : `
                       <div class="sbc-partner-logo-placeholder">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
@@ -226,7 +239,7 @@ class SbcParceiros extends HTMLElement {
                   <div class="sbc-partner-type">${this.escapeHtml(p.tipo)}</div>
                   <h4 class="sbc-partner-name">${this.escapeHtml(p.nome)}</h4>
                   <p class="sbc-partner-desc">${this.escapeHtml(p.descricao)}</p>
-                  ${p.link && p.link !== '#' ? `<a href="${this.escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer" class="sbc-partner-link">Visitar Website ↗</a>` : ''}
+                  ${p.link && p.link !== '#' ? `<a href="${this.escapeHtml(sbcDataResolveUrl(p.link))}" target="_blank" rel="noopener noreferrer" class="sbc-partner-link">Visitar Website ↗</a>` : ''}
                 </div>
               `).join('')}
             </div>
@@ -245,7 +258,7 @@ class SbcParceiros extends HTMLElement {
                 <div class="sbc-partner-card sbc-card-sponsor">
                   <div class="sbc-partner-logo-box">
                     ${p.logo ? `
-                      <img src="${this.escapeHtml(p.logo)}" alt="${this.escapeHtml(p.nome)}" class="sbc-partner-logo-img" loading="lazy">
+                      <img src="${this.escapeHtml(sbcDataResolveUrl(p.logo))}" alt="${this.escapeHtml(p.nome)}" class="sbc-partner-logo-img" loading="lazy">
                     ` : `
                       <div class="sbc-partner-logo-placeholder">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -255,7 +268,7 @@ class SbcParceiros extends HTMLElement {
                   <div class="sbc-partner-type">${this.escapeHtml(p.tipo)}</div>
                   <h4 class="sbc-partner-name">${this.escapeHtml(p.nome)}</h4>
                   <p class="sbc-partner-desc">${this.escapeHtml(p.descricao)}</p>
-                  ${p.link && p.link !== '#' ? `<a href="${this.escapeHtml(p.link)}" target="_blank" rel="noopener noreferrer" class="sbc-partner-link">Saber Mais ↗</a>` : ''}
+                  ${p.link && p.link !== '#' ? `<a href="${this.escapeHtml(sbcDataResolveUrl(p.link))}" target="_blank" rel="noopener noreferrer" class="sbc-partner-link">Saber Mais ↗</a>` : ''}
                 </div>
               `).join('')}
             </div>
@@ -303,7 +316,7 @@ class SbcPalmares extends HTMLElement {
     const view = this.getAttribute('view') || 'stats';
 
     try {
-      const res = await fetch('/data/palmares.json');
+      const res = await fetch(sbcDataResolveUrl('data/palmares.json'));
       if (!res.ok) throw new Error('Não foi possível carregar o palmarés');
       const data = await res.json();
       
@@ -313,7 +326,7 @@ class SbcPalmares extends HTMLElement {
         this.renderFull(data);
       }
     } catch (err) {
-      console.warn('Erro ao carregar /data/palmares.json:', err);
+      console.warn('Erro ao carregar data/palmares.json:', err);
       this.innerHTML = '';
     }
   }
@@ -394,7 +407,7 @@ class SbcEquipas extends HTMLElement {
     const targetTeam = this.getAttribute('team');
 
     try {
-      const res = await fetch('/data/equipas.json');
+      const res = await fetch(sbcDataResolveUrl('data/equipas.json'));
       if (!res.ok) throw new Error('Não foi possível carregar as equipas');
       const teams = await res.json();
       
@@ -409,7 +422,7 @@ class SbcEquipas extends HTMLElement {
         this.renderAll(teams);
       }
     } catch (err) {
-      console.warn('Erro ao carregar /data/equipas.json:', err);
+      console.warn('Erro ao carregar data/equipas.json:', err);
       this.innerHTML = '<p style="text-align:center; color: var(--sbc-gray-600); padding: 20px;">Informação de equipas brevemente disponível.</p>';
     }
   }
@@ -476,7 +489,7 @@ class SbcEquipas extends HTMLElement {
           
           ${team.treinador ? `
             <div class="sbc-team-staff-badge">
-              ${team.treinadorFoto ? `<img src="${this.escapeHtml(team.treinadorFoto)}" alt="${this.escapeHtml(team.treinador)}" class="sbc-staff-thumb" loading="lazy">` : `
+              ${team.treinadorFoto ? `<img src="${this.escapeHtml(sbcDataResolveUrl(team.treinadorFoto))}" alt="${this.escapeHtml(team.treinador)}" class="sbc-staff-thumb" loading="lazy">` : `
                 <div class="sbc-staff-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
@@ -491,7 +504,7 @@ class SbcEquipas extends HTMLElement {
 
         ${team.fotoEquipa ? `
           <div class="sbc-team-banner-wrap">
-            <img src="${this.escapeHtml(team.fotoEquipa)}" alt="Fotografia Plantel ${this.escapeHtml(team.nome)}" class="sbc-team-banner-img" loading="lazy">
+            <img src="${this.escapeHtml(sbcDataResolveUrl(team.fotoEquipa))}" alt="Fotografia Plantel ${this.escapeHtml(team.nome)}" class="sbc-team-banner-img" loading="lazy">
             <div class="sbc-team-banner-overlay">Plantel Oficial Santarém Basket Clube • Época 2026 / 2027</div>
           </div>
         ` : ''}
@@ -522,7 +535,7 @@ class SbcEquipas extends HTMLElement {
               ${team.plantel.map(p => `
                 <div class="sbc-player-card">
                   <div class="sbc-player-avatar-box">
-                    <img src="${this.escapeHtml(p.foto)}" alt="${this.escapeHtml(p.nome)}" class="sbc-player-photo" loading="lazy">
+                    <img src="${this.escapeHtml(sbcDataResolveUrl(p.foto))}" alt="${this.escapeHtml(p.nome)}" class="sbc-player-photo" loading="lazy">
                     <span class="sbc-player-num-tag">#${p.numero}</span>
                   </div>
                   <div class="sbc-player-body">
@@ -556,4 +569,3 @@ class SbcEquipas extends HTMLElement {
   }
 }
 customElements.define('sbc-equipas', SbcEquipas);
-

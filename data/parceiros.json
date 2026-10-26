@@ -5,35 +5,35 @@
       "tipo": "Apoio Institucional",
       "descricao": "Apoio ao desenvolvimento desportivo e cedência de instalações desportivas municipais.",
       "link": "https://www.cm-santarem.pt/",
-      "logo": "/assets/images/parceiros/municipio-santarem.png"
+      "logo": "assets/images/parceiros/municipio-santarem.png"
     },
     {
       "nome": "União de Freguesias da Cidade de Santarém",
       "tipo": "Apoio Institucional",
       "descricao": "Apoio comunitário às atividades desportivas e sociais do clube.",
       "link": "https://uf-cidadesantarem.pt/",
-      "logo": "/assets/images/parceiros/ufc-santarem.png"
+      "logo": "assets/images/parceiros/ufc-santarem.png"
     },
     {
       "nome": "Associação de Basquetebol de Santarém",
       "tipo": "Associação Distrital",
       "descricao": "Entidade coordenadora das competições distritais e formação de arbitragem e treinadores.",
       "link": "https://www.absantarem.pt/",
-      "logo": "/assets/images/parceiros/abs-santarem.svg"
+      "logo": "assets/images/parceiros/abs-santarem.svg"
     },
     {
       "nome": "Federação Portuguesa de Basquetebol",
       "tipo": "Federação Nacional",
       "descricao": "Órgão máximo da modalidade em Portugal, enquadrando as provas nacionais.",
       "link": "https://www.fpb.pt/",
-      "logo": "/assets/images/parceiros/fpb.png"
+      "logo": "assets/images/parceiros/fpb.png"
     },
     {
       "nome": "Instituto Português do Desporto e Juventude (IPDJ)",
       "tipo": "Entidade Pública",
       "descricao": "Promoção do desporto para todos e enquadramento das federações desportivas.",
       "link": "https://ipdj.gov.pt/",
-      "logo": "/assets/images/parceiros/ipdj.svg"
+      "logo": "assets/images/parceiros/ipdj.svg"
     }
   ],
   "patrocinadores": [
@@ -42,7 +42,7 @@
       "tipo": "Apoio & Patrocínio",
       "descricao": "Parceiro oficial no apoio à formação desportiva jovem e hidratação dos atletas.",
       "link": "https://sumolcompal.pt/",
-      "logo": "/assets/images/parceiros/sumolcompal.png"
+      "logo": "assets/images/parceiros/sumolcompal.png"
     },
     {
       "nome": "Empresas & Comércio Local de Santarém",

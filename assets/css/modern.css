@@ -2,7 +2,7 @@
  * Santarém Basket Clube - Modern Layout, Symmetrical Navigation & Mobile Drawer
  */
 
-@import url('/assets/css/variables.css');
+@import url('./variables.css');
 
 /* Smooth base enhancements */
 html {

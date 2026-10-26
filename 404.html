@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-root="./">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página Não Encontrada (404) | Santarém Basket Clube</title>
   
-  <!-- Immediate Redirect for legacy /main/ URLs -->
+  <!-- Dynamic Base Path & Legacy Redirect for Subdirectory / GitHub Pages 404s -->
   <script>
     (function() {
       var path = window.location.pathname;
-      if (path.indexOf('/main') === 0) {
-        var cleanPath = path.substring(5); // remove '/main'
-        if (!cleanPath || cleanPath === '/') {
-          cleanPath = '/?ref=main';
+      var baseDir = '/';
+      if (window.location.hostname.endsWith('github.io')) {
+        var segs = path.split('/').filter(Boolean);
+        if (segs.length > 0) {
+          baseDir = '/' + segs[0] + '/';
         }
-        window.location.replace(cleanPath + (cleanPath.indexOf('?') === -1 && window.location.search ? window.location.search : ''));
+      }
+      document.documentElement.dataset.root = baseDir;
+
+      var baseEl = document.createElement('base');
+      baseEl.href = baseDir;
+      document.head.appendChild(baseEl);
+
+      // Legacy /main/ URL redirect
+      var relPath = path.indexOf(baseDir) === 0 ? '/' + path.substring(baseDir.length) : path;
+      if (relPath.indexOf('/main') === 0) {
+        var cleanSub = relPath.substring(5).replace(/^\/+/, '');
+        var target = baseDir + (cleanSub || '?ref=main');
+        window.location.replace(target + (target.indexOf('?') === -1 && window.location.search ? window.location.search : ''));
       }
     })();
   </script>
 
-  <link rel="icon" href="/wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-150x150.png" sizes="32x32" />
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <script src="/components/sbc-header.js" defer></script>
-  <script src="/components/sbc-footer.js" defer></script>
+  <link rel="icon" href="./wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2-150x150.png" sizes="32x32" />
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <script src="./components/sbc-header.js" defer></script>
+  <script src="./components/sbc-footer.js" defer></script>
 </head>
 <body class="sbc-body">
   <div id="page-container">
@@ -36,7 +49,7 @@
         <p style="color: var(--sbc-gray-600); font-size: 15px; line-height: 1.6; margin: 0 0 28px;">
           O conteúdo que procuras foi movido para uma nova localização ou o endereço não existe.
         </p>
-        <a href="/" class="sbc-btn-primary" style="display: inline-flex; justify-content: center;">
+        <a href="./" class="sbc-btn-primary" style="display: inline-flex; justify-content: center;">
           Voltar à Página Inicial
         </a>
       </div>

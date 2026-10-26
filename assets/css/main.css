@@ -3,8 +3,8 @@
  * Groups core theme, vendor plugins, design tokens, modern layout, and web components.
  */
 
-@import url('/assets/css/variables.css');
-@import url('/assets/css/theme.css');
-@import url('/assets/css/vendor.css');
-@import url('/assets/css/components.css');
-@import url('/assets/css/modern.css');
+@import url('./variables.css');
+@import url('./theme.css');
+@import url('./vendor.css');
+@import url('./components.css');
+@import url('./modern.css');

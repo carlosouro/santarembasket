@@ -5,12 +5,25 @@
  * Zero external dependencies, pure web standards.
  */
 
+function sbcFooterResolveUrl(path) {
+  if (typeof window.sbcResolveUrl === 'function') {
+    return window.sbcResolveUrl(path);
+  }
+  const root = (document.documentElement && document.documentElement.dataset.root !== undefined)
+    ? document.documentElement.dataset.root
+    : './';
+  if (!path || path === '/') return root || './';
+  if (/^(https?:|\/\/|mailto:|tel:|#)/i.test(path)) return path;
+  return root + path.replace(/^(\.\/|\/)+/, '');
+}
+
 class SbcFooter extends HTMLElement {
   connectedCallback() {
     this.render();
   }
 
   render() {
+    const r = sbcFooterResolveUrl;
     this.innerHTML = `
 <footer id="main-footer" class="sbc-modern-footer">
   <div class="sbc-footer-container">
@@ -40,12 +53,12 @@ class SbcFooter extends HTMLElement {
     <div class="sbc-footer-col">
       <h4>Acesso Rápido</h4>
       <ul class="sbc-footer-links">
-        <li><a href="/historia/">História do Clube</a></li>
-        <li><a href="/equipas/">Equipas & Treinos</a></li>
-        <li><a href="/socios/">Quero Ser Sócio</a></li>
-        <li><a href="/merchandising/">Merchandising & Equipamentos</a></li>
-        <li><a href="/parceiros/">Parceiros & Protocolos</a></li>
-        <li><a href="/contacto/">Contactos & Localização</a></li>
+        <li><a href="${r('historia/')}">História do Clube</a></li>
+        <li><a href="${r('equipas/')}">Equipas & Treinos</a></li>
+        <li><a href="${r('socios/')}">Quero Ser Sócio</a></li>
+        <li><a href="${r('merchandising/')}">Merchandising & Equipamentos</a></li>
+        <li><a href="${r('parceiros/')}">Parceiros & Protocolos</a></li>
+        <li><a href="${r('contacto/')}">Contactos & Localização</a></li>
       </ul>
     </div>
 
