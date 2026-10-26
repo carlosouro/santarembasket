@@ -136,6 +136,26 @@
         "ano": 2008,
         "altura": "1.84 m"
       }
+    ],
+    "horarios": [
+      {
+        "dia": "Segunda-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      }
     ]
   },
   {
@@ -234,6 +254,26 @@
         "foto": "assets/images/jogadores/avatar-female.svg",
         "ano": 2008,
         "altura": "1.79 m"
+      }
+    ],
+    "horarios": [
+      {
+        "dia": "Segunda-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Pavilhão Municipal de Santarém"
       }
     ]
   },
@@ -334,6 +374,26 @@
         "ano": 2010,
         "altura": "1.81 m"
       }
+    ],
+    "horarios": [
+      {
+        "dia": "Segunda-feira",
+        "inicio": "19:00",
+        "fim": "20:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Terça-feira",
+        "inicio": "19:15",
+        "fim": "20:45",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "19:15",
+        "fim": "20:45",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ]
   },
   {
@@ -400,6 +460,26 @@
         "foto": "assets/images/jogadores/avatar-female.svg",
         "ano": 2010,
         "altura": "1.76 m"
+      }
+    ],
+    "horarios": [
+      {
+        "dia": "Terça-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "19:00",
+        "fim": "20:30",
+        "local": "Pavilhão Municipal de Santarém"
       }
     ]
   },
@@ -468,6 +548,26 @@
         "ano": 2007,
         "altura": "1.79 m"
       }
+    ],
+    "horarios": [
+      {
+        "dia": "Terça-feira",
+        "inicio": "20:45",
+        "fim": "22:15",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "20:45",
+        "fim": "22:15",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Nave Desportiva de Santarém"
+      }
     ]
   },
   {
@@ -526,6 +626,26 @@
         "foto": "assets/images/jogadores/avatar-female.svg",
         "ano": 2006,
         "altura": "1.84 m"
+      }
+    ],
+    "horarios": [
+      {
+        "dia": "Terça-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "20:30",
+        "fim": "22:00",
+        "local": "Pavilhão Municipal de Santarém"
       }
     ]
   },
@@ -610,6 +730,26 @@
         "ano": 2003,
         "altura": "1.80 m"
       }
+    ],
+    "horarios": [
+      {
+        "dia": "Segunda-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Nave Desportiva de Santarém"
+      }
     ]
   },
   {
@@ -628,6 +768,64 @@
     "pavilhao": "Pavilhão Municipal de Santarém",
     "fotoEquipa": "assets/images/equipas/minibasquete.jpg",
     "descricao": "Espaço de pura diversão, socialização e aprendizagem motora onde rapazes e raparigas dos 4 aos 12 anos têm o primeiro contacto com o basquetebol.",
-    "plantel": []
+    "plantel": [],
+    "horarios": [
+      {
+        "dia": "Terça-feira",
+        "inicio": "18:00",
+        "fim": "19:15",
+        "local": "Pavilhão Municipal de Santarém",
+        "nota": "Minibasquete Sub-8 e Sub-10"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "18:00",
+        "fim": "19:15",
+        "local": "Pavilhão Municipal de Santarém",
+        "nota": "Minibasquete Sub-8 e Sub-10"
+      },
+      {
+        "dia": "Segunda-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Pavilhão Municipal de Santarém",
+        "nota": "Sub-12 Masculinos"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Pavilhão Municipal de Santarém",
+        "nota": "Sub-12 Masculinos"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém",
+        "nota": "Sub-12 Masculinos"
+      },
+      {
+        "dia": "Segunda-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém",
+        "nota": "Sub-12 Femininos"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém",
+        "nota": "Sub-12 Femininos"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Pavilhão Municipal de Santarém",
+        "nota": "Sub-12 Femininos"
+      }
+    ]
   }
 ]

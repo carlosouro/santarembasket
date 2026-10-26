@@ -43,36 +43,55 @@ content:
         type: boolean
         default: true
 
-  - name: treinos
-    label: 🏀 Horários de Treinos
+  - name: equipas
+    label: 🏀 Equipas, Horários & Plantéis
     type: file
-    path: data/treinos.json
+    path: data/equipas.json
     list: true
     fields:
       - name: id
-        label: ID da Equipa
+        label: Identificador Único (slug, ex: sub16-m, seniores-m)
+        type: string
+        required: true
+      - name: nome
+        label: Nome da Equipa (ex: Sub-16 Masculinos)
         type: string
         required: true
       - name: escalao
-        label: Nome do Escalão (ex: Sub-14 Masculinos)
+        label: Escalão (ex: Sub-16, Seniores, Minis)
         type: string
         required: true
       - name: genero
-        label: Género / Escalão
+        label: Género / Vertente
         type: select
         options:
           - Masculino
           - Feminino
           - Misto
-      - name: slug
-        label: Código de Ligação (ex: sub12-m, sub14-m, sub16-m, sub18-m, seniores-m)
+      - name: categoria
+        label: Categoria Oficial (ex: Cadetes Masculinos)
         type: string
-        required: true
+      - name: competicoes
+        label: Competições em Disputa
+        type: list
+        fields:
+          - name: competicao
+            label: Nome da Competição
+            type: string
       - name: treinador
         label: Treinador / Equipa Técnica
         type: string
+      - name: treinadorFoto
+        label: Fotografia do Treinador
+        type: image
+      - name: fotoEquipa
+        label: Fotografia Oficial de Equipa
+        type: image
+      - name: descricao
+        label: Descrição do Escalão
+        type: text
       - name: horarios
-        label: Sessões Semanais de Treino
+        label: Horários dos Treinos
         type: list
         fields:
           - name: dia
@@ -87,10 +106,10 @@ content:
               - Sábado
               - Domingo
           - name: inicio
-            label: Hora de Início (ex: 18:30)
+            label: Hora de Início (intervalos de 15m, ex: 18:30)
             type: string
           - name: fim
-            label: Hora de Término (ex: 20:00)
+            label: Hora de Término (intervalos de 15m, ex: 20:00)
             type: string
           - name: local
             label: Pavilhão / Instalação
@@ -98,6 +117,31 @@ content:
             options:
               - Pavilhão Municipal de Santarém
               - Nave Desportiva de Santarém
+          - name: nota
+            label: Subgrupo / Nota Opcional (ex: Sub-12 Masculinos)
+            type: string
+      - name: plantel
+        label: Plantel de Atletas
+        type: list
+        fields:
+          - name: numero
+            label: Número / Camisola
+            type: number
+          - name: nome
+            label: Nome do Atleta
+            type: string
+          - name: posicao
+            label: Posição
+            type: string
+          - name: foto
+            label: Fotografia do Atleta
+            type: image
+          - name: ano
+            label: Ano de Nascimento
+            type: number
+          - name: altura
+            label: Altura (ex: 1.82 m)
+            type: string
 
   - name: parceiros
     label: 🤝 Parceiros, Apoios & Protocolos

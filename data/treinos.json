@@ -5,9 +5,18 @@
     "genero": "Misto",
     "slug": "minibasquete",
     "horarios": [
-      { "dia": "Terça-feira", "inicio": "18:00", "fim": "19:15", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quinta-feira", "inicio": "18:00", "fim": "19:15", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Sábado", "inicio": "09:30", "fim": "11:00", "local": "Nave Desportiva de Santarém" }
+      {
+        "dia": "Terça-feira",
+        "inicio": "18:00",
+        "fim": "19:15",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "18:00",
+        "fim": "19:15",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ],
     "treinador": "Coordenação de Minibasquete"
   },
@@ -17,9 +26,24 @@
     "genero": "Masculino",
     "slug": "sub12-m",
     "horarios": [
-      { "dia": "Segunda-feira", "inicio": "18:30", "fim": "20:00", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quarta-feira", "inicio": "18:30", "fim": "20:00", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "18:30", "fim": "20:00", "local": "Nave Desportiva de Santarém" }
+      {
+        "dia": "Segunda-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      }
     ],
     "treinador": "Treinador SBC"
   },
@@ -29,9 +53,24 @@
     "genero": "Feminino",
     "slug": "sub12-f",
     "horarios": [
-      { "dia": "Segunda-feira", "inicio": "18:30", "fim": "20:00", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Quarta-feira", "inicio": "18:30", "fim": "20:00", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "18:30", "fim": "20:00", "local": "Pavilhão Municipal de Santarém" }
+      {
+        "dia": "Segunda-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ],
     "treinador": "Treinadora SBC"
   },
@@ -41,9 +80,24 @@
     "genero": "Masculino",
     "slug": "sub14-m",
     "horarios": [
-      { "dia": "Segunda-feira", "inicio": "19:00", "fim": "20:30", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Terça-feira", "inicio": "19:15", "fim": "20:45", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quinta-feira", "inicio": "19:15", "fim": "20:45", "local": "Pavilhão Municipal de Santarém" }
+      {
+        "dia": "Segunda-feira",
+        "inicio": "19:00",
+        "fim": "20:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Terça-feira",
+        "inicio": "19:15",
+        "fim": "20:45",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "19:15",
+        "fim": "20:45",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ],
     "treinador": "Treinador SBC"
   },
@@ -53,9 +107,24 @@
     "genero": "Feminino",
     "slug": "sub14-f",
     "horarios": [
-      { "dia": "Terça-feira", "inicio": "18:30", "fim": "20:00", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Quinta-feira", "inicio": "18:30", "fim": "20:00", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "19:00", "fim": "20:30", "local": "Pavilhão Municipal de Santarém" }
+      {
+        "dia": "Terça-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "18:30",
+        "fim": "20:00",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "19:00",
+        "fim": "20:30",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ],
     "treinador": "Treinadora SBC"
   },
@@ -65,9 +134,24 @@
     "genero": "Masculino",
     "slug": "sub16-m",
     "horarios": [
-      { "dia": "Segunda-feira", "inicio": "20:00", "fim": "21:30", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quarta-feira", "inicio": "20:00", "fim": "21:30", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "20:00", "fim": "21:30", "local": "Nave Desportiva de Santarém" }
+      {
+        "dia": "Segunda-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      }
     ],
     "treinador": "Luís Cordeiro"
   },
@@ -77,9 +161,24 @@
     "genero": "Feminino",
     "slug": "sub16-f",
     "horarios": [
-      { "dia": "Segunda-feira", "inicio": "20:00", "fim": "21:30", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Quarta-feira", "inicio": "20:00", "fim": "21:30", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "20:00", "fim": "21:30", "local": "Pavilhão Municipal de Santarém" }
+      {
+        "dia": "Segunda-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ],
     "treinador": "Treinadora SBC"
   },
@@ -89,9 +188,24 @@
     "genero": "Masculino",
     "slug": "sub18-m",
     "horarios": [
-      { "dia": "Terça-feira", "inicio": "20:45", "fim": "22:15", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quinta-feira", "inicio": "20:45", "fim": "22:15", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "21:30", "fim": "23:00", "local": "Nave Desportiva de Santarém" }
+      {
+        "dia": "Terça-feira",
+        "inicio": "20:45",
+        "fim": "22:15",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "20:45",
+        "fim": "22:15",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Nave Desportiva de Santarém"
+      }
     ],
     "treinador": "Treinador SBC"
   },
@@ -101,9 +215,24 @@
     "genero": "Feminino",
     "slug": "sub18-f",
     "horarios": [
-      { "dia": "Terça-feira", "inicio": "20:00", "fim": "21:30", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Quinta-feira", "inicio": "20:00", "fim": "21:30", "local": "Nave Desportiva de Santarém" },
-      { "dia": "Sexta-feira", "inicio": "20:30", "fim": "22:00", "local": "Pavilhão Municipal de Santarém" }
+      {
+        "dia": "Terça-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "20:00",
+        "fim": "21:30",
+        "local": "Nave Desportiva de Santarém"
+      },
+      {
+        "dia": "Sexta-feira",
+        "inicio": "20:30",
+        "fim": "22:00",
+        "local": "Pavilhão Municipal de Santarém"
+      }
     ],
     "treinador": "Treinadora SBC"
   },
@@ -113,9 +242,24 @@
     "genero": "Masculino",
     "slug": "seniores-m",
     "horarios": [
-      { "dia": "Segunda-feira", "inicio": "21:30", "fim": "23:00", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quarta-feira", "inicio": "21:30", "fim": "23:00", "local": "Pavilhão Municipal de Santarém" },
-      { "dia": "Quinta-feira", "inicio": "21:30", "fim": "23:00", "local": "Nave Desportiva de Santarém" }
+      {
+        "dia": "Segunda-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quarta-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Pavilhão Municipal de Santarém"
+      },
+      {
+        "dia": "Quinta-feira",
+        "inicio": "21:30",
+        "fim": "23:00",
+        "local": "Nave Desportiva de Santarém"
+      }
     ],
     "treinador": "Treinador SBC"
   }
