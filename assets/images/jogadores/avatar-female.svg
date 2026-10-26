@@ -1,26 +1,175 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Atleta Feminina">
   <defs>
-    <linearGradient id="bgF" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f2b48"/>
-      <stop offset="100%" stop-color="#163e65"/>
+    <!-- Studio wall background matching real 300x300 athlete photos -->
+    <linearGradient id="bgWallF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e7d2b8"/>
+      <stop offset="55%" stop-color="#dfc8aa"/>
+      <stop offset="100%" stop-color="#d5bb99"/>
     </linearGradient>
-    <linearGradient id="jerseyF" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ea3112"/>
-      <stop offset="100%" stop-color="#c62408"/>
+
+    <!-- Soft studio flash shadow cast to the right -->
+    <radialGradient id="wallShadowF" cx="55%" cy="52%" r="48%">
+      <stop offset="0%" stop-color="#8a6b48" stop-opacity="0.34"/>
+      <stop offset="65%" stop-color="#8a6b48" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#8a6b48" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Warm studio skin tone gradients (matching 01_ema-300x300.png) -->
+    <linearGradient id="skinToneF" x1="25%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#f1c7a6"/>
+      <stop offset="55%" stop-color="#e4b089"/>
+      <stop offset="100%" stop-color="#d4986e"/>
+    </linearGradient>
+
+    <linearGradient id="skinNeckF" x1="20%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#dfa57d"/>
+      <stop offset="55%" stop-color="#cf9268"/>
+      <stop offset="100%" stop-color="#bd7e54"/>
+    </linearGradient>
+
+    <linearGradient id="skinShadowPlaneF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ce9168" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#b7774d" stop-opacity="0.62"/>
+    </linearGradient>
+
+    <!-- Rich chestnut hair gradient (matching 01_ema-300x300.png) -->
+    <linearGradient id="hairF" x1="20%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#4e3524"/>
+      <stop offset="50%" stop-color="#382417"/>
+      <stop offset="100%" stop-color="#22140c"/>
+    </linearGradient>
+
+    <!-- Santarem Basket Official Red Jersey -->
+    <linearGradient id="jerseyRedF" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#e32726"/>
+      <stop offset="55%" stop-color="#cc1818"/>
+      <stop offset="100%" stop-color="#a50f10"/>
+    </linearGradient>
+
+    <linearGradient id="jerseyFoldF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8f0b0c" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#6b0607" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect width="300" height="300" rx="24" fill="url(#bgF)"/>
-  <!-- Hair Silhouette -->
-  <path d="M102 120 C100 70, 200 70, 198 120 C202 155, 185 175, 180 180 C175 160, 170 150, 165 140 C135 140, 130 160, 120 180 C115 175, 98 155, 102 120 Z" fill="#cbd5e1"/>
-  <!-- Face -->
-  <circle cx="150" cy="115" r="42" fill="#f1f5f9"/>
-  <!-- Ponytail / Hair flow -->
-  <path d="M182 125 C205 130, 215 150, 210 180 C200 170, 195 150, 182 140 Z" fill="#cbd5e1"/>
-  <!-- Jersey / Shoulders -->
-  <path d="M80 270 C85 205, 112 188, 132 182 L132 215 C132 225, 168 225, 168 215 L168 182 C188 188, 215 205, 220 270 Z" fill="url(#jerseyF)"/>
-  <!-- SBC Collar -->
-  <path d="M132 182 C140 196, 160 196, 168 182 Z" fill="#ffffff" opacity="0.9"/>
-  <!-- Basketball icon watermark in bottom corner -->
-  <circle cx="250" cy="250" r="32" fill="#ffffff" opacity="0.08"/>
-  <path d="M222 250 H278 M250 222 V278" stroke="#ffffff" stroke-width="2" opacity="0.15"/>
+
+  <!-- 1. Studio Wall Background -->
+  <rect width="300" height="300" fill="url(#bgWallF)"/>
+
+  <!-- 2. Studio Flash Drop Shadow on Wall (offset right like 01_ema-300x300.png) -->
+  <path d="M 162,22 C 216,24 238,68 232,126 C 228,154 224,172 230,186 C 266,196 292,220 300,258 L 300,300 L 140,300 Z" fill="url(#wallShadowF)"/>
+
+  <!-- 3. Tied-Back Athletic Ponytail & Hair Volume Behind Neck (like 01_ema) -->
+  <path d="M 104,116
+           C 98,142 98,168 106,184
+           L 194,184
+           C 202,168 202,142 196,116 Z"
+        fill="#21130b"/>
+
+  <!-- 4. Torso, Bare Shoulders & Arms (matching 01_ema-300x300.png width x=12..288) -->
+  <path d="M 12,300
+           C 16,248 30,206 62,194
+           C 88,184 108,178 120,173
+           L 180,173
+           C 192,178 212,184 238,194
+           C 270,206 284,248 288,300 Z"
+        fill="url(#skinToneF)"/>
+
+  <!-- Clavicle & shoulder definition -->
+  <path d="M 104,192 Q 130,209 150,211 Q 170,209 196,192 Q 174,202 150,203 Q 126,202 104,192 Z" fill="#c98b63" opacity="0.35"/>
+  <!-- Deltoid / arm contour shadows -->
+  <path d="M 32,238 C 46,228 55,240 58,300 L 12,300 C 15,272 22,250 32,238 Z" fill="#c98b63" opacity="0.22"/>
+  <path d="M 268,238 C 254,228 245,240 242,300 L 288,300 C 285,272 278,250 268,238 Z" fill="#bc7d54" opacity="0.34"/>
+
+  <!-- 5. Neck & Chin Cast Shadow -->
+  <path d="M 120,142 L 118,182 C 118,203 133,215 150,215 C 167,215 182,203 182,182 L 180,142 Z" fill="url(#skinNeckF)"/>
+  <path d="M 120,148 C 129,167 171,167 180,148 L 180,163 C 169,179 131,179 120,163 Z" fill="#9f623b" opacity="0.48"/>
+
+  <!-- 6. Ears -->
+  <path d="M 97,95 C 88,94 85,106 88,118 C 91,128 96,132 101,129 Z" fill="url(#skinNeckF)"/>
+  <path d="M 203,95 C 212,94 215,106 212,118 C 209,128 204,132 199,129 Z" fill="url(#skinNeckF)"/>
+
+  <!-- 7. Head Structure (Female Athletic Proportions matching 01_ema-300x300.png) -->
+  <path d="M 97,74
+           C 97,40 119,23 150,23
+           C 181,23 203,40 203,74
+           C 203,103 198,127 187,144
+           C 176,157 163,163 150,163
+           C 137,163 124,157 113,144
+           C 102,127 97,103 97,74 Z"
+        fill="url(#skinToneF)"/>
+
+  <!-- Right-side studio lighting tonal plane on face -->
+  <path d="M 150,23
+           C 181,23 203,40 203,74
+           C 203,103 198,127 187,144
+           C 176,157 163,163 150,163
+           C 155,136 157,92 150,23 Z"
+        fill="url(#skinShadowPlaneF)"/>
+
+  <!-- Soft studio highlight on forehead & left cheek -->
+  <ellipse cx="135" cy="70" rx="21" ry="14" fill="#fae0ca" opacity="0.38"/>
+  <ellipse cx="125" cy="110" rx="14" ry="17" fill="#fae0ca" opacity="0.28"/>
+
+  <!-- 8. Female Center-Parted Tied-Back Hair (matching 01_ema-300x300.png) -->
+  <path d="M 96,96
+           C 92,68 97,38 114,24
+           C 126,15 139,14 150,16
+           C 161,14 174,15 186,24
+           C 203,38 208,68 204,96
+           C 200,77 194,61 182,50
+           C 171,40 159,34 150,30
+           C 141,34 129,40 118,50
+           C 106,61 100,77 96,96 Z"
+        fill="url(#hairF)"/>
+
+  <!-- Natural center part & crown sheen -->
+  <path d="M 150,16 L 150,31" stroke="#cba080" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 110,34 C 122,22 136,19 148,20 C 135,25 121,31 110,42 Z" fill="#6d4c35" opacity="0.55"/>
+  <path d="M 190,34 C 178,22 164,19 152,20 C 165,25 179,31 190,42 Z" fill="#6d4c35" opacity="0.45"/>
+
+  <!-- Soft side wisps along temples -->
+  <path d="M 97,92 C 95,108 98,124 103,136 C 100,122 99,108 100,94 Z" fill="url(#hairF)" opacity="0.75"/>
+  <path d="M 203,92 C 205,108 202,124 197,136 C 200,122 201,108 200,94 Z" fill="url(#hairF)" opacity="0.75"/>
+
+  <!-- 9. Santarém Basket Official Red Sleeveless Jersey (matching 01_ema width x=48..252) -->
+  <path d="M 60,192
+           L 95,180
+           C 105,210 124,225 150,225
+           C 176,225 195,210 205,180
+           L 240,192
+           C 230,226 236,264 252,300
+           L 48,300
+           C 64,264 70,226 60,192 Z"
+        fill="url(#jerseyRedF)"/>
+
+  <!-- Subtle fabric drape folds -->
+  <path d="M 80,220 C 93,250 97,276 93,300 L 64,300 C 70,270 74,244 80,220 Z" fill="url(#jerseyFoldF)"/>
+  <path d="M 220,212 C 208,246 204,274 208,300 L 252,300 C 240,268 232,240 220,212 Z" fill="url(#jerseyFoldF)"/>
+
+  <!-- Red-on-red ribbed collar & armhole trim -->
+  <path d="M 92,181 C 103,213 123,229 150,229 C 177,229 197,213 208,181 L 202,179 C 193,208 175,222 150,222 C 125,222 107,208 98,179 Z"
+        fill="#b11112"/>
+  <path d="M 60,192 C 70,226 64,264 48,300 L 55,300 C 70,264 76,226 66,190 Z" fill="#b11112"/>
+  <path d="M 240,192 C 230,226 236,264 252,300 L 245,300 C 230,264 224,226 234,190 Z" fill="#990d0e"/>
+
+  <!-- 10. Authentic Jersey Branding Details -->
+  <!-- Right chest (viewer's left): DHIKA wordmark + mark -->
+  <g opacity="0.92">
+    <path d="M 89,226 L 100,222 L 96,230 L 104,227 L 92,235 Z" fill="#ffffff"/>
+    <text x="96" y="244" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="7.5" font-weight="800" letter-spacing="0.7" text-anchor="middle">DHIKA</text>
+  </g>
+
+  <!-- Left chest (viewer's right): Santarém Basket emblem -->
+  <g transform="translate(207, 233)" opacity="0.95">
+    <circle cx="0" cy="0" r="14" fill="#f26722" stroke="#ffffff" stroke-width="1.5"/>
+    <path d="M -13,0 Q 0,-5 13,0 M -9,-10 Q 0,0 -9,10 M 9,-10 Q 0,0 9,10" fill="none" stroke="#8a1010" stroke-width="1.2"/>
+    <path d="M -18,4 Q 0,15 18,4" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M -16,9 Q 0,18 16,9" fill="none" stroke="#1d428a" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Center star above SANTARÉM -->
+  <polygon points="150,264 152.2,269 157.5,269.4 153.4,272.8 154.7,278 150,275.1 145.3,278 146.6,272.8 142.5,269.4 147.8,269" fill="#ffffff" opacity="0.95"/>
+
+  <!-- Arched "SANTARÉM" chest lettering at bottom edge -->
+  <text x="150" y="298" fill="#a50f10" stroke="#ffffff" stroke-width="2.2" paint-order="stroke" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="22" font-weight="900" letter-spacing="2" text-anchor="middle" opacity="0.92">SANTARÉM</text>
 </svg>
