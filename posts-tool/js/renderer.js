@@ -9,6 +9,7 @@ import { CONFIG } from './config.js';
 const TEMPLATE_URLS = {
   agenda: './assets/template-agenda-base.png',
   resultados: './assets/template-resultados-base.png',
+  cardTexture: './assets/card-texture.png',
 };
 
 // Coordenadas exatas dos 4 cartões no espaço lógico 819 × 1024
@@ -71,6 +72,7 @@ export async function preloadTemplates() {
   await Promise.all([
     loadImage(TEMPLATE_URLS.agenda),
     loadImage(TEMPLATE_URLS.resultados),
+    loadImage(TEMPLATE_URLS.cardTexture),
     ...fontLoads,
   ]);
   if (document.fonts && document.fonts.ready) {
@@ -119,13 +121,29 @@ function fitFontSize(ctx, text, { weight = 700, maxSize, minSize = 11, maxWidth,
 }
 
 /**
- * Desenha a moldura ativa do cartão (barra lateral vermelha ou branca + contorno fino).
+ * Desenha a moldura ativa do cartão (fundo escuro texturado + barra lateral vermelha/branca + contorno fino).
  */
-function drawActiveCardChrome(ctx, slot, isHome) {
-  // Barra lateral esquerda recortada nos cantos arredondados do cartão
+function drawActiveCardChrome(ctx, slot, isHome, cardTexture) {
+  // Sombra subtil por trás do cartão para contraste limpo sobre zonas claras do fundo
+  ctx.save();
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.55)';
+  ctx.shadowBlur = 10;
+  ctx.shadowOffsetY = 2;
+  drawRoundedRectPath(ctx, slot.x, slot.y, slot.w, slot.h, CARD_RADIUS);
+  ctx.fillStyle = '#121210';
+  ctx.fill();
+  ctx.restore();
+
+  // Interior texturado (grunge original) + barra lateral esquerda recortados nos cantos arredondados
   ctx.save();
   drawRoundedRectPath(ctx, slot.x, slot.y, slot.w, slot.h, CARD_RADIUS);
   ctx.clip();
+  if (cardTexture) {
+    ctx.drawImage(cardTexture, slot.x, slot.y, slot.w, slot.h);
+  } else {
+    ctx.fillStyle = '#121210';
+    ctx.fillRect(slot.x, slot.y, slot.w, slot.h);
+  }
   ctx.fillStyle = isHome ? COLORS.barRed : COLORS.barWhite;
   ctx.fillRect(slot.x, slot.y, ACCENT_BAR_WIDTH, slot.h);
   ctx.restore();
@@ -195,8 +213,8 @@ function drawCategoryPills(ctx, escalaoStr, startX, pillY, isHome, fontFamily = 
 /**
  * Renderiza o conteúdo de um cartão de AGENDA.
  */
-function drawAgendaCard(ctx, slot, game, fontFamily = DEFAULT_FONT) {
-  drawActiveCardChrome(ctx, slot, game.casa);
+function drawAgendaCard(ctx, slot, game, cardTexture, fontFamily = DEFAULT_FONT) {
+  drawActiveCardChrome(ctx, slot, game.casa, cardTexture);
 
   const leftX = slot.x + 37; // x = 112
   const dividerX = 500.5;
@@ -321,8 +339,8 @@ function drawAgendaCard(ctx, slot, game, fontFamily = DEFAULT_FONT) {
 /**
  * Renderiza o conteúdo de um cartão de RESULTADOS.
  */
-function drawResultadosCard(ctx, slot, game, fontFamily = DEFAULT_FONT) {
-  drawActiveCardChrome(ctx, slot, game.casa);
+function drawResultadosCard(ctx, slot, game, cardTexture, fontFamily = DEFAULT_FONT) {
+  drawActiveCardChrome(ctx, slot, game.casa, cardTexture);
 
   const leftX = slot.x + 38; // x = 113
   const rightEdge = slot.x + slot.w - 18; // x = 722.5
@@ -397,7 +415,10 @@ function drawResultadosCard(ctx, slot, game, fontFamily = DEFAULT_FONT) {
  */
 export async function renderSlideToCanvas(canvas, { mode, games, fontFamily = DEFAULT_FONT }) {
   const safeMode = mode === 'resultados' ? 'resultados' : 'agenda';
-  const baseImg = await loadImage(TEMPLATE_URLS[safeMode]);
+  const [baseImg, cardTexture] = await Promise.all([
+    loadImage(TEMPLATE_URLS[safeMode]),
+    loadImage(TEMPLATE_URLS.cardTexture),
+  ]);
 
   canvas.width = CONFIG.EXPORT_WIDTH;
   canvas.height = CONFIG.EXPORT_HEIGHT;
@@ -420,9 +441,9 @@ export async function renderSlideToCanvas(canvas, { mode, games, fontFamily = DE
   const count = Math.min(games.length, slots.length);
   for (let i = 0; i < count; i++) {
     if (safeMode === 'resultados') {
-      drawResultadosCard(ctx, slots[i], games[i], fontFamily);
+      drawResultadosCard(ctx, slots[i], games[i], cardTexture, fontFamily);
     } else {
-      drawAgendaCard(ctx, slots[i], games[i], fontFamily);
+      drawAgendaCard(ctx, slots[i], games[i], cardTexture, fontFamily);
     }
   }
   ctx.restore();
