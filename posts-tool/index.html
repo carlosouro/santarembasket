@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-root="../">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Gerador de Posts (Agenda &amp; Resultados) | Santarém Basket Clube</title>
+
+  <link rel="icon" href="../assets/images/logo/favicon-150x150.png" sizes="32x32" />
+  <link rel="icon" href="../assets/images/logo/favicon-300x300.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="../assets/images/logo/favicon-300x300.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Open+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./css/posts-tool.css" />
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <header class="pt-topbar">
+    <div class="pt-topbar-inner">
+      <a class="pt-brand" href="../index.html">
+        <img src="../assets/images/logo/logo-sbc.png" alt="Santarém Basket Clube" />
+        <div>
+          <span class="pt-brand-title">Gerador de Posts — Redes Sociais</span>
+          <span class="pt-brand-sub">Santarém Basket Clube · Agenda &amp; Resultados (1080×1350)</span>
+        </div>
+      </a>
+
+      <div class="pt-topbar-actions">
+        <a class="pt-link-btn" href="../index.html">← Voltar ao Website</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-main">
+    <!-- 1. Ligação à Google Sheet -->
+    <section class="pt-source-card" aria-label="Ligação à Google Sheet">
+      <form id="sheet-form" class="pt-source-form">
+        <div class="pt-field">
+          <label for="sheet-id-input">Link ou ID da Google Sheet</label>
+          <input
+            id="sheet-id-input"
+            class="pt-input"
+            type="text"
+            placeholder="https://docs.google.com/spreadsheets/d/SEU_ID_AQUI/edit"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="pt-field pt-field-sm">
+          <label for="sheet-name-input">Nome da Aba</label>
+          <input
+            id="sheet-name-input"
+            class="pt-input"
+            type="text"
+            value="Jogos"
+            autocomplete="off"
+          />
+        </div>
+
+        <button id="btn-load-sheet" type="submit" class="pt-btn pt-btn-primary">
+          Atualizar Folha
+        </button>
+
+        <button id="btn-load-demo" type="button" class="pt-btn pt-btn-ghost">
+          Dados de Exemplo
+        </button>
+      </form>
+
+      <div class="pt-status-bar">
+        <span id="status-badge" class="pt-status-badge" data-tone="demo">Modo Exemplo</span>
+        <span id="status-message">A preparar pré-visualização...</span>
+      </div>
+    </section>
+
+    <!-- 2. Controlos: Separadores de Ciclo, Modo (Agenda / Resultados) e Exportação -->
+    <section class="pt-controls" aria-label="Controlos do gerador">
+      <div class="pt-controls-top">
+        <div class="pt-tabs-wrap">
+          <span class="pt-tabs-label">Ciclo:</span>
+          <div id="cycle-tablist" class="pt-tablist" role="tablist" aria-label="Ciclos de jogos"></div>
+        </div>
+
+        <div class="pt-mode-group" role="group" aria-label="Tipo de publicação">
+          <button
+            id="btn-mode-agenda"
+            type="button"
+            class="pt-mode-btn"
+            aria-pressed="true"
+          >
+            Agenda
+          </button>
+          <button
+            id="btn-mode-resultados"
+            type="button"
+            class="pt-mode-btn"
+            aria-pressed="false"
+          >
+            Resultados
+          </button>
+        </div>
+      </div>
+
+      <div class="pt-export-row">
+        <div id="slides-summary" class="pt-summary">A carregar...</div>
+        <div class="pt-export-actions">
+          <button id="btn-download-zip" type="button" class="pt-btn pt-btn-primary">
+            Descarregar Carrossel
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Pré-visualização dos Slides + Lista de Jogos do Ciclo -->
+    <section class="pt-workspace" aria-label="Pré-visualização e seleção de jogos">
+      <div id="slides-grid" class="pt-slides-grid" role="tabpanel" aria-label="Imagens geradas"></div>
+
+      <aside class="pt-sidebar" aria-label="Jogos deste ciclo">
+        <div class="pt-sidebar-head">
+          <h2>Jogos do Ciclo</h2>
+          <button id="btn-select-all" type="button" class="pt-link-btn">Incluir todos</button>
+        </div>
+        <p class="pt-sidebar-hint">
+          Desmarque qualquer jogo para o omitir temporariamente do post sem alterar a Google Sheet.
+        </p>
+        <div id="game-list" class="pt-game-list"></div>
+      </aside>
+    </section>
+
+    <!-- 4. Ajuda rápida inline -->
+    <details class="pt-help-details">
+      <summary>Ajuda rápida — Estrutura da Google Sheet</summary>
+      <div class="pt-help-body">
+        <div>
+          <h3>Colunas (Linha 1 da aba <code>Jogos</code>)</h3>
+          <p>
+            <code>Ciclo</code>, <code>Escalão</code>, <code>Adversário</code>, <code>Casa</code>,
+            <code>Competição</code>, <code>Data</code>, <code>Hora</code>, <code>Local</code>,
+            <code>Pontos SBC</code>, <code>Pontos Adv</code>, <code>Tipo</code>.
+          </p>
+        </div>
+        <div>
+          <h3>Regras visuais automáticas</h3>
+          <ul>
+            <li><strong>Casa = Sim</strong> → Barra e pílula vermelhas; SBC à esquerda nos Resultados.</li>
+            <li><strong>Casa = Não</strong> → Barra e pílula brancas; SBC à direita nos Resultados.</li>
+            <li><strong>Vários escalões</strong> → Separe por vírgula (ex: <code>U12M, U12F</code>).</li>
+            <li><strong>Convívios</strong> → Use <code>Tipo = Evento</code> (omite o prefixo "VS" e não entra nos Resultados).</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Partilha obrigatória</h3>
+          <p>
+            Na Google Sheet clique em <strong>Partilhar → Acesso geral → Qualquer pessoa com o link (Leitor)</strong>.
+            Só os administradores precisam de permissão de <em>Editor</em>.
+          </p>
+        </div>
+      </div>
+    </details>
+  </main>
+</body>
+</html>
