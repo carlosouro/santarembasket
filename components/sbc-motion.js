@@ -1,9 +1,11 @@
 /**
  * Santarém Basket Clube - Motion & Micro-UX Progressive Enhancement
- * - Hybrid scroll reveals (one-shot IntersectionObserver for cards/headers, native CSS view() for media masks with IO fallback)
- * - Reading progress bar + auto chapter jump pills on official document pages (Estatutos, Regulamento Interno)
- * - Floating Back-to-Top button on long pages
- * Zero external dependencies, respects prefers-reduced-motion, never hides content if JS/motion is disabled.
+ * - Compositor-friendly hybrid scroll reveals:
+ *   * One-shot IntersectionObserver with same-batch-only stagger (0ms lag on 1-column mobile)
+ *   * Batched read-before-write safety sweep (zero layout thrashing)
+ *   * Native CSS view() GPU curtain for club/team photography with IO fallback
+ * - Reading progress bar + auto chapter jump pills on official document pages
+ * - Floating Back-to-Top button with cached viewport height (zero scroll-frame layout reads)
  */
 
 (function initSbcMotion() {
@@ -42,32 +44,49 @@
 
   let revealObserver = null;
   let mediaObserver = null;
+  let onContentHeightChanged = null;
   const pendingReveals = new Set();
 
-  function markElementRevealed(el) {
-    el.classList.add('is-revealed');
-    pendingReveals.delete(el);
-    if (revealObserver) revealObserver.unobserve(el);
-    if (mediaObserver) mediaObserver.unobserve(el);
-  }
+  function revealBatch(elements) {
+    if (elements.length === 0) return;
 
-  function isElementAtOrAboveFold(el) {
-    const rect = el.getBoundingClientRect();
-    if (rect.width === 0 && rect.height === 0) return false;
-    return rect.top <= window.innerHeight * 0.96;
+    // Stagger only items entering in the same viewport batch (e.g. desktop multi-column row);
+    // single vertically-scrolled cards on mobile always start immediately at 0ms.
+    const staggerStep = elements.length > 1 ? 45 : 0;
+    elements.forEach((el, idx) => {
+      if (staggerStep > 0) {
+        el.style.setProperty('--sbc-reveal-delay', `${Math.min(idx * staggerStep, 180)}ms`);
+      } else {
+        el.style.removeProperty('--sbc-reveal-delay');
+      }
+      el.classList.add('is-revealed');
+      pendingReveals.delete(el);
+      if (revealObserver) revealObserver.unobserve(el);
+      if (mediaObserver) mediaObserver.unobserve(el);
+    });
   }
 
   function sweepPendingReveals() {
     if (pendingReveals.size === 0) return;
+    const thresholdY = window.innerHeight + 80;
+    const toReveal = [];
+
+    // Pass 1: Read all rects first (prevents read-write layout thrashing)
     pendingReveals.forEach((el) => {
       if (!el.isConnected) {
         pendingReveals.delete(el);
         return;
       }
-      if (isElementAtOrAboveFold(el)) {
-        markElementRevealed(el);
+      const rect = el.getBoundingClientRect();
+      if ((rect.width > 0 || rect.height > 0) && rect.top <= thresholdY) {
+        toReveal.push(el);
       }
     });
+
+    // Pass 2: Mutate classes together
+    if (toReveal.length > 0) {
+      revealBatch(toReveal);
+    }
   }
 
   function setupRevealObservers() {
@@ -77,34 +96,31 @@
 
     document.documentElement.classList.add('sbc-motion-ready');
 
-    revealObserver = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight) {
-            markElementRevealed(entry.target);
-          }
+    const handleEntries = (entries) => {
+      const entering = [];
+      const viewportH = window.innerHeight + 80;
+      for (const entry of entries) {
+        if (entry.isIntersecting || entry.boundingClientRect.top <= viewportH) {
+          entering.push(entry.target);
         }
-      },
-      {
-        rootMargin: '0px 0px -16px 0px',
-        threshold: 0,
       }
-    );
+      if (entering.length > 0) {
+        revealBatch(entering);
+      }
+    };
+
+    // Positive bottom rootMargin triggers reveals 80px before entering the screen
+    // so cards are already moving in smoothly during fast mobile flicks.
+    revealObserver = new IntersectionObserver(handleEntries, {
+      rootMargin: '0px 0px 80px 0px',
+      threshold: 0,
+    });
 
     if (!supportsViewTimeline) {
-      mediaObserver = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight) {
-              markElementRevealed(entry.target);
-            }
-          }
-        },
-        {
-          rootMargin: '0px 0px -16px 0px',
-          threshold: 0,
-        }
-      );
+      mediaObserver = new IntersectionObserver(handleEntries, {
+        rootMargin: '0px 0px 40px 0px',
+        threshold: 0,
+      });
     }
 
     let scrollSweepQueued = false;
@@ -125,59 +141,66 @@
   function scanAndObserve(root = document) {
     if (!revealObserver) return;
 
-    const candidates = root.querySelectorAll(REVEAL_SELECTORS);
-    const parentCounters = new WeakMap();
+    const candidates = Array.from(root.querySelectorAll(REVEAL_SELECTORS)).filter((el) => {
+      if (el.hasAttribute('data-sbc-reveal')) return false;
+      if (el.closest('.sbc-hero-section')) return false;
+      if (el.parentElement && el.parentElement.closest('[data-sbc-reveal]')) return false;
+      return true;
+    });
 
-    candidates.forEach((el) => {
-      if (el.hasAttribute('data-sbc-reveal')) return;
-      // Hero elements have their own immediate CSS entrance animation
-      if (el.closest('.sbc-hero-section')) return;
-      // Avoid double-hiding nested cards inside already revealed cards
-      if (el.parentElement && el.parentElement.closest('[data-sbc-reveal]')) return;
+    const thresholdY = window.innerHeight + 40;
 
-      const parent = el.parentElement || document.body;
-      const idx = parentCounters.get(parent) || 0;
-      parentCounters.set(parent, idx + 1);
+    // Pass 1: Read rects before any DOM attribute/class mutations
+    const measured = candidates.map((el) => {
+      const rect = el.getBoundingClientRect();
+      const visibleNow = (rect.width > 0 || rect.height > 0) && rect.top <= thresholdY;
+      return { el, visibleNow };
+    });
 
-      const delayMs = Math.min(idx * 55, 300);
-      el.style.setProperty('--sbc-reveal-delay', `${delayMs}ms`);
+    // Pass 2: Write attributes & register observers
+    const initialVisible = [];
+    measured.forEach(({ el, visibleNow }) => {
       el.setAttribute('data-sbc-reveal', el.classList.contains('sbc-stat-box') ? 'scale' : 'up');
-
-      if (isElementAtOrAboveFold(el)) {
-        markElementRevealed(el);
+      if (visibleNow) {
+        initialVisible.push(el);
       } else {
         pendingReveals.add(el);
         revealObserver.observe(el);
       }
     });
 
+    if (initialVisible.length > 0) {
+      revealBatch(initialVisible);
+    }
+
     if (mediaObserver) {
-      const mediaEls = root.querySelectorAll(MEDIA_REVEAL_SELECTORS);
-      mediaEls.forEach((el) => {
-        if (el.hasAttribute('data-sbc-media-reveal')) return;
-        if (el.closest('.sbc-hero-section')) return;
+      const mediaCandidates = Array.from(root.querySelectorAll(MEDIA_REVEAL_SELECTORS)).filter(
+        (el) => !el.hasAttribute('data-sbc-media-reveal') && !el.closest('.sbc-hero-section')
+      );
+      const mediaMeasured = mediaCandidates.map((el) => {
+        const rect = el.getBoundingClientRect();
+        const visibleNow = (rect.width > 0 || rect.height > 0) && rect.top <= thresholdY;
+        return { el, visibleNow };
+      });
+      const initialMedia = [];
+      mediaMeasured.forEach(({ el, visibleNow }) => {
         el.setAttribute('data-sbc-media-reveal', '');
-        if (isElementAtOrAboveFold(el)) {
-          markElementRevealed(el);
+        if (visibleNow) {
+          initialMedia.push(el);
         } else {
           pendingReveals.add(el);
           mediaObserver.observe(el);
         }
       });
-    }
-  }
-
-  function revealVisibleNow(root = document) {
-    root.querySelectorAll('[data-sbc-reveal]:not(.is-revealed)').forEach((el) => {
-      if (isElementAtOrAboveFold(el)) {
-        markElementRevealed(el);
+      if (initialMedia.length > 0) {
+        revealBatch(initialMedia);
       }
-    });
+    }
   }
 
   window.sbcRefreshReveals = function sbcRefreshReveals(root = document) {
     scanAndObserve(root);
-    revealVisibleNow(root);
+    sweepPendingReveals();
   };
 
   function setupDocumentEnhancements() {
@@ -187,7 +210,7 @@
     const chapters = Array.from(docCard.querySelectorAll('.sbc-doc-chapter'));
     if (chapters.length === 0) return;
 
-    // 1. Reading Progress Bar (native CSS scroll() with passive scroll fallback)
+    // 1. Reading Progress Bar (native CSS scroll() with cached-height passive fallback)
     if (!document.querySelector('.sbc-reading-progress')) {
       const bar = document.createElement('div');
       bar.className = 'sbc-reading-progress';
@@ -195,13 +218,19 @@
       document.body.prepend(bar);
 
       if (!supportsScrollTimeline) {
+        let scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
         let ticking = false;
+
+        const recalc = () => {
+          scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        };
+
         const updateProgress = () => {
           ticking = false;
-          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-          const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+          const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
           bar.style.transform = `scaleX(${ratio})`;
         };
+
         window.addEventListener(
           'scroll',
           () => {
@@ -212,6 +241,7 @@
           },
           { passive: true }
         );
+        window.addEventListener('resize', recalc, { passive: true });
         updateProgress();
       }
     }
@@ -252,7 +282,6 @@
         nav.appendChild(list);
         docCard.parentNode.insertBefore(nav, docCard);
 
-        // Highlight current chapter pill while scrolling
         if (typeof IntersectionObserver !== 'undefined') {
           let activeId = null;
           const tocObserver = new IntersectionObserver(
@@ -304,11 +333,24 @@
 
     document.body.appendChild(btn);
 
+    // Cache page height on load/resize so scroll ticks never trigger layout reads
+    let isLongPage = document.documentElement.scrollHeight > window.innerHeight * 1.45;
+    let isVisible = false;
     let ticking = false;
-    const toggleVisibility = () => {
+
+    const recalcPageHeight = () => {
+      isLongPage = document.documentElement.scrollHeight > window.innerHeight * 1.45;
+      updateVisibility();
+    };
+    onContentHeightChanged = recalcPageHeight;
+
+    const updateVisibility = () => {
       ticking = false;
-      const isLongPage = document.documentElement.scrollHeight > window.innerHeight * 1.45;
-      btn.classList.toggle('is-visible', isLongPage && window.scrollY > 460);
+      const nextVisible = isLongPage && window.scrollY > 460;
+      if (nextVisible !== isVisible) {
+        isVisible = nextVisible;
+        btn.classList.toggle('is-visible', nextVisible);
+      }
     };
 
     window.addEventListener(
@@ -316,13 +358,14 @@
       () => {
         if (!ticking) {
           ticking = true;
-          window.requestAnimationFrame(toggleVisibility);
+          window.requestAnimationFrame(updateVisibility);
         }
       },
       { passive: true }
     );
-    window.addEventListener('resize', toggleVisibility, { passive: true });
-    toggleVisibility();
+    window.addEventListener('resize', recalcPageHeight, { passive: true });
+    window.addEventListener('load', recalcPageHeight, { once: true });
+    updateVisibility();
   }
 
   function boot() {
@@ -331,11 +374,22 @@
     setupDocumentEnhancements();
     setupBackToTop();
 
-    // Observe dynamically rendered web components (e.g., sbc-destaques, sbc-equipas, sbc-parceiros, sbc-palmares)
+    // Debounced rAF observer for async web component renders (never scans mid-hover)
     const main = document.getElementById('main-content');
     if (main && revealObserver && typeof MutationObserver !== 'undefined') {
-      const mo = new MutationObserver(() => {
-        scanAndObserve(main);
+      let scanQueued = false;
+      const mo = new MutationObserver((mutations) => {
+        if (scanQueued) return;
+        const hasAddedElements = mutations.some(
+          (m) => m.addedNodes && m.addedNodes.length > 0
+        );
+        if (!hasAddedElements) return;
+        scanQueued = true;
+        window.requestAnimationFrame(() => {
+          scanQueued = false;
+          scanAndObserve(main);
+          if (onContentHeightChanged) onContentHeightChanged();
+        });
       });
       mo.observe(main, { childList: true, subtree: true });
     }

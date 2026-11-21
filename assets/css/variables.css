@@ -52,12 +52,12 @@
   
   /* Transitions & Athletic Motion Tokens */
   --sbc-transition-fast: 0.15s ease;
-  --sbc-transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  --sbc-transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --sbc-transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --sbc-transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --sbc-ease-athletic: cubic-bezier(0.22, 1, 0.36, 1);
   --sbc-ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --sbc-motion-fast: 200ms;
-  --sbc-motion-base: 480ms;
-  --sbc-motion-reveal: 620ms;
-  --sbc-stagger-step: 55ms;
+  --sbc-motion-fast: 160ms;
+  --sbc-motion-base: 320ms;
+  --sbc-motion-reveal: 340ms;
+  --sbc-stagger-step: 45ms;
 }

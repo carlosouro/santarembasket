@@ -179,16 +179,27 @@ class SbcHeader extends HTMLElement {
     const header = this.querySelector('#main-header');
     if (!header) return;
 
+    let isScrolled = null;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const nextScrolled = window.scrollY > 20;
+      if (nextScrolled !== isScrolled) {
+        isScrolled = nextScrolled;
+        header.classList.toggle('scrolled', nextScrolled);
+      }
+    };
+
     const onScroll = () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
       }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    update();
   }
 
   setActiveItem() {

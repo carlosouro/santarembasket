@@ -46,11 +46,11 @@
   }
 
   ::view-transition-old(root) {
-    animation: 180ms cubic-bezier(0.4, 0, 1, 1) both sbc-page-fade-out;
+    animation: 120ms cubic-bezier(0.4, 0, 1, 1) both sbc-page-fade-out;
   }
 
   ::view-transition-new(root) {
-    animation: 260ms var(--sbc-ease-athletic) both sbc-page-fade-in;
+    animation: 180ms var(--sbc-ease-athletic) both sbc-page-fade-in;
   }
 
   ::view-transition-old(sbc-site-header),
@@ -124,43 +124,17 @@ a.sbc-card:hover,
   @keyframes sbc-hero-rise {
     from {
       opacity: 0;
-      transform: translateY(18px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes sbc-hero-title-mask {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-      clip-path: inset(0 0 28% 0);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-      clip-path: inset(0 0 0% 0);
-    }
-  }
-
-  @keyframes sbc-banner-curtain {
-    from {
-      opacity: 0;
       transform: translateY(14px);
-      clip-path: inset(12% 0 0 0 round var(--sbc-radius-lg));
     }
     to {
       opacity: 1;
       transform: translateY(0);
-      clip-path: inset(0 0 0 0 round var(--sbc-radius-lg));
     }
   }
 
   @keyframes sbc-banner-zoom-settle {
     from {
-      transform: scale(1.045);
+      transform: scale(1.035);
     }
     to {
       transform: scale(1);
@@ -168,83 +142,95 @@ a.sbc-card:hover,
   }
 
   .sbc-hero-badge {
-    animation: sbc-hero-rise 420ms var(--sbc-ease-athletic) 20ms both;
+    animation: sbc-hero-rise 300ms var(--sbc-ease-athletic) 0ms both;
   }
 
   .sbc-hero-title {
-    animation: sbc-hero-title-mask 520ms var(--sbc-ease-athletic) 80ms both;
+    animation: sbc-hero-rise 360ms var(--sbc-ease-athletic) 50ms both;
   }
 
   .sbc-hero-subtitle {
-    animation: sbc-hero-rise 460ms var(--sbc-ease-athletic) 150ms both;
+    animation: sbc-hero-rise 340ms var(--sbc-ease-athletic) 100ms both;
   }
 
   .sbc-hero-ctas {
-    animation: sbc-hero-rise 440ms var(--sbc-ease-athletic) 210ms both;
+    animation: sbc-hero-rise 320ms var(--sbc-ease-athletic) 140ms both;
   }
 
   .sbc-hero-banner-wrap {
-    animation: sbc-banner-curtain 620ms var(--sbc-ease-athletic) 250ms both;
+    animation: sbc-hero-rise 420ms var(--sbc-ease-athletic) 160ms both;
   }
 
   .sbc-hero-banner-img {
-    animation: sbc-banner-zoom-settle 780ms var(--sbc-ease-athletic) 250ms both;
+    animation: sbc-banner-zoom-settle 560ms var(--sbc-ease-athletic) 160ms both;
   }
 }
 
 /* ==========================================================================
-   4. Hybrid Scroll Reveals
+   4. Hybrid Scroll Reveals (100% GPU Compositor-Only: opacity & transform)
       - One-shot fades/slides for text, headers & cards
-      - Scroll-scrubbed masked reveals for club & team photography
+      - Scroll-scrubbed GPU curtain reveals for club & team photography
    ========================================================================== */
+
+.sbc-club-highlight-media,
+.sbc-team-banner-wrap,
+.sbc-history-feature-media {
+  position: relative;
+  overflow: hidden;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   /* Pre-reveal state ONLY activates when JS confirms observer support */
   html.sbc-motion-ready [data-sbc-reveal] {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(14px);
     transition:
       opacity var(--sbc-motion-reveal) var(--sbc-ease-athletic) var(--sbc-reveal-delay, 0ms),
       transform var(--sbc-motion-reveal) var(--sbc-ease-athletic) var(--sbc-reveal-delay, 0ms);
-    will-change: opacity, transform;
   }
 
   html.sbc-motion-ready [data-sbc-reveal="scale"] {
-    transform: translateY(14px) scale(0.975);
+    transform: translateY(10px) scale(0.98);
   }
 
   html.sbc-motion-ready [data-sbc-reveal].is-revealed {
     opacity: 1;
     transform: none;
-    will-change: auto;
   }
 
-  /* Native CSS Scroll-Driven Masked Photo Reveals */
+  /* Native CSS Scroll-Driven Masked Photo Reveals (compositor-only scaleY curtain + img settle) */
   @supports ((animation-timeline: view()) and (animation-range: entry)) {
-    @keyframes sbc-media-wipe {
+    @keyframes sbc-curtain-lift {
       from {
-        clip-path: inset(12% 4% 0 4% round 14px);
+        transform: scaleY(1);
       }
       to {
-        clip-path: inset(0 0 0 0 round 0px);
+        transform: scaleY(0);
       }
     }
 
     @keyframes sbc-media-img-settle {
       from {
-        transform: scale(1.07);
+        transform: scale(1.06);
       }
       to {
         transform: scale(1);
       }
     }
 
-    .sbc-club-highlight-media,
-    .sbc-team-banner-wrap,
-    .sbc-history-feature-media {
-      animation: sbc-media-wipe auto linear both;
+    .sbc-club-highlight-media::after,
+    .sbc-team-banner-wrap::after,
+    .sbc-history-feature-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--sbc-navy-dark);
+      transform-origin: top center;
+      pointer-events: none;
+      z-index: 1;
+      animation: sbc-curtain-lift auto linear both;
       animation-timeline: view();
-      animation-range: entry 4% cover 34%;
+      animation-range: entry 0% cover 26%;
     }
 
     .sbc-club-highlight-media > img,
@@ -252,28 +238,31 @@ a.sbc-card:hover,
     .sbc-history-feature-media > img {
       animation: sbc-media-img-settle auto linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 42%;
+      animation-range: entry 0% cover 36%;
     }
   }
 
   /* Fallback Masked Photo Reveal for browsers without scroll-driven animations */
   @supports not ((animation-timeline: view()) and (animation-range: entry)) {
-    html.sbc-motion-ready [data-sbc-media-reveal] {
-      clip-path: inset(12% 0 0 0 round 12px);
-      opacity: 0.2;
-      transition:
-        clip-path 680ms var(--sbc-ease-athletic),
-        opacity 520ms var(--sbc-ease-athletic);
+    html.sbc-motion-ready [data-sbc-media-reveal]::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--sbc-navy-dark);
+      transform-origin: top center;
+      transform: scaleY(1);
+      pointer-events: none;
+      z-index: 1;
+      transition: transform 480ms var(--sbc-ease-athletic);
     }
 
     html.sbc-motion-ready [data-sbc-media-reveal] > img {
-      transform: scale(1.06);
-      transition: transform 760ms var(--sbc-ease-athletic);
+      transform: scale(1.05);
+      transition: transform 560ms var(--sbc-ease-athletic);
     }
 
-    html.sbc-motion-ready [data-sbc-media-reveal].is-revealed {
-      clip-path: inset(0 0 0 0 round 0px);
-      opacity: 1;
+    html.sbc-motion-ready [data-sbc-media-reveal].is-revealed::after {
+      transform: scaleY(0);
     }
 
     html.sbc-motion-ready [data-sbc-media-reveal].is-revealed > img {
