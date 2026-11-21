@@ -11,3 +11,10 @@
 - **Strictly Relative Paths Everywhere**: ALWAYS use relative paths (`./`, `../`, or `resolveUrl()` in Web Components) for all assets, stylesheets, scripts, JSON fetches, images, and internal navigation links. NEVER hardcode root-relative paths starting with `/` (e.g., `/assets/...`, `/components/...`, `/data/...`, `/historia/`), so that the website works identically when hosted at a domain root (`https://santarembasket.pt/`), inside a virtual subdirectory (`https://carlosouro.github.io/santarembasket/`), or on any local development server.
 - **HTML Root Attribute**: Every HTML file must include `data-root="./"` (at depth 0), `data-root="../"` (at depth 1), `data-root="../../"` (at depth 2), etc. on the `<html>` element so shared Web Components can resolve paths relative to the project root.
 - **Migration & Verification Tooling**: Whenever adding new pages or assets, you can run `python3 scripts/migrate-relative-paths.py` and `python3 scripts/verify-paths.py` to enforce relative path integrity across the entire repository.
+
+## Standalone Internal Mini-App Isolation (`posts-tool/`)
+- **Not Part of the Public Website**: The `posts-tool/` mini-app (social media post generator) is a separate internal club tool that happens to live in the same repository — it is NOT an integrated part of the Santarém Basket Clube public website.
+- **No Cross-Links**: NEVER add links from the main website (navigation, footer, sitemap, or content pages) to `posts-tool/`, and NEVER add links from `posts-tool/` back to the main website.
+- **Strict Scope Separation**:
+  - Website-focused work (the default for most tasks in this repo) MUST NOT modify, restyle, refactor, or affect anything inside `posts-tool/`.
+  - `posts-tool/`-specific work requested by the user MUST NOT modify or touch any files belonging to the main website.
