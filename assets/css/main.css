@@ -1,10 +1,8 @@
 /**
  * Santarém Basket Clube - Consolidated Master Stylesheet
- * Groups core theme, vendor plugins, design tokens, modern layout, and web components.
+ * Groups design tokens, web components base styles, and modern layout.
  */
 
 @import url('./variables.css');
-@import url('./theme.css');
-@import url('./vendor.css');
 @import url('./components.css');
 @import url('./modern.css');

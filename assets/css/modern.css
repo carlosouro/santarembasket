@@ -4,21 +4,41 @@
 
 @import url('./variables.css');
 
-/* Smooth base enhancements */
+/* Base Reset & Smooth Enhancements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--sbc-font-sans);
+  font-size: 14px;
+  line-height: 1.7em;
   color: var(--sbc-text-main);
   background-color: var(--sbc-gray-50);
   overflow-x: hidden;
   max-width: 100%;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
 }
 
 #page-container {
@@ -947,24 +967,7 @@ body {
   margin: 0;
 }
 
-/* 3. Training Timetable */
-.sbc-table-container {
-  background: #ffffff;
-  border-radius: var(--sbc-radius-lg);
-  box-shadow: var(--sbc-shadow-sm);
-  border: 1px solid var(--sbc-gray-200);
-  overflow: hidden;
-}
-
-.sbc-table-controls {
-  padding: 16px 20px;
-  background: var(--sbc-gray-50);
-  border-bottom: 1px solid var(--sbc-gray-200);
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
+/* 3. Training & Team Filter Controls */
 .sbc-filter-btn {
   background: #ffffff;
   border: 1px solid var(--sbc-gray-300);
@@ -988,44 +991,6 @@ body {
   border-color: var(--sbc-red);
 }
 
-.sbc-table-responsive {
-  overflow-x: auto;
-}
-
-.sbc-modern-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.sbc-modern-table th {
-  background: var(--sbc-gray-100);
-  color: var(--sbc-navy);
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 14px 20px;
-  border-bottom: 2px solid var(--sbc-gray-200);
-}
-
-.sbc-modern-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--sbc-gray-200);
-  vertical-align: middle;
-}
-
-.sbc-cell-team {
-  font-size: 15px;
-  color: var(--sbc-navy);
-}
-
-.sbc-sub-text {
-  font-size: 12px;
-  color: var(--sbc-gray-600);
-  margin-top: 4px;
-}
-
 .sbc-tag-slot {
   display: inline-block;
   background: var(--sbc-gray-100);
@@ -1043,55 +1008,6 @@ body {
 
 .sbc-tag-slot small {
   color: var(--sbc-gray-600);
-}
-
-/* Individual Team Training Box */
-.sbc-team-schedule-box {
-  background: #ffffff;
-  border: 1px solid var(--sbc-gray-200);
-  border-radius: var(--sbc-radius-lg);
-  padding: 24px;
-  margin: 24px 0;
-  box-shadow: var(--sbc-shadow-sm);
-}
-
-.sbc-team-schedule-title {
-  font-family: var(--sbc-font-sans);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--sbc-navy);
-  margin: 0 0 16px;
-}
-
-.sbc-team-slots-list {
-  display: grid;
-  gap: 10px;
-}
-
-.sbc-team-training-slot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--sbc-gray-50);
-  border-radius: var(--sbc-radius-md);
-  border-left: 3px solid var(--sbc-red);
-  font-size: 14px;
-}
-
-.sbc-slot-day {
-  font-weight: 700;
-  color: var(--sbc-navy);
-  min-width: 120px;
-}
-
-.sbc-slot-time {
-  color: var(--sbc-red);
-}
-
-.sbc-slot-local {
-  color: var(--sbc-gray-600);
-  font-size: 13px;
 }
 
 /* 4. Partners & Protocols */
@@ -1656,12 +1572,6 @@ body {
   .sbc-contact-grid {
     grid-template-columns: 1fr;
   }
-  
-  .sbc-team-training-slot {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
 
   .sbc-doc-card {
     padding: 28px 20px;
@@ -1954,25 +1864,6 @@ body {
   line-height: 1.6;
   color: var(--sbc-gray-700);
   margin: 0 0 20px;
-}
-
-.sbc-team-meta-bar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  background: #f8fafc;
-  border: 1px solid var(--sbc-gray-200);
-  border-radius: var(--sbc-radius-md);
-  padding: 16px 20px;
-  margin-bottom: 28px;
-}
-
-.sbc-meta-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--sbc-gray-700);
 }
 
 .sbc-meta-icon {

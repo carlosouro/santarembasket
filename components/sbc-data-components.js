@@ -20,6 +20,15 @@ function sbcDataResolveUrl(path) {
   return root + path.replace(/^(\.\/|\/)+/, '');
 }
 
+function sbcEscapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 // 1. Destaques & Avisos (<sbc-destaques>)
 class SbcDestaques extends HTMLElement {
   async connectedCallback() {
@@ -65,12 +74,7 @@ class SbcDestaques extends HTMLElement {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return sbcEscapeHtml(str);
   }
 }
 customElements.define('sbc-destaques', SbcDestaques);
@@ -79,55 +83,16 @@ customElements.define('sbc-destaques', SbcDestaques);
 class SbcTreinos extends HTMLElement {
   async connectedCallback() {
     this.innerHTML = '<div class="sbc-loading-placeholder">A carregar horários dos treinos...</div>';
-    const teamSlug = this.getAttribute('team');
 
     try {
       const res = await fetch(sbcDataResolveUrl('data/equipas.json'));
       if (!res.ok) throw new Error('Não foi possível carregar os horários das equipas');
       const teams = await res.json();
-
-      if (teamSlug) {
-        this.renderTeamSchedule(teams, teamSlug);
-      } else {
-        this.renderWeeklyCalendar(teams);
-      }
+      this.renderWeeklyCalendar(teams);
     } catch (err) {
       console.warn('Erro ao carregar horários em data/equipas.json:', err);
       this.innerHTML = '<p class="sbc-error-msg">Não foi possível carregar o calendário de horários de momento.</p>';
     }
-  }
-
-  renderTeamSchedule(teams, teamSlug) {
-    let slots = [];
-    const directTeam = teams.find(t => t.id === teamSlug || t.slug === teamSlug);
-
-    if (directTeam && Array.isArray(directTeam.horarios)) {
-      slots = directTeam.horarios;
-    } else if (teamSlug === 'sub12-m' || teamSlug === 'sub12-f') {
-      const mini = teams.find(t => t.id === 'minibasquete');
-      const targetNota = teamSlug === 'sub12-m' ? 'Sub-12 Masculinos' : 'Sub-12 Femininos';
-      if (mini && Array.isArray(mini.horarios)) {
-        slots = mini.horarios.filter(h => h.nota === targetNota);
-      }
-    }
-
-    if (!slots || slots.length === 0) {
-      this.innerHTML = '<p class="sbc-info-note">Horário a definir pela equipa técnica.</p>';
-      return;
-    }
-
-    const pills = slots.map(h => `
-      <span class="sbc-tag-slot">
-        ${h.nota ? `<span class="sbc-tag-slot-note">${this.escapeHtml(h.nota)}</span> ` : ''}<strong>${this.escapeHtml(h.dia)}</strong>: ${this.escapeHtml(h.inicio)}–${this.escapeHtml(h.fim)} <small>(${this.escapeHtml(h.local)})</small>
-      </span>
-    `).join(' ');
-
-    this.innerHTML = `
-      <div class="sbc-team-schedule-box">
-        <h4 class="sbc-team-schedule-title">🕒 Horários dos Treinos</h4>
-        <div class="sbc-team-schedule-pills">${pills}</div>
-      </div>
-    `;
   }
 
   parseMinutes(timeStr) {
@@ -564,12 +529,7 @@ class SbcTreinos extends HTMLElement {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return sbcEscapeHtml(str);
   }
 }
 customElements.define('sbc-treinos', SbcTreinos);
@@ -675,12 +635,7 @@ class SbcParceiros extends HTMLElement {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return sbcEscapeHtml(str);
   }
 }
 customElements.define('sbc-parceiros', SbcParceiros);
@@ -765,12 +720,7 @@ class SbcPalmares extends HTMLElement {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return sbcEscapeHtml(str);
   }
 }
 customElements.define('sbc-palmares', SbcPalmares);
@@ -779,23 +729,12 @@ customElements.define('sbc-palmares', SbcPalmares);
 class SbcEquipas extends HTMLElement {
   async connectedCallback() {
     this.innerHTML = '<div class="sbc-loading-placeholder">A carregar equipas e plantéis...</div>';
-    const targetTeam = this.getAttribute('team');
 
     try {
       const res = await fetch(sbcDataResolveUrl('data/equipas.json'));
       if (!res.ok) throw new Error('Não foi possível carregar as equipas');
       const teams = await res.json();
-      
-      if (targetTeam) {
-        const singleTeam = teams.find(t => t.id === targetTeam || t.id.includes(targetTeam));
-        if (singleTeam) {
-          this.renderSingle(singleTeam);
-        } else {
-          this.renderAll(teams);
-        }
-      } else {
-        this.renderAll(teams);
-      }
+      this.renderAll(teams);
     } catch (err) {
       console.warn('Erro ao carregar data/equipas.json:', err);
       this.innerHTML = '<p style="text-align:center; color: var(--sbc-gray-600); padding: 20px;">Informação de equipas brevemente disponível.</p>';
@@ -941,15 +880,7 @@ class SbcEquipas extends HTMLElement {
     window.addEventListener('hashchange', () => syncFromHash(true));
   }
 
-  renderSingle(team) {
-    this.innerHTML = `
-      <div class="sbc-teams-wrapper">
-        ${this.renderTeamCard(team, true)}
-      </div>
-    `;
-  }
-
-  renderTeamCard(team, isOpen = false) {
+  renderTeamCard(team) {
     const hasRoster = team.plantel && team.plantel.length > 0;
 
     return `
@@ -1003,18 +934,7 @@ class SbcEquipas extends HTMLElement {
               `).join('')}
             </div>
           </div>
-        ` : `
-          <div class="sbc-team-meta-bar">
-            <div class="sbc-meta-item">
-              <span class="sbc-meta-icon">🕒</span>
-              <div><strong>Horários dos Treinos:</strong> ${this.escapeHtml(team.treinos)}</div>
-            </div>
-            <div class="sbc-meta-item">
-              <span class="sbc-meta-icon">📍</span>
-              <div><strong>Local:</strong> ${this.escapeHtml(team.pavilhao)}</div>
-            </div>
-          </div>
-        `}
+        ` : ''}
 
         ${hasRoster ? `
           <div class="sbc-roster-container">
@@ -1054,12 +974,7 @@ class SbcEquipas extends HTMLElement {
   }
 
   escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return sbcEscapeHtml(str);
   }
 }
 customElements.define('sbc-equipas', SbcEquipas);

@@ -42,7 +42,7 @@ class SbcHeader extends HTMLElement {
   render() {
     const r = sbcResolveUrl;
     const homeHref = r('');
-    const logoSrc = r('wp-content/uploads/2023/06/cropped-89824145_3027466430646495_3387208941329973248_n-2.png');
+    const logoSrc = r('assets/images/logo/logo-sbc.png');
 
     this.innerHTML = `
 <header id="main-header" class="sbc-modern-header">
@@ -208,22 +208,22 @@ class SbcHeader extends HTMLElement {
     });
 
     // Parent group detection across any subdirectory hosting
-    if (['/historia', '/orgaos-sociais', '/estatutos', '/regulamento-interno', '/palmares', '/titulos-nacionais', '/parceiros', '/contacto'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
+    if (['/historia', '/orgaos-sociais', '/estatutos', '/regulamento-interno', '/palmares', '/parceiros', '/contacto'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
       const clubeItems = this.querySelectorAll('[data-nav="clube"]');
       clubeItems.forEach(el => el.classList.add('active'));
     }
 
-    if (['/equipas', '/treinos', '/team', '/player'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
+    if (['/equipas', '/treinos'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
       const equipasItems = this.querySelectorAll('[data-nav="equipas"]');
       equipasItems.forEach(el => el.classList.add('active'));
     }
 
-    if (['/socios', '/novo-socio'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
+    if (['/socios'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
       const sociosItems = this.querySelectorAll('[data-nav="socios"]');
       sociosItems.forEach(el => el.classList.add('active'));
     }
 
-    if (['/merchandising', '/equipamentos'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
+    if (['/merchandising'].some(p => currentPath.endsWith(p) || currentPath.includes(p + '/'))) {
       const merchItems = this.querySelectorAll('[data-nav="merchandising"]');
       merchItems.forEach(el => el.classList.add('active'));
     }
