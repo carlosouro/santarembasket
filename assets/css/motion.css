@@ -1,0 +1,693 @@
+/**
+ * Santarém Basket Clube - Crisp & Athletic Motion System & Micro-UX Polish
+ * Pure CSS + progressive enhancement (zero external dependencies).
+ * Respects prefers-reduced-motion and keeps all content visible by default.
+ */
+
+/* ==========================================================================
+   1. Cross-Document View Transitions (MPA Navigation)
+   ========================================================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+#main-header.sbc-modern-header {
+  view-transition-name: sbc-site-header;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sbc-page-fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes sbc-page-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  ::view-transition-old(root) {
+    animation: 180ms cubic-bezier(0.4, 0, 1, 1) both sbc-page-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation: 260ms var(--sbc-ease-athletic) both sbc-page-fade-in;
+  }
+
+  ::view-transition-old(sbc-site-header),
+  ::view-transition-new(sbc-site-header) {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   2. Anchor Scroll Offsets & Base Card Polish
+   ========================================================================== */
+
+section[id],
+.sbc-team-showcase-card[id],
+.sbc-doc-chapter[id] {
+  scroll-margin-top: 94px;
+}
+
+.sbc-card {
+  background: #ffffff;
+  border: 1px solid var(--sbc-gray-200);
+  border-radius: var(--sbc-radius-lg);
+  box-shadow: var(--sbc-shadow-sm);
+  transition:
+    transform var(--sbc-transition-normal),
+    box-shadow var(--sbc-transition-normal),
+    border-color var(--sbc-transition-normal);
+}
+
+a.sbc-card:hover,
+.sbc-card.is-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sbc-shadow-md);
+  border-color: rgba(234, 49, 18, 0.3);
+}
+
+/* ==========================================================================
+   3. Hero Ambient Depth & Crisp Athletic Entrance Stagger
+   ========================================================================== */
+
+.sbc-hero-section > .sbc-container {
+  position: relative;
+  z-index: 1;
+}
+
+.sbc-hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(650px circle at 85% 15%, rgba(234, 49, 18, 0.16), transparent 60%),
+    radial-gradient(520px circle at 12% 85%, rgba(56, 102, 168, 0.22), transparent 65%);
+}
+
+.sbc-hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 420' fill='none'%3E%3Ccircle cx='600' cy='210' r='130' stroke='%23ffffff' stroke-width='1.5'/%3E%3Ccircle cx='600' cy='210' r='34' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cline x1='600' y1='0' x2='600' y2='420' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cpath d='M0 55 C 180 55, 250 130, 250 210 C 250 290, 180 365, 0 365' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cpath d='M1200 55 C 1020 55, 950 130, 950 210 C 950 290, 1020 365, 1200 365' stroke='%23ffffff' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(1200px, 100%) auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sbc-hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes sbc-hero-title-mask {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      clip-path: inset(0 0 28% 0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0% 0);
+    }
+  }
+
+  @keyframes sbc-banner-curtain {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+      clip-path: inset(12% 0 0 0 round var(--sbc-radius-lg));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0 round var(--sbc-radius-lg));
+    }
+  }
+
+  @keyframes sbc-banner-zoom-settle {
+    from {
+      transform: scale(1.045);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .sbc-hero-badge {
+    animation: sbc-hero-rise 420ms var(--sbc-ease-athletic) 20ms both;
+  }
+
+  .sbc-hero-title {
+    animation: sbc-hero-title-mask 520ms var(--sbc-ease-athletic) 80ms both;
+  }
+
+  .sbc-hero-subtitle {
+    animation: sbc-hero-rise 460ms var(--sbc-ease-athletic) 150ms both;
+  }
+
+  .sbc-hero-ctas {
+    animation: sbc-hero-rise 440ms var(--sbc-ease-athletic) 210ms both;
+  }
+
+  .sbc-hero-banner-wrap {
+    animation: sbc-banner-curtain 620ms var(--sbc-ease-athletic) 250ms both;
+  }
+
+  .sbc-hero-banner-img {
+    animation: sbc-banner-zoom-settle 780ms var(--sbc-ease-athletic) 250ms both;
+  }
+}
+
+/* ==========================================================================
+   4. Hybrid Scroll Reveals
+      - One-shot fades/slides for text, headers & cards
+      - Scroll-scrubbed masked reveals for club & team photography
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Pre-reveal state ONLY activates when JS confirms observer support */
+  html.sbc-motion-ready [data-sbc-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity var(--sbc-motion-reveal) var(--sbc-ease-athletic) var(--sbc-reveal-delay, 0ms),
+      transform var(--sbc-motion-reveal) var(--sbc-ease-athletic) var(--sbc-reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  html.sbc-motion-ready [data-sbc-reveal="scale"] {
+    transform: translateY(14px) scale(0.975);
+  }
+
+  html.sbc-motion-ready [data-sbc-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  /* Native CSS Scroll-Driven Masked Photo Reveals */
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes sbc-media-wipe {
+      from {
+        clip-path: inset(12% 4% 0 4% round 14px);
+      }
+      to {
+        clip-path: inset(0 0 0 0 round 0px);
+      }
+    }
+
+    @keyframes sbc-media-img-settle {
+      from {
+        transform: scale(1.07);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .sbc-club-highlight-media,
+    .sbc-team-banner-wrap,
+    .sbc-history-feature-media {
+      animation: sbc-media-wipe auto linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 34%;
+    }
+
+    .sbc-club-highlight-media > img,
+    .sbc-team-banner-wrap > img,
+    .sbc-history-feature-media > img {
+      animation: sbc-media-img-settle auto linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 42%;
+    }
+  }
+
+  /* Fallback Masked Photo Reveal for browsers without scroll-driven animations */
+  @supports not ((animation-timeline: view()) and (animation-range: entry)) {
+    html.sbc-motion-ready [data-sbc-media-reveal] {
+      clip-path: inset(12% 0 0 0 round 12px);
+      opacity: 0.2;
+      transition:
+        clip-path 680ms var(--sbc-ease-athletic),
+        opacity 520ms var(--sbc-ease-athletic);
+    }
+
+    html.sbc-motion-ready [data-sbc-media-reveal] > img {
+      transform: scale(1.06);
+      transition: transform 760ms var(--sbc-ease-athletic);
+    }
+
+    html.sbc-motion-ready [data-sbc-media-reveal].is-revealed {
+      clip-path: inset(0 0 0 0 round 0px);
+      opacity: 1;
+    }
+
+    html.sbc-motion-ready [data-sbc-media-reveal].is-revealed > img {
+      transform: scale(1);
+    }
+  }
+}
+
+/* ==========================================================================
+   5. Filter Transitions (Equipas & Treinos) & Shimmer Skeletons
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sbc-filter-enter {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .sbc-filter-entering {
+    animation: sbc-filter-enter 280ms var(--sbc-ease-athletic) both;
+  }
+
+  .sbc-cal-event {
+    animation: sbc-filter-enter 240ms var(--sbc-ease-athletic) both;
+  }
+}
+
+/* Shimmer Loading Skeletons */
+.sbc-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.sbc-skeleton-card {
+  background: #ffffff;
+  border: 1px solid var(--sbc-gray-200);
+  border-radius: var(--sbc-radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 210px;
+}
+
+.sbc-skeleton-box,
+.sbc-skeleton-line {
+  position: relative;
+  overflow: hidden;
+  background: var(--sbc-gray-100);
+  border-radius: var(--sbc-radius-sm);
+}
+
+.sbc-skeleton-box {
+  height: 86px;
+  border-radius: var(--sbc-radius-md);
+}
+
+.sbc-skeleton-line {
+  height: 14px;
+  width: 100%;
+}
+
+.sbc-skeleton-line.is-badge {
+  height: 22px;
+  width: 110px;
+  border-radius: var(--sbc-radius-full);
+}
+
+.sbc-skeleton-line.is-title {
+  height: 22px;
+  width: 78%;
+}
+
+.sbc-skeleton-line.is-short {
+  width: 58%;
+}
+
+.sbc-skeleton-line.is-btn {
+  height: 44px;
+  margin-top: auto;
+  border-radius: var(--sbc-radius-md);
+}
+
+.sbc-skeleton-calendar {
+  background: #ffffff;
+  border: 1px solid var(--sbc-gray-200);
+  border-radius: var(--sbc-radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sbc-skeleton-cal-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sbc-skeleton-cal-bar .sbc-skeleton-line {
+  width: 110px;
+  height: 34px;
+  border-radius: var(--sbc-radius-full);
+}
+
+.sbc-skeleton-cal-body {
+  height: 360px;
+  border-radius: var(--sbc-radius-md);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sbc-shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .sbc-skeleton-box::after,
+  .sbc-skeleton-line::after,
+  .sbc-skeleton-cal-body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.72) 50%,
+      transparent 100%
+    );
+    animation: sbc-shimmer 1.35s ease-in-out infinite;
+  }
+}
+
+/* ==========================================================================
+   6. Reading Progress Bar, Chapter Jump Bar & Floating Back-to-Top
+   ========================================================================== */
+
+.sbc-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sbc-red) 0%, #ff6b4a 100%);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 100005;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes sbc-grow-progress {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .sbc-reading-progress {
+      animation: sbc-grow-progress auto linear;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+/* Auto-Generated Document Chapter Jump Pills (Estatutos & Regulamento) */
+.sbc-doc-toc {
+  background: #ffffff;
+  border: 1px solid var(--sbc-gray-200);
+  border-radius: var(--sbc-radius-md);
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  box-shadow: var(--sbc-shadow-sm);
+}
+
+.sbc-doc-toc-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sbc-doc-toc-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--sbc-radius-full);
+  background: var(--sbc-gray-50);
+  border: 1px solid var(--sbc-gray-200);
+  color: var(--sbc-navy);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  transition:
+    background-color var(--sbc-transition-fast),
+    border-color var(--sbc-transition-fast),
+    color var(--sbc-transition-fast),
+    transform var(--sbc-transition-fast);
+}
+
+.sbc-doc-toc-link:hover,
+.sbc-doc-toc-link.is-active {
+  background: var(--sbc-red-light);
+  border-color: rgba(234, 49, 18, 0.35);
+  color: var(--sbc-red);
+}
+
+/* Floating Back-to-Top Button */
+.sbc-back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--sbc-radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--sbc-navy);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(13, 27, 42, 0.28);
+  z-index: 99980;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.92);
+  transition:
+    opacity 220ms var(--sbc-ease-athletic),
+    transform 220ms var(--sbc-ease-athletic),
+    visibility 220ms,
+    background-color var(--sbc-transition-fast);
+}
+
+.sbc-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.sbc-back-to-top:hover {
+  background: var(--sbc-red);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.sbc-back-to-top:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .sbc-back-to-top {
+    right: 16px;
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ==========================================================================
+   7. Tactile Micro-Interactions, Mobile Drawer Stagger & Form Polish
+   ========================================================================== */
+
+/* High-visibility accessible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--sbc-red);
+  outline-offset: 2px;
+}
+
+/* Tactile active press feel */
+.sbc-btn-primary:active,
+.sbc-btn-outline:active,
+.sbc-btn-socio:active,
+.sbc-destaque-btn:active,
+.sbc-filter-btn:active,
+.sbc-team-direct-btn:active,
+.sbc-form-submit:active,
+.sbc-cal-day-tab:active {
+  transform: scale(0.98);
+}
+
+/* Subtle arrow/icon hover motion */
+.sbc-btn-card svg,
+.sbc-btn-primary svg,
+.sbc-partner-link {
+  transition: transform var(--sbc-transition-fast), color var(--sbc-transition-fast);
+}
+
+.sbc-btn-card:hover svg,
+.sbc-btn-primary:hover svg {
+  transform: translateX(3px);
+}
+
+.sbc-partner-link:hover {
+  transform: translateX(2px);
+}
+
+/* Smooth staggered reveal for mobile drawer items */
+@media (prefers-reduced-motion: no-preference) {
+  .sbc-mobile-drawer .sbc-mobile-item,
+  .sbc-mobile-drawer .sbc-mobile-drawer-cta {
+    opacity: 0;
+    transform: translateX(14px);
+    transition:
+      opacity 260ms var(--sbc-ease-athletic),
+      transform 260ms var(--sbc-ease-athletic);
+  }
+
+  .sbc-mobile-drawer.is-open .sbc-mobile-item,
+  .sbc-mobile-drawer.is-open .sbc-mobile-drawer-cta {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .sbc-mobile-drawer.is-open .sbc-mobile-item:nth-child(1) { transition-delay: 50ms; }
+  .sbc-mobile-drawer.is-open .sbc-mobile-item:nth-child(2) { transition-delay: 95ms; }
+  .sbc-mobile-drawer.is-open .sbc-mobile-item:nth-child(3) { transition-delay: 140ms; }
+  .sbc-mobile-drawer.is-open .sbc-mobile-item:nth-child(4) { transition-delay: 185ms; }
+  .sbc-mobile-drawer.is-open .sbc-mobile-drawer-cta { transition-delay: 225ms; }
+}
+
+/* Form Focus Elevation, Loading Spinner & Animated Result Banners */
+.sbc-form-input:hover:not(:focus),
+.sbc-form-select:hover:not(:focus),
+.sbc-form-textarea:hover:not(:focus) {
+  border-color: var(--sbc-gray-300);
+}
+
+.sbc-form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sbc-form-submit:disabled {
+  opacity: 0.8;
+  cursor: wait;
+  transform: none;
+}
+
+.sbc-form-submit.is-loading::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sbc-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .sbc-form-submit.is-loading::before {
+    animation: sbc-spin 650ms linear infinite;
+  }
+
+  @keyframes sbc-result-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .sbc-form-result.is-visible,
+  .sbc-form-result.success,
+  .sbc-form-result.error {
+    animation: sbc-result-reveal 300ms var(--sbc-ease-athletic) both;
+  }
+}
+
+/* Reduced motion: disable spatial transforms while keeping subtle opacity & color transitions */
+@media (prefers-reduced-motion: reduce) {
+  .sbc-back-to-top {
+    transform: none;
+    transition: opacity 150ms ease, visibility 150ms, background-color var(--sbc-transition-fast);
+  }
+
+  .sbc-back-to-top.is-visible,
+  .sbc-back-to-top:hover {
+    transform: none;
+  }
+
+  .sbc-mobile-submenu-wrap {
+    transition: opacity 120ms ease;
+  }
+}

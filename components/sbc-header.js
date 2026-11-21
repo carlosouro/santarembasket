@@ -123,36 +123,40 @@ class SbcHeader extends HTMLElement {
     <li class="sbc-mobile-item" data-nav="clube">
       <div class="sbc-mobile-link-row">
         <a href="${homeHref}" class="sbc-mobile-link">CLUBE</a>
-        <button class="sbc-accordion-toggle" aria-label="Expandir submenu Clube">
+        <button class="sbc-accordion-toggle" aria-label="Expandir submenu Clube" aria-expanded="false">
           <svg width="12" height="8" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <ul class="sbc-mobile-submenu">
-        <li><a href="${r('historia/')}" class="sbc-mobile-sublink">História</a></li>
-        <li><a href="${r('orgaos-sociais/')}" class="sbc-mobile-sublink">Órgãos Sociais</a></li>
-        <li><a href="${r('estatutos/')}" class="sbc-mobile-sublink">Estatutos</a></li>
-        <li><a href="${r('regulamento-interno/')}" class="sbc-mobile-sublink">Regulamento Interno</a></li>
-        <li><a href="${r('palmares/')}" class="sbc-mobile-sublink">Palmarés</a></li>
-        <li><a href="${r('parceiros/')}" class="sbc-mobile-sublink">Parceiros & Protocolos</a></li>
-        <li><a href="${r('contacto/')}" class="sbc-mobile-sublink">Contacto</a></li>
-      </ul>
+      <div class="sbc-mobile-submenu-wrap">
+        <ul class="sbc-mobile-submenu">
+          <li><a href="${r('historia/')}" class="sbc-mobile-sublink">História</a></li>
+          <li><a href="${r('orgaos-sociais/')}" class="sbc-mobile-sublink">Órgãos Sociais</a></li>
+          <li><a href="${r('estatutos/')}" class="sbc-mobile-sublink">Estatutos</a></li>
+          <li><a href="${r('regulamento-interno/')}" class="sbc-mobile-sublink">Regulamento Interno</a></li>
+          <li><a href="${r('palmares/')}" class="sbc-mobile-sublink">Palmarés</a></li>
+          <li><a href="${r('parceiros/')}" class="sbc-mobile-sublink">Parceiros & Protocolos</a></li>
+          <li><a href="${r('contacto/')}" class="sbc-mobile-sublink">Contacto</a></li>
+        </ul>
+      </div>
     </li>
 
     <!-- Equipas Accordion -->
     <li class="sbc-mobile-item" data-nav="equipas">
       <div class="sbc-mobile-link-row">
         <a href="${r('equipas/')}" class="sbc-mobile-link">EQUIPAS</a>
-        <button class="sbc-accordion-toggle" aria-label="Expandir submenu Equipas">
+        <button class="sbc-accordion-toggle" aria-label="Expandir submenu Equipas" aria-expanded="false">
           <svg width="12" height="8" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <ul class="sbc-mobile-submenu">
-        <li><a href="${r('equipas/')}" class="sbc-mobile-sublink">Todas as Equipas</a></li>
-        <li><a href="${r('treinos/')}" class="sbc-mobile-sublink">Horário dos Treinos</a></li>
-        <li><a href="${r('equipas/#minibasquete')}" class="sbc-mobile-sublink">Minibasquete</a></li>
-        <li><a href="${r('equipas/#masculinas')}" class="sbc-mobile-sublink">Masculinas</a></li>
-        <li><a href="${r('equipas/#femininas')}" class="sbc-mobile-sublink">Femininas</a></li>
-      </ul>
+      <div class="sbc-mobile-submenu-wrap">
+        <ul class="sbc-mobile-submenu">
+          <li><a href="${r('equipas/')}" class="sbc-mobile-sublink">Todas as Equipas</a></li>
+          <li><a href="${r('treinos/')}" class="sbc-mobile-sublink">Horário dos Treinos</a></li>
+          <li><a href="${r('equipas/#minibasquete')}" class="sbc-mobile-sublink">Minibasquete</a></li>
+          <li><a href="${r('equipas/#masculinas')}" class="sbc-mobile-sublink">Masculinas</a></li>
+          <li><a href="${r('equipas/#femininas')}" class="sbc-mobile-sublink">Femininas</a></li>
+        </ul>
+      </div>
     </li>
 
     <li class="sbc-mobile-item" data-nav="merchandising">
@@ -262,18 +266,27 @@ class SbcHeader extends HTMLElement {
 
     overlay.addEventListener('click', closeMenu);
 
-    // Accordion toggles inside mobile drawer
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+        closeMenu();
+        toggleBtn.focus();
+      }
+    });
+
+    // Accordion toggles inside mobile drawer (smooth grid-row expand/collapse)
     const accordionBtns = this.querySelectorAll('.sbc-accordion-toggle');
     accordionBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         const row = btn.closest('.sbc-mobile-item');
-        const submenu = row ? row.querySelector('.sbc-mobile-submenu') : null;
-        if (submenu) {
+        const submenuWrap = row ? row.querySelector('.sbc-mobile-submenu-wrap') : null;
+        if (submenuWrap) {
           const isExpanded = btn.classList.contains('expanded');
-          btn.classList.toggle('expanded', !isExpanded);
-          submenu.classList.toggle('expanded', !isExpanded);
+          const nextState = !isExpanded;
+          btn.classList.toggle('expanded', nextState);
+          btn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
+          submenuWrap.classList.toggle('expanded', nextState);
         }
       });
     });

@@ -29,10 +29,37 @@ function sbcEscapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function sbcRenderCardSkeletons(count = 3, withMedia = false, label = 'A carregar conteúdo') {
+  const cards = Array.from({ length: count }, () => `
+    <div class="sbc-skeleton-card" aria-hidden="true">
+      ${withMedia ? '<div class="sbc-skeleton-box"></div>' : '<div class="sbc-skeleton-line is-badge"></div>'}
+      <div class="sbc-skeleton-line is-title"></div>
+      <div class="sbc-skeleton-line"></div>
+      <div class="sbc-skeleton-line is-short"></div>
+      ${withMedia ? '' : '<div class="sbc-skeleton-line is-btn"></div>'}
+    </div>
+  `).join('');
+  return `<div class="sbc-skeleton-grid" role="status" aria-busy="true" aria-label="${sbcEscapeHtml(label)}">${cards}</div>`;
+}
+
+function sbcRenderCalendarSkeleton() {
+  return `
+    <div class="sbc-skeleton-calendar" role="status" aria-busy="true" aria-label="A carregar horários dos treinos">
+      <div class="sbc-skeleton-cal-bar" aria-hidden="true">
+        <div class="sbc-skeleton-line"></div>
+        <div class="sbc-skeleton-line"></div>
+        <div class="sbc-skeleton-line"></div>
+        <div class="sbc-skeleton-line"></div>
+      </div>
+      <div class="sbc-skeleton-cal-body sbc-skeleton-box" aria-hidden="true"></div>
+    </div>
+  `;
+}
+
 // 1. Destaques & Avisos (<sbc-destaques>)
 class SbcDestaques extends HTMLElement {
   async connectedCallback() {
-    this.innerHTML = '<div class="sbc-loading-placeholder">A carregar destaques...</div>';
+    this.innerHTML = sbcRenderCardSkeletons(3, false, 'A carregar destaques');
     const limit = this.getAttribute('limit') ? parseInt(this.getAttribute('limit'), 10) : null;
     
     try {
@@ -82,7 +109,7 @@ customElements.define('sbc-destaques', SbcDestaques);
 // 2. Horários dos Treinos (<sbc-treinos>)
 class SbcTreinos extends HTMLElement {
   async connectedCallback() {
-    this.innerHTML = '<div class="sbc-loading-placeholder">A carregar horários dos treinos...</div>';
+    this.innerHTML = sbcRenderCalendarSkeleton();
 
     try {
       const res = await fetch(sbcDataResolveUrl('data/equipas.json'));
@@ -537,7 +564,7 @@ customElements.define('sbc-treinos', SbcTreinos);
 // 3. Parceiros, Apoios & Protocolos (<sbc-parceiros>)
 class SbcParceiros extends HTMLElement {
   async connectedCallback() {
-    this.innerHTML = '<div class="sbc-loading-placeholder">A carregar parceiros...</div>';
+    this.innerHTML = sbcRenderCardSkeletons(3, true, 'A carregar parceiros');
     const section = this.getAttribute('section') || 'all';
 
     try {
@@ -728,7 +755,7 @@ customElements.define('sbc-palmares', SbcPalmares);
 // 5. Equipas & Plantéis (<sbc-equipas>)
 class SbcEquipas extends HTMLElement {
   async connectedCallback() {
-    this.innerHTML = '<div class="sbc-loading-placeholder">A carregar equipas e plantéis...</div>';
+    this.innerHTML = sbcRenderCardSkeletons(2, true, 'A carregar equipas e plantéis');
 
     try {
       const res = await fetch(sbcDataResolveUrl('data/equipas.json'));
@@ -792,7 +819,7 @@ class SbcEquipas extends HTMLElement {
     const directBtns = this.querySelectorAll('.sbc-team-direct-btn');
     const cards = this.querySelectorAll('.sbc-team-showcase-card');
 
-    const applyFilterState = () => {
+    const applyFilterState = (animate = false) => {
       // 1. Update Category Buttons
       categoryBtns.forEach(btn => {
         const isCatMatch = btn.dataset.filter === this.activeCategory;
@@ -810,14 +837,26 @@ class SbcEquipas extends HTMLElement {
         btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
       });
 
-      // 3. Show/Hide Team Cards
+      // 3. Show/Hide Team Cards with crisp re-entry animation
+      let visibleIndex = 0;
       cards.forEach(card => {
+        let shouldShow = false;
         if (this.activeTeamId) {
-          card.style.display = (card.dataset.teamId === this.activeTeamId) ? '' : 'none';
+          shouldShow = card.dataset.teamId === this.activeTeamId;
         } else if (this.activeCategory === 'all' || card.dataset.gender === this.activeCategory) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
+          shouldShow = true;
+        }
+
+        card.style.display = shouldShow ? '' : 'none';
+        if (shouldShow) {
+          card.classList.add('is-revealed');
+          if (animate) {
+            card.classList.remove('sbc-filter-entering');
+            card.style.animationDelay = `${Math.min(visibleIndex * 45, 220)}ms`;
+            void card.offsetWidth;
+            card.classList.add('sbc-filter-entering');
+          }
+          visibleIndex++;
         }
       });
     };
@@ -827,7 +866,7 @@ class SbcEquipas extends HTMLElement {
       btn.addEventListener('click', () => {
         this.activeCategory = btn.dataset.filter;
         this.activeTeamId = null;
-        applyFilterState();
+        applyFilterState(true);
       });
     });
 
@@ -840,7 +879,7 @@ class SbcEquipas extends HTMLElement {
         } else {
           this.activeTeamId = clickedTeamId;
         }
-        applyFilterState();
+        applyFilterState(true);
       });
     });
 

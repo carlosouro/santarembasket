@@ -12,9 +12,11 @@
   
   <!-- Modern Stylesheets & Web Components -->
   <link rel="stylesheet" href="../assets/css/main.css">
-  <script src="../components/sbc-header.js" defer></script>
+  <link rel="expect" href="#main-content" blocking="render">
+  <script src="../components/sbc-header.js" async blocking="render"></script>
   <script src="../components/sbc-footer.js" defer></script>
   <script src="../components/sbc-data-components.js" defer></script>
+  <script src="../components/sbc-motion.js" defer></script>
 </head>
 <body class="sbc-body">
   <div id="page-container">
@@ -167,9 +169,10 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         submitBtn.disabled = true;
+        submitBtn.classList.add('is-loading');
         submitBtn.textContent = 'A enviar...';
         result.style.display = 'block';
-        result.className = 'sbc-form-result';
+        result.className = 'sbc-form-result is-visible';
         result.textContent = 'Por favor aguarde...';
 
         const formData = new FormData(form);
@@ -187,20 +190,21 @@
         .then(async (response) => {
           let res = await response.json();
           if (response.status === 200) {
-            result.className = 'sbc-form-result success';
+            result.className = 'sbc-form-result success is-visible';
             result.textContent = 'Mensagem enviada com sucesso! Responderemos logo que possível.';
             form.reset();
           } else {
-            result.className = 'sbc-form-result error';
+            result.className = 'sbc-form-result error is-visible';
             result.textContent = res.message || 'Erro ao enviar a mensagem. Por favor tente novamente ou contacte por telemóvel.';
           }
         })
         .catch(error => {
-          result.className = 'sbc-form-result error';
+          result.className = 'sbc-form-result error is-visible';
           result.textContent = 'Ocorreu um erro de ligação. Por favor tente novamente ou contacte por email/telemóvel.';
         })
         .finally(() => {
           submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
           submitBtn.textContent = 'Enviar Mensagem';
         });
       });

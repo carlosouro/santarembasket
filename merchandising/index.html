@@ -12,9 +12,11 @@
   
   <!-- Modern Stylesheets & Web Components -->
   <link rel="stylesheet" href="../assets/css/main.css">
-  <script src="../components/sbc-header.js" defer></script>
+  <link rel="expect" href="#main-content" blocking="render">
+  <script src="../components/sbc-header.js" async blocking="render"></script>
   <script src="../components/sbc-footer.js" defer></script>
   <script src="../components/sbc-data-components.js" defer></script>
+  <script src="../components/sbc-motion.js" defer></script>
 </head>
 <body class="sbc-body">
   <div id="page-container">
@@ -207,9 +209,10 @@
       merchForm.addEventListener('submit', function(e) {
         e.preventDefault();
         merchBtn.disabled = true;
+        merchBtn.classList.add('is-loading');
         merchBtn.textContent = 'A enviar pedido...';
         merchResult.style.display = 'block';
-        merchResult.className = 'sbc-form-result';
+        merchResult.className = 'sbc-form-result is-visible';
         merchResult.textContent = 'Por favor aguarde...';
 
         const formData = new FormData(merchForm);
@@ -227,20 +230,21 @@
         .then(async (response) => {
           let res = await response.json();
           if (response.status === 200) {
-            merchResult.className = 'sbc-form-result success';
+            merchResult.className = 'sbc-form-result success is-visible';
             merchResult.textContent = 'Pedido de reserva enviado com sucesso! O clube entrará em contacto para confirmação de detalhes e pagamento.';
             merchForm.reset();
           } else {
-            merchResult.className = 'sbc-form-result error';
+            merchResult.className = 'sbc-form-result error is-visible';
             merchResult.textContent = res.message || 'Erro ao submeter pedido. Por favor tente novamente ou contacte por telemóvel.';
           }
         })
         .catch(error => {
-          merchResult.className = 'sbc-form-result error';
+          merchResult.className = 'sbc-form-result error is-visible';
           merchResult.textContent = 'Ocorreu um erro de ligação. Por favor tente novamente mais tarde.';
         })
         .finally(() => {
           merchBtn.disabled = false;
+          merchBtn.classList.remove('is-loading');
           merchBtn.textContent = 'Submeter Pedido de Reserva';
         });
       });

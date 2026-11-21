@@ -12,8 +12,10 @@
   
   <!-- Modern Stylesheets & Web Components -->
   <link rel="stylesheet" href="../assets/css/main.css">
-  <script src="../components/sbc-header.js" defer></script>
+  <link rel="expect" href="#main-content" blocking="render">
+  <script src="../components/sbc-header.js" async blocking="render"></script>
   <script src="../components/sbc-footer.js" defer></script>
+  <script src="../components/sbc-motion.js" defer></script>
 </head>
 <body class="sbc-body">
   <div id="page-container">
